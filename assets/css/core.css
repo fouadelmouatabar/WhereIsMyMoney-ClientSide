@@ -21,6 +21,7 @@ a {
     letter-spacing: 0.3px;
     border-radius: 6px;
     --bs-btn-padding-y: 0.591rem;
+    --bs-btn-padding-x: 1.5rem;
 }
 .btn-primary {
     --bs-btn-bg: #4153ef;
@@ -39,7 +40,7 @@ a {
     color: #606770;
 }
 .form-label-required {
-    color: #dc143c;
+    color: #ff2a2a;
 }
 .form-control,
 .form-select {
@@ -108,4 +109,10 @@ a {
 }
 .radio-btns input[type="radio"]:checked + span:before {
     border-width: 6px;
+}
+
+.card {
+    --bs-card-spacer-y: 1.2rem;
+    border: none;
+    border-radius: 6px;
 }
