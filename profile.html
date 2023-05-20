@@ -122,109 +122,125 @@
             </div>
             <div class="dashboard-content">
                 <div class="row">
-                    <div class="col-12 col-lg-6">
+                    <div class="col-12 col-lg-8">
                         <div class="card">
                             <div class="card-body">
-                                <div class="card-heading">
-                                    <h3 class="card-title">Change Password</h3>
-                                    <h6 class="card-subtitle">Stay safe, stay secure.</h6>
+                                <div class="profile-box d-flex align-items-center mb-4">
+                                    <div class="profile-avatar">
+                                        <img src="assets/img/avatar.png" class="img-fluid rounded-pill" width="70" >
+                                    </div>
+                                    <div class="profile-infos w-100">
+                                        <h4 class="profile-name mb-0 mt-0">John J. Morgan</h4>
+                                        <span class="profile-email">johndoe@email.com</span>
+                                    </div>
                                 </div>
                                 <div class="card-content">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="mb-4">
-                                                <label for="" class="form-label">Current Password <span class="form-label-required">*</span></label>
-                                                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password">
+                                    <div class="sign-form">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="mb-3">
+                                                    <label for="" class="form-label">First Name <span class="form-label-required">*</span></label>
+                                                    <input type="text" class="form-control" id="fname" placeholder="John" value="John">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="mb-3">
-                                                <label for="" class="form-label">Password <span class="form-label-required">*</span></label>
-                                                <input type="password" class="form-control" id="password" placeholder="At leat 8 characters">
-                                                <div class="password-progress">
-                                                    <div class="row gx-3">
-                                                        <div class="col">
-                                                            <div class="password-bar"></div>
+                                            <div class="col-6">
+                                                <div class="mb-3">
+                                                    <label for="" class="form-label">Last Name <span class="form-label-required">*</span></label>
+                                                    <input type="text" class="form-control" id="lname" placeholder="Doe" value="Morgan">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Gendre <span class="form-label-required">*</span></label>
+                                                    <div class="radio-btns">
+                                                        <label>
+                                                            <input type="radio" name="gendre" checked>
+                                                            <span>Male</span>
+                                                        </label>
+                                                        <label>
+                                                            <input type="radio" name="gendre">
+                                                            <span>Female</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="mb-3">
+                                                    <label for="" class="form-label">Address <span class="form-label-required">*</span></label>
+                                                    <input type="text" class="form-control" id="address" placeholder="" value="3951 rue Levy, Montreal, QC H3C 5K4">
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="mb-3">
+                                                    <label for="" class="form-label">City <span class="form-label-required">*</span></label>
+                                                    <input type="text" class="form-control" id="city" placeholder="" value="Montreal">
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="mb-3">
+                                                    <label for="" class="form-label">Country <span class="form-label-required">*</span></label>
+                                                    <input type="text" class="form-control" id="country" placeholder="" value="Canada">
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="mb-3">
+                                                    <label for="email" class="form-label">Currency <span class="form-label-required">*</span></label>
+                                                    <select class="form-select" aria-label="Default select example">
+                                                        <option value="1" selected>CAD</option>
+                                                        <option value="2">MAD</option>
+                                                        <option value="2">EURO</option>
+                                                        <option value="3">USD</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="mb-3">
+                                                    <label for="email" class="form-label">Phone Number <span class="form-label-required">*</span></label>
+                                                    <div class="row">
+                                                        <div class="col-auto phone-negatif">
+                                                            <select class="form-select" aria-label="Default select example">
+                                                                <option value="1">+1</option>
+                                                                <option value="2">+91</option>
+                                                                <option value="3">+212</option>
+                                                            </select>
                                                         </div>
                                                         <div class="col">
-                                                            <div class="password-bar"></div>
-                                                        </div>
-                                                        <div class="col">
-                                                            <div class="password-bar"></div>
-                                                        </div>
-                                                        <div class="col">
-                                                            <div class="password-bar"></div>
+                                                            <input type="tel" class="form-control" id="email" placeholder="e.g. 999-999-9999" value="514-701-0534">
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-helper">
-                                                    <span>Utilisez au moins huit caractères avec des lettres, des chiffres et des symboles</span>
-                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-12">
-                                            <div class="mb-4">
-                                                <label for="" class="form-label">Confirm Password <span class="form-label-required">*</span></label>
-                                                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password">
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <button class="btn btn-primary" type="button">Update Password</button>
+                                        <div class="d-grid mt-4">
+                                            <a href="signup-3.html">
+                                                <button class="btn btn-primary" type="button">Save Changes</button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-6">
-                        <div class="card">
+                    <div class="col-12 col-lg-4">
+                        <div class="card sidebar-card mb-4">
                             <div class="card-body">
                                 <div class="card-heading">
-                                    <h3 class="card-title">Update Your Security Questions</h3>
-                                    <h6 class="card-subtitle">Stay safe, stay secure.</h6>
+                                    <h3 class="card-title">Update Your Password</h3>
+                                    <h6 class="card-subtitle">Click the link below to change the password and the security questions.</h6>
                                 </div>
                                 <div class="card-content">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="mb-2">
-                                                <label for="email" class="form-label">Security Question 1 <span class="form-label-required">*</span></label>
-                                                <select class="form-select" aria-label="Default select example">
-                                                    <option value="q1">What is your best friend's name?</option>
-                                                    <option value="q2">What is your favourite food?</option>
-                                                </select>
-                                            </div>
-                                            <div class="mb-3">
-                                                <input type="email" class="form-control" id="email" placeholder="johndoe@email.com">
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="mb-2">
-                                                <label for="email" class="form-label">Security Question 2 <span class="form-label-required">*</span></label>
-                                                <select class="form-select" aria-label="Default select example">
-                                                    <option value="q1">What is your best friend's name?</option>
-                                                    <option value="q2">What is your favourite food?</option>
-                                                </select>
-                                            </div>
-                                            <div class="mb-3">
-                                                <input type="email" class="form-control" id="email" placeholder="johndoe@email.com">
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="mb-2">
-                                                <label for="email" class="form-label">Security Question 3 <span class="form-label-required">*</span></label>
-                                                <select class="form-select" aria-label="Default select example">
-                                                    <option value="q1">What is your best friend's name?</option>
-                                                    <option value="q2">What is your favourite food?</option>
-                                                </select>
-                                            </div>
-                                            <div class="mb-3">
-                                                <input type="email" class="form-control" id="email" placeholder="johndoe@email.com">
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <button class="btn btn-primary" type="button">Update Questions</button>
-                                        </div>
-                                    </div>
+                                    <a href="security.html" class="link link-primary">Change Password</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card sidebar-card">
+                            <div class="card-body">
+                                <div class="card-heading">
+                                    <h3 class="card-title">Danger Zone</h3>
+                                    <h6 class="card-subtitle">If you want to permanetly delete this account and all of its data, you can do so below</h6>
+                                </div>
+                                <div class="card-content">
+                                    <a href="security.html" class="link link-danger">Delete Account</a>
                                 </div>
                             </div>
                         </div>
