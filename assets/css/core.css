@@ -64,6 +64,11 @@ a {
     color: #979BAD;
     font-weight: 500;
 }
+.form-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: #323338;
+}
 .form-link {
     margin-top: 10px;
     font-size: 12px;
