@@ -2,6 +2,7 @@
     --bs-font-sans-serif: 'Inter', sans-serif;
     --bs-border-radius: 0.1rem;
     --bs-heading-color: #323338;
+    --bs-body-font-size: 0.875rem;
 }
 body {
     font-family: 'Inter', sans-serif;
@@ -54,6 +55,7 @@ a {
 .form-select {
     padding-top: 0.591rem;
     padding-bottom: 0.591rem;
+    min-width: 100px;
 }
 .form-control::placeholder {
     color: #AFB2C2;
@@ -120,4 +122,34 @@ a {
     --bs-card-spacer-y: 1.2rem;
     border: none;
     border-radius: 6px;
+}
+
+.modal {
+    --bs-modal-header-padding: 0 1rem;
+}
+.modal .modal-content {
+    border: none;
+}
+.modal .modal-header {
+    border-bottom: none;
+    padding-top: 2rem;
+}
+.modal .modal-body {
+    padding: 1.2rem 1.5rem 2.2rem 1.5rem;
+}
+.modal .btn-close {
+    --bs-btn-close-opacity: 0.3;
+    --bs-btn-close-hover-opacity: 0.5;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+.modal .modal-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.modal .modal-content {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #6e6e6e;
 }

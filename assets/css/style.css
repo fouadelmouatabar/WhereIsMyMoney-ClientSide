@@ -246,3 +246,10 @@
     font-size: 13px;
     font-weight: 700;
 }
+
+.delete-modal .delete-help {
+    color: #ababab;
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+}
