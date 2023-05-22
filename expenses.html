@@ -39,16 +39,6 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="menu-link" data-bs-toggle="modal"
-                                    data-bs-target="#addOperationModal">
-                                    <span class="menu-icon">
-                                        <i class="fi fi-br-add"></i>
-                                    </span>
-                                    <span class="menu-title">New Operation</span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                            </li>
-                            <li>
                                 <a href="transactions.html" class="menu-link">
                                     <span class="menu-icon">
                                         <i class="fi fi-br-time-forward"></i>
@@ -116,12 +106,15 @@
             <div class="topbar">
                 <div class="d-flex flex-row justify-content-between align-items-center">
                     <h2>Expenses</h2>
-                    <a href="profile.html" class="nav-profile">
-                        <div class="nav-profile-avatar">
-                            <img src="assets/img/avatar.png" alt="">
-                        </div>
-                        <div class="nav-profile-name">John Doe</div>
-                    </a>
+                    <div class="d-flex align-items-center">
+                        <a href="#" class="btn btn-sm btn-primary rounded-pill me-2" data-bs-toggle="modal" data-bs-target="#addOperationModal">New Transaction</a>
+                        <a href="profile.html" class="profile-btn me-2">
+                            <i class="fi fi-br-bell"></i>
+                        </a>
+                        <a href="profile.html" class="profile-btn">
+                            <i class="fi fi-br-user"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="dashboard-content">
@@ -189,7 +182,7 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h3 class="modal-title mb-2">Add New Operation</h1>
+                                <h3 class="modal-title mb-2">Add New Transaction</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">

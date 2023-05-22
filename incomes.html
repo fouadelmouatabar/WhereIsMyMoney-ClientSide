@@ -39,16 +39,6 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="menu-link" data-bs-toggle="modal"
-                                    data-bs-target="#addOperationModal">
-                                    <span class="menu-icon">
-                                        <i class="fi fi-br-add"></i>
-                                    </span>
-                                    <span class="menu-title">New Operation</span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                            </li>
-                            <li>
                                 <a href="transactions.html" class="menu-link">
                                     <span class="menu-icon">
                                         <i class="fi fi-br-time-forward"></i>
@@ -116,12 +106,15 @@
             <div class="topbar">
                 <div class="d-flex flex-row justify-content-between align-items-center">
                     <h2>Incomes</h2>
-                    <a href="profile.html" class="nav-profile">
-                        <div class="nav-profile-avatar">
-                            <img src="assets/img/avatar.png" alt="">
-                        </div>
-                        <div class="nav-profile-name">John Doe</div>
-                    </a>
+                    <div class="d-flex align-items-center">
+                        <a href="#" class="btn btn-sm btn-primary rounded-pill me-2" data-bs-toggle="modal" data-bs-target="#addOperationModal">New Transaction</a>
+                        <a href="profile.html" class="profile-btn me-2">
+                            <i class="fi fi-br-bell"></i>
+                        </a>
+                        <a href="profile.html" class="profile-btn">
+                            <i class="fi fi-br-user"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="dashboard-content">
@@ -176,8 +169,8 @@
                                         <img src="assets/img/app.svg" alt="">
                                     </div>
                                     <div>
-                                        <a class="btn btn-sm btn-primary me-2" href="#">Try Now</a>
-                                        <a class="btn btn-sm btn-light" href="#">Learn More</a>
+                                        <a class="btn btn-primary me-2" href="#">Try Now</a>
+                                        <a class="btn btn-light" href="#">Learn More</a>
                                     </div>
                                 </div>
                             </div>

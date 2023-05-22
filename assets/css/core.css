@@ -205,3 +205,8 @@ a {
     color: #50CD89;
     background-color: #E8FFF3;
 }
+
+.btn-sm {
+    font-size: 12px;
+    padding: 0.5rem 1rem;
+}
