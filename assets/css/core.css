@@ -153,3 +153,55 @@ a {
     font-weight: 500;
     color: #6e6e6e;
 }
+
+.table {
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0;
+}
+.table th {
+    font-size: 12px;
+    font-weight: 600;
+    color: #B5B5C3;
+    text-transform: uppercase;
+}
+.table th,
+.table td {
+    padding: 0.65rem 1rem;
+}
+.table,
+.table thead,
+.table tr,
+.table>:not(caption)>*>* {
+    border: none;
+}
+.table tr:not(:last-child),
+.table thead {
+    border-bottom-width: 1px;
+    border-bottom-style: dashed;
+    border-bottom-color: #f1f1f1;
+}
+.table .clickable-row {
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+    border-radius: 8px;
+}
+.table .clickable-row:hover {
+    background-color: #f9f9f9;
+}
+
+.badge {
+    --bs-badge-padding-x: 0.8rem;
+    --bs-badge-padding-y: 0.4rem;
+    --bs-badge-font-size: 0.7rem;
+    --bs-badge-font-weight: 700;
+    --bs-badge-border-radius: 0.4rem;
+}
+.badge-light-danger {
+    color: #F1416C;
+    background-color: #FFF5F8;
+}
+.badge-light-success {
+    color: #50CD89;
+    background-color: #E8FFF3;
+}

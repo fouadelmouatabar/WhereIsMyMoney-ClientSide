@@ -39,7 +39,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="menu-link">
+                                <a href="#" class="menu-link" data-bs-toggle="modal" data-bs-target="#addOperationModal">
                                     <span class="menu-icon">
                                         <i class="fi fi-br-add"></i>
                                     </span>
@@ -48,16 +48,16 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="menu-link">
+                                <a href="transactions.html" class="menu-link">
                                     <span class="menu-icon">
                                         <i class="fi fi-br-time-forward"></i>
                                     </span>
-                                    <span class="menu-title">Operations History</span>
+                                    <span class="menu-title">Transactions</span>
                                     <span class="menu-arrow"></span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="menu-link">
+                                <a href="incomes.html" class="menu-link">
                                     <span class="menu-icon">
                                         <i class="fi fi-br-wallet"></i>
                                     </span>
@@ -66,7 +66,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="menu-link">
+                                <a href="expenses.html" class="menu-link">
                                     <span class="menu-icon">
                                         <i class="fi fi-br-cart-shopping-fast"></i>
                                     </span>
@@ -115,12 +115,12 @@
             <div class="topbar">
                 <div class="d-flex flex-row justify-content-between align-items-center">
                     <h2>Profile</h2>
-                    <div class="nav-profile">
+                    <a href="profile.html" class="nav-profile">
                         <div class="nav-profile-avatar">
                             <img src="assets/img/avatar.png" alt="">
                         </div>
                         <div class="nav-profile-name">John Doe</div>
-                    </div>
+                    </a>
                 </div>
             </div>
             <div class="dashboard-content">
@@ -316,8 +316,7 @@
                                         its data, you can do so below</h6>
                                 </div>
                                 <div class="card-content">
-                                    <a href="#" class="link link-danger" data-bs-toggle="modal"
-                                        data-bs-target="#deleteAccountModal">Delete Account</a>
+                                    <a href="#" class="link link-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">Delete Account</a>
                                 </div>
                             </div>
                             <!-- Modal -->
@@ -326,9 +325,13 @@
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h3 class="modal-title mb-2">Confirm Account Deletion</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
+                                            <div class="d-flex align-items-center">
+                                                <span class="delete-icon">
+                                                    <i class="fi fi-br-trash"></i>
+                                                </span>
+                                                <h3 class="modal-title m-0">Confirm Account Deletion</h1>
+                                            </div>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
                                             <p class="mb-4">Deleting your account will remove all of your information
@@ -345,6 +348,56 @@
                                                 </div>
                                             </form>
                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade delete-modal" id="addOperationModal" tabindex="-1"
+                aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title mb-2">Add New Operation</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="sign-form">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label class="form-label">Operation Type <span class="form-label-required">*</span></label>
+                                                <div class="radio-btns">
+                                                    <label>
+                                                        <input type="radio" name="gendre">
+                                                        <span>Income</span>
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="gendre">
+                                                        <span>Expense</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Amount <span class="form-label-required">*</span></label>
+                                                <input type="text" class="form-control" id="address" placeholder="">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Motif / Description <span class="form-label-required">*</span></label>
+                                                <input type="text" class="form-control" id="address" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="d-grid">
+                                        <a href="signup-3.html">
+                                            <button class="btn btn-primary" type="button">Submit</button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
