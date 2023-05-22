@@ -17,6 +17,8 @@ a {
     text-decoration: none;
 }
 .btn {
+    display: inline-flex;
+    align-items: center;
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.3px;
@@ -34,6 +36,13 @@ a {
 
     --bs-btn-disabled-bg: #4153ef;
     --bs-btn-disabled-border-color: #4153ef;
+}
+.btn-sm {
+    font-size: 12px;
+    padding: 0.5rem 1rem;
+}
+.btn > i {
+    line-height: 1;
 }
 .form-label {
     font-size: 13px;
@@ -126,6 +135,7 @@ a {
 
 .modal {
     --bs-modal-header-padding: 0 1rem;
+    backdrop-filter: blur(4px);
 }
 .modal .modal-content {
     border: none;
@@ -204,9 +214,4 @@ a {
 .badge-light-success {
     color: #50CD89;
     background-color: #E8FFF3;
-}
-
-.btn-sm {
-    font-size: 12px;
-    padding: 0.5rem 1rem;
 }
