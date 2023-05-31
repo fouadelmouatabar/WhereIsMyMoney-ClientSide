@@ -7,402 +7,289 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EveryCoin</title>
     <link rel="icon" type="image/png" sizes="196x196" href="assets/img/favicon.png">
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/iconfonts/uicons-bold-rounded.css">
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/uicons-bold/uicons-bold-rounded.css">
     <link rel="stylesheet" href="assets/css/core.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body class="dashboard-page">
-    <div class="row g-0">
-        <div class="col-auto">
-            <div class="dash-sidebar">
-                <div class="logo">
-                    <a href="#">
-                        <img src="assets/img/logo-light.png" alt="">
-                    </a>
+    <div class="page-wrap">
+
+        <!-- Sidebar Menu -->
+        <div class="dash-sidebar">
+            <div class="logo">
+                <a href="#">
+                    <img src="assets/img/logo-light.png" alt="">
+                </a>
+            </div>
+            <div class="dash-menu">
+                <div class="menu-column">
+                    <ul>
+                        <li>
+                            <a href="dashboard.html" class="menu-link active">
+                                <span class="menu-icon">
+                                    <i class="fi fi-br-home"></i>
+                                </span>
+                                <span class="menu-title">Dashboards</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="transactions.html" class="menu-link">
+                                <span class="menu-icon">
+                                    <i class="fi fi-br-time-forward"></i>
+                                </span>
+                                <span class="menu-title">Transactions</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="incomes.html" class="menu-link">
+                                <span class="menu-icon">
+                                    <i class="fi fi-br-wallet"></i>
+                                </span>
+                                <span class="menu-title">Incomes</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="expenses.html" class="menu-link">
+                                <span class="menu-icon">
+                                    <i class="fi fi-br-cart-shopping-fast"></i>
+                                </span>
+                                <span class="menu-title">Expenses</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="profile.html" class="menu-link">
+                                <span class="menu-icon">
+                                    <i class="fi fi-br-circle-user"></i>
+                                </span>
+                                <span class="menu-title">Profile</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="dash-menu">
-                    <div class="menu-column">
-                        <ul>
-                            <li>
-                                <a href="dashboard.html" class="menu-link active">
-                                    <span class="menu-icon">
-                                        <i class="fi fi-br-home"></i>
-                                    </span>
-                                    <span class="menu-title">Dashboards</span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="menu-link" data-bs-toggle="modal" data-bs-target="#addOperationModal">
-                                    <span class="menu-icon">
-                                        <i class="fi fi-br-add"></i>
-                                    </span>
-                                    <span class="menu-title">New Operation</span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="transactions.html" class="menu-link">
-                                    <span class="menu-icon">
-                                        <i class="fi fi-br-time-forward"></i>
-                                    </span>
-                                    <span class="menu-title">Transactions</span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="incomes.html" class="menu-link">
-                                    <span class="menu-icon">
-                                        <i class="fi fi-br-wallet"></i>
-                                    </span>
-                                    <span class="menu-title">Incomes</span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="expenses.html" class="menu-link">
-                                    <span class="menu-icon">
-                                        <i class="fi fi-br-cart-shopping-fast"></i>
-                                    </span>
-                                    <span class="menu-title">Expenses</span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="profile.html" class="menu-link">
-                                    <span class="menu-icon">
-                                        <i class="fi fi-br-circle-user"></i>
-                                    </span>
-                                    <span class="menu-title">Profile</span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="menu-column">
-                        <span class="menu-column-title">Account</span>
-                        <ul>
-                            <li>
-                                <a href="security.html" class="menu-link">
-                                    <span class="menu-icon">
-                                        <i class="fi fi-br-fingerprint"></i>
-                                    </span>
-                                    <span class="menu-title">Security</span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="menu-link">
-                                    <span class="menu-icon">
-                                        <i class="fi fi-br-sign-out-alt"></i>
-                                    </span>
-                                    <span class="menu-title">Log Out</span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="menu-column">
+                    <span class="menu-column-title">Account</span>
+                    <ul>
+                        <li>
+                            <a href="security.html" class="menu-link">
+                                <span class="menu-icon">
+                                    <i class="fi fi-br-fingerprint"></i>
+                                </span>
+                                <span class="menu-title">Security</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="menu-link">
+                                <span class="menu-icon">
+                                    <i class="fi fi-br-sign-out-alt"></i>
+                                </span>
+                                <span class="menu-title">Log Out</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="topbar">
-                <div class="d-flex flex-row justify-content-between align-items-center">
-                    <h2>Profile</h2>
-                    <div class="d-flex align-items-center">
-                        <a href="#" class="btn btn-sm btn-primary rounded-pill me-2" data-bs-toggle="modal" data-bs-target="#addOperationModal">
-                            <i class="fi fi-br-plus me-2"></i>
-                            <span>New Transaction</span>
-                        </a>
-                        <a href="profile.html" class="profile-btn me-2">
-                            <i class="fi fi-br-bell"></i>
-                        </a>
-                        <a href="profile.html" class="profile-btn">
-                            <i class="fi fi-br-user"></i>
-                        </a>
-                    </div>
+
+        <!-- Top Navigation Bar -->
+        <div class="topbar">
+            <div class="d-flex flex-row justify-content-between align-items-center">
+                <h2>Profile</h2>
+                <div class="d-flex align-items-center">
+                    <a href="#" class="btn btn-sm btn-primary rounded-pill me-2" data-bs-toggle="modal" data-bs-target="#newOperationModal">
+                        <i class="btn-icon fi fi-br-plus"></i>
+                        <span>New Transaction</span>
+                    </a>
+                    <a href="profile.html" class="profile-btn me-2">
+                        <i class="fi fi-br-bell"></i>
+                    </a>
+                    <a href="profile.html" class="profile-btn">
+                        <i class="fi fi-br-user"></i>
+                    </a>
                 </div>
             </div>
-            <div class="dashboard-content">
-                <div class="row">
-                    <div class="col-12 col-lg-8">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="profile-box d-flex align-items-center mb-4">
-                                    <div class="profile-avatar">
-                                        <img src="assets/img/avatar.png" class="img-fluid rounded-pill" width="70">
-                                    </div>
-                                    <div class="profile-infos w-100">
-                                        <h4 class="profile-name mb-0 mt-0">John J. Morgan</h4>
-                                        <span class="profile-email">johndoe@email.com</span>
-                                    </div>
+        </div>
+
+        <!-- Page Content -->
+        <div class="dashboard-content">
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="profile-box d-flex align-items-center mb-4">
+                                <div class="profile-avatar">
+                                    <img src="assets/img/avatar.png" class="img-fluid rounded-pill" width="70">
                                 </div>
-                                <div class="card-content">
-                                    <div class="sign-form">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="mb-3">
-                                                    <label for="" class="form-label">First Name <span
-                                                            class="form-label-required">*</span></label>
-                                                    <input type="text" class="form-control" id="fname"
-                                                        placeholder="John" value="John">
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="mb-3">
-                                                    <label for="" class="form-label">Last Name <span
-                                                            class="form-label-required">*</span></label>
-                                                    <input type="text" class="form-control" id="lname" placeholder="Doe"
-                                                        value="Morgan">
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Gendre <span
-                                                            class="form-label-required">*</span></label>
-                                                    <div class="radio-btns">
-                                                        <label>
-                                                            <input type="radio" name="gendre" checked>
-                                                            <span>Male</span>
-                                                        </label>
-                                                        <label>
-                                                            <input type="radio" name="gendre">
-                                                            <span>Female</span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="w-100"></div>
-                                            <div class="col-6">
-                                                <div class="mb-3">
-                                                    <label class="form-label">Birthday <span
-                                                            class="form-label-required">*</span></label>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <select class="form-select" aria-label="Day">
-                                                                <option value="1" selected="1">1</option>
-                                                                <option value="2">2</option>
-                                                                <option value="3">3</option>
-                                                                <option value="4">4</option>
-                                                                <option value="5">5</option>
-                                                                <option value="6">6</option>
-                                                                <option value="7">7</option>
-                                                                <option value="8">8</option>
-                                                                <option value="9">9</option>
-                                                                <option value="10">10</option>
-                                                                <option value="11">11</option>
-                                                                <option value="12">12</option>
-                                                                <option value="13">13</option>
-                                                                <option value="14">14</option>
-                                                                <option value="15">15</option>
-                                                                <option value="16">16</option>
-                                                                <option value="17">17</option>
-                                                                <option value="18">18</option>
-                                                                <option value="19">19</option>
-                                                                <option value="20">20</option>
-                                                                <option value="21">21</option>
-                                                                <option value="22">22</option>
-                                                                <option value="23">23</option>
-                                                                <option value="24">24</option>
-                                                                <option value="25">25</option>
-                                                                <option value="26">26</option>
-                                                                <option value="27">27</option>
-                                                                <option value="28">28</option>
-                                                                <option value="29">29</option>
-                                                                <option value="30">30</option>
-                                                                <option value="31">31</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="col">
-                                                            <select class="form-select" aria-label="Month">
-                                                                <option value="1" selected="1">Jan</option>
-                                                                <option value="2">Feb</option>
-                                                                <option value="3">Mar</option>
-                                                                <option value="4">Apr</option>
-                                                                <option value="5">May</option>
-                                                                <option value="6">Jun</option>
-                                                                <option value="7">Jul</option>
-                                                                <option value="8">Aug</option>
-                                                                <option value="9">Sep</option>
-                                                                <option value="10">Oct</option>
-                                                                <option value="11">Nov</option>
-                                                                <option value="12">Dec</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="col">
-                                                            <select class="form-select">
-                                                                <option value="1" selected>2022</option>
-                                                                <option value="2">2021</option>
-                                                                <option value="2">2020</option>
-                                                                <option value="3">2019</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="mb-3">
-                                                    <label for="" class="form-label">Address <span
-                                                            class="form-label-required">*</span></label>
-                                                    <input type="text" class="form-control" id="address" placeholder=""
-                                                        value="3951 rue Levy, Montreal, QC H3C 5K4">
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="mb-3">
-                                                    <label for="" class="form-label">City <span
-                                                            class="form-label-required">*</span></label>
-                                                    <input type="text" class="form-control" id="city" placeholder=""
-                                                        value="Montreal">
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <div class="mb-3">
-                                                    <label for="" class="form-label">Country <span
-                                                            class="form-label-required">*</span></label>
-                                                    <input type="text" class="form-control" id="country" placeholder=""
-                                                        value="Canada">
-                                                </div>
-                                            </div>                                            
-                                            <div class="col-6">
-                                                <div class="mb-3">
-                                                    <label for="email" class="form-label">Phone Number <span
-                                                            class="form-label-required">*</span></label>
-                                                    <div class="row">
-                                                        <div class="col-auto phone-negatif">
-                                                            <select class="form-select"
-                                                                aria-label="Default select example">
-                                                                <option value="1">+1</option>
-                                                                <option value="2">+91</option>
-                                                                <option value="3">+212</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="col">
-                                                            <input type="tel" class="form-control" id="email"
-                                                                placeholder="e.g. 999-999-9999" value="514-701-0534">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-grid mt-4">
-                                            <a href="signup-3.html">
-                                                <button class="btn btn-primary" type="button">Save Changes</button>
-                                            </a>
-                                        </div>
-                                    </div>
+                                <div class="profile-infos w-100">
+                                    <h4 class="profile-name mb-0 mt-0">John J. Morgan</h4>
+                                    <span class="profile-email">johndoe@email.com</span>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-4">
-                        <div class="card sidebar-card mb-4">
-                            <div class="card-body">
-                                <div class="card-heading">
-                                    <h3 class="card-title">Update Your Password</h3>
-                                    <h6 class="card-subtitle">Click the link below to change the password and the
-                                        security questions.</h6>
-                                </div>
-                                <div class="card-content">
-                                    <a href="security.html" class="link link-primary">Change Password</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card sidebar-card">
-                            <div class="card-body">
-                                <div class="card-heading">
-                                    <h3 class="card-title">Danger Zone</h3>
-                                    <h6 class="card-subtitle">If you want to permanetly delete this account and all of
-                                        its data, you can do so below</h6>
-                                </div>
-                                <div class="card-content">
-                                    <a href="#" class="link link-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">Delete Account</a>
-                                </div>
-                            </div>
-                            <!-- Modal -->
-                            <div class="modal fade delete-modal" id="deleteAccountModal" tabindex="-1"
-                                aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <div class="d-flex align-items-center">
-                                                <span class="delete-icon">
-                                                    <i class="fi fi-br-trash"></i>
-                                                </span>
-                                                <h3 class="modal-title m-0">Confirm Account Deletion</h1>
-                                            </div>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p class="mb-4">Deleting your account will remove all of your information
-                                                from our database. This cannot be undone.</p>
-                                            <div class="delete-help">
-                                                <span>To confirm this, type "DELETE"</span>
-                                            </div>
-                                            <form class="row g-2">
-                                                <div class="col-auto">
-                                                    <input type="text" class="form-control" placeholder="DELETE">
-                                                </div>
-                                                <div class="col-auto">
-                                                    <button type="submit" class="btn btn-danger">Delete Account</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal -->
-                <div class="modal fade delete-modal" id="addOperationModal" tabindex="-1"
-                aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h3 class="modal-title mb-2">Add New Operation</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
+                            <div class="card-content">
                                 <div class="sign-form">
                                     <div class="row">
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">First Name <span
+                                                        class="form-label-required">*</span></label>
+                                                <input type="text" class="form-control" id="fname"
+                                                    placeholder="John" value="John">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Last Name <span
+                                                        class="form-label-required">*</span></label>
+                                                <input type="text" class="form-control" id="lname" placeholder="Doe"
+                                                    value="Morgan">
+                                            </div>
+                                        </div>
                                         <div class="col-12">
                                             <div class="mb-3">
-                                                <label class="form-label">Operation Type <span class="form-label-required">*</span></label>
+                                                <label class="form-label">Gendre <span
+                                                        class="form-label-required">*</span></label>
                                                 <div class="radio-btns">
                                                     <label>
-                                                        <input type="radio" name="gendre">
-                                                        <span>Income</span>
+                                                        <input type="radio" name="gendre" checked>
+                                                        <span>Male</span>
                                                     </label>
                                                     <label>
                                                         <input type="radio" name="gendre">
-                                                        <span>Expense</span>
+                                                        <span>Female</span>
                                                     </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="w-100"></div>
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Birthday <span
+                                                        class="form-label-required">*</span></label>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <select class="form-select" aria-label="Day">
+                                                            <option value="1" selected="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                            <option value="6">6</option>
+                                                            <option value="7">7</option>
+                                                            <option value="8">8</option>
+                                                            <option value="9">9</option>
+                                                            <option value="10">10</option>
+                                                            <option value="11">11</option>
+                                                            <option value="12">12</option>
+                                                            <option value="13">13</option>
+                                                            <option value="14">14</option>
+                                                            <option value="15">15</option>
+                                                            <option value="16">16</option>
+                                                            <option value="17">17</option>
+                                                            <option value="18">18</option>
+                                                            <option value="19">19</option>
+                                                            <option value="20">20</option>
+                                                            <option value="21">21</option>
+                                                            <option value="22">22</option>
+                                                            <option value="23">23</option>
+                                                            <option value="24">24</option>
+                                                            <option value="25">25</option>
+                                                            <option value="26">26</option>
+                                                            <option value="27">27</option>
+                                                            <option value="28">28</option>
+                                                            <option value="29">29</option>
+                                                            <option value="30">30</option>
+                                                            <option value="31">31</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col">
+                                                        <select class="form-select" aria-label="Month">
+                                                            <option value="1" selected="1">Jan</option>
+                                                            <option value="2">Feb</option>
+                                                            <option value="3">Mar</option>
+                                                            <option value="4">Apr</option>
+                                                            <option value="5">May</option>
+                                                            <option value="6">Jun</option>
+                                                            <option value="7">Jul</option>
+                                                            <option value="8">Aug</option>
+                                                            <option value="9">Sep</option>
+                                                            <option value="10">Oct</option>
+                                                            <option value="11">Nov</option>
+                                                            <option value="12">Dec</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col">
+                                                        <select class="form-select">
+                                                            <option value="1" selected>2022</option>
+                                                            <option value="2">2021</option>
+                                                            <option value="2">2020</option>
+                                                            <option value="3">2019</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="mb-3">
-                                                <label for="" class="form-label">Amount <span class="form-label-required">*</span></label>
-                                                <input type="text" class="form-control" id="address" placeholder="">
+                                                <label for="" class="form-label">Address <span
+                                                        class="form-label-required">*</span></label>
+                                                <input type="text" class="form-control" id="address" placeholder=""
+                                                    value="3951 rue Levy, Montreal, QC H3C 5K4">
                                             </div>
                                         </div>
-                                        <div class="col-12">
+                                        <div class="col-6">
                                             <div class="mb-3">
-                                                <label for="" class="form-label">Motif / Description <span class="form-label-required">*</span></label>
-                                                <input type="text" class="form-control" id="address" placeholder="">
+                                                <label for="" class="form-label">City <span
+                                                        class="form-label-required">*</span></label>
+                                                <input type="text" class="form-control" id="city" placeholder=""
+                                                    value="Montreal">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Country <span
+                                                        class="form-label-required">*</span></label>
+                                                <input type="text" class="form-control" id="country" placeholder=""
+                                                    value="Canada">
+                                            </div>
+                                        </div>                                            
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="email" class="form-label">Phone Number <span
+                                                        class="form-label-required">*</span></label>
+                                                <div class="row">
+                                                    <div class="col-auto phone-negatif">
+                                                        <select class="form-select"
+                                                            aria-label="Default select example">
+                                                            <option value="1">+1</option>
+                                                            <option value="2">+91</option>
+                                                            <option value="3">+212</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col">
+                                                        <input type="tel" class="form-control" id="email"
+                                                            placeholder="e.g. 999-999-9999" value="514-701-0534">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="d-grid">
+                                    <div class="d-grid mt-4">
                                         <a href="signup-3.html">
-                                            <button class="btn btn-primary" type="button">Submit</button>
+                                            <button class="btn btn-primary" type="button">Save Changes</button>
                                         </a>
                                     </div>
                                 </div>
@@ -410,10 +297,126 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-12 col-lg-4">
+                    <div class="card sidebar-card mb-4">
+                        <div class="card-body">
+                            <div class="card-heading">
+                                <h3 class="card-title">Update Your Password</h3>
+                                <h6 class="card-subtitle">Click the link below to change the password and the
+                                    security questions.</h6>
+                            </div>
+                            <div class="card-content">
+                                <a href="security.html" class="link link-primary">Change Password</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card sidebar-card">
+                        <div class="card-body">
+                            <div class="card-heading">
+                                <h3 class="card-title">Danger Zone</h3>
+                                <h6 class="card-subtitle">If you want to permanetly delete this account and all of
+                                    its data, you can do so below</h6>
+                            </div>
+                            <div class="card-content">
+                                <a href="#" class="link link-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">Delete Account</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-</body>
+        <!-- New Operation Modal -->
+        <div class="modal fade new-operation-modal" id="newOperationModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title mb-2">Add New Operation</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="sign-form">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">Operation Type <span
+                                                class="form-label-required">*</span></label>
+                                        <div class="radio-btns">
+                                            <label>
+                                                <input type="radio" name="gendre">
+                                                <span>Income</span>
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="gendre">
+                                                <span>Expense</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Amount <span
+                                                class="form-label-required">*</span></label>
+                                        <input type="text" class="form-control" id="address" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Motif / Description <span
+                                                class="form-label-required">*</span></label>
+                                        <input type="text" class="form-control" id="address" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-grid">
+                                <a href="signup-3.html">
+                                    <button class="btn btn-primary" type="button">Submit</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Delete Account Modal -->
+        <div class="modal fade delete-account-modal" id="deleteAccountModal" tabindex="-1"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="d-flex align-items-center">
+                            <span class="delete-icon">
+                                <i class="fi fi-br-trash"></i>
+                            </span>
+                            <h3 class="modal-title m-0">Confirm Account Deletion</h1>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="mb-4">Deleting your account will remove all of your information
+                            from our database. This cannot be undone.</p>
+                        <div class="delete-help">
+                            <span>To confirm this, type "DELETE"</span>
+                        </div>
+                        <form class="row g-2">
+                            <div class="col-auto">
+                                <input type="text" class="form-control" placeholder="DELETE">
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-danger">Delete Account</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+    </div>
+
+    <!-- Javascript Libraries -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/vendor/axios/axios.min.js"></script>
+    <script src="assets/js/app.js"></script>
+
+</body>
 </html>

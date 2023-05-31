@@ -11,240 +11,233 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/iconfonts/uicons-bold-rounded.css">
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/uicons-bold/uicons-bold-rounded.css">
     <link rel="stylesheet" href="assets/css/core.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body class="dashboard-page">
-    <div class="row g-0">
-        <div class="col-auto">
-            <div class="dash-sidebar">
-                <div class="logo">
-                    <a href="#">
-                        <img src="assets/img/logo-light.png" alt="">
+    <div class="page-wrap">
+        <div class="dash-sidebar">
+            <div class="logo">
+                <a href="#">
+                    <img src="assets/img/logo-light.png" alt="">
+                </a>
+            </div>
+            <div class="dash-menu">
+                <div class="menu-column">
+                    <ul>
+                        <li>
+                            <a href="dashboard.html" class="menu-link active">
+                                <span class="menu-icon">
+                                    <i class="fi fi-br-home"></i>
+                                </span>
+                                <span class="menu-title">Dashboards</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="transactions.html" class="menu-link">
+                                <span class="menu-icon">
+                                    <i class="fi fi-br-time-forward"></i>
+                                </span>
+                                <span class="menu-title">Transactions</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="incomes.html" class="menu-link">
+                                <span class="menu-icon">
+                                    <i class="fi fi-br-wallet"></i>
+                                </span>
+                                <span class="menu-title">Incomes</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="expenses.html" class="menu-link">
+                                <span class="menu-icon">
+                                    <i class="fi fi-br-cart-shopping-fast"></i>
+                                </span>
+                                <span class="menu-title">Expenses</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="profile.html" class="menu-link">
+                                <span class="menu-icon">
+                                    <i class="fi fi-br-circle-user"></i>
+                                </span>
+                                <span class="menu-title">Profile</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="menu-column">
+                    <span class="menu-column-title">Account</span>
+                    <ul>
+                        <li>
+                            <a href="security.html" class="menu-link">
+                                <span class="menu-icon">
+                                    <i class="fi fi-br-fingerprint"></i>
+                                </span>
+                                <span class="menu-title">Security</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="menu-link">
+                                <span class="menu-icon">
+                                    <i class="fi fi-br-sign-out-alt"></i>
+                                </span>
+                                <span class="menu-title">Log Out</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="topbar">
+            <div class="d-flex flex-row justify-content-between align-items-center">
+                <h2>Transactions</h2>
+                <div class="d-flex align-items-center">
+                    <a href="#" class="btn btn-sm btn-primary rounded-pill me-2" data-bs-toggle="modal" data-bs-target="#newOperationModal">New Transaction</a>
+                    <a href="profile.html" class="profile-btn me-2">
+                        <i class="fi fi-br-bell"></i>
+                    </a>
+                    <a href="profile.html" class="profile-btn">
+                        <i class="fi fi-br-user"></i>
                     </a>
                 </div>
-                <div class="dash-menu">
-                    <div class="menu-column">
-                        <ul>
-                            <li>
-                                <a href="dashboard.html" class="menu-link active">
-                                    <span class="menu-icon">
-                                        <i class="fi fi-br-home"></i>
-                                    </span>
-                                    <span class="menu-title">Dashboards</span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="transactions.html" class="menu-link">
-                                    <span class="menu-icon">
-                                        <i class="fi fi-br-time-forward"></i>
-                                    </span>
-                                    <span class="menu-title">Transactions</span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="incomes.html" class="menu-link">
-                                    <span class="menu-icon">
-                                        <i class="fi fi-br-wallet"></i>
-                                    </span>
-                                    <span class="menu-title">Incomes</span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="expenses.html" class="menu-link">
-                                    <span class="menu-icon">
-                                        <i class="fi fi-br-cart-shopping-fast"></i>
-                                    </span>
-                                    <span class="menu-title">Expenses</span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="profile.html" class="menu-link">
-                                    <span class="menu-icon">
-                                        <i class="fi fi-br-circle-user"></i>
-                                    </span>
-                                    <span class="menu-title">Profile</span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                            </li>
-                        </ul>
+            </div>
+        </div>
+        <div class="dashboard-content">
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table align-middle">
+                                    <thead>
+                                        <tr class='clickable-row' data-href='#'>
+                                            <th>Operation Label</th>
+                                            <th>Operation Type</th>
+                                            <th>Date</th>
+                                            <th class="text-end">Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class='clickable-row' data-href='#'>
+                                            <td>Solde My Car</td>
+                                            <td>
+                                                <span class="badge badge-light-success">Income</span>
+                                            </td>
+                                            <td>02 Apr, 2023</td>
+                                            <td class="text-end">4,500 MAD</td>
+                                            <td><i class="fi fi-br-menu-dots"></i></td>
+                                        </tr>
+                                        <tr class='clickable-row' data-href='#'>
+                                            <td>Solde Macbook Air M1</td>
+                                            <td>
+                                                <span class="badge badge-light-success">Income</span>
+                                            </td>
+                                            <td>02 Apr, 2023</td>
+                                            <td class="text-end">1,230 MAD</td>
+                                        </tr>
+                                        <tr class='clickable-row' data-href='#'>
+                                            <td>Google Pixel 6 Pro</td>
+                                            <td>
+                                                <span class="badge badge-light-danger">Expense</span>
+                                            </td>
+                                            <td>02 Apr, 2023</td>
+                                            <td class="text-end">1,060 MAD</td>
+                                        </tr>
+                                        <tr class='clickable-row' data-href='#'>
+                                            <td>Logitech MX 250</td>
+                                            <td>
+                                                <span class="badge badge-light-danger">Expense</span>
+                                            </td>
+                                            <td>02 Apr, 2023</td>
+                                            <td class="text-end">64 MAD</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                    <div class="menu-column">
-                        <span class="menu-column-title">Account</span>
-                        <ul>
-                            <li>
-                                <a href="security.html" class="menu-link">
-                                    <span class="menu-icon">
-                                        <i class="fi fi-br-fingerprint"></i>
-                                    </span>
-                                    <span class="menu-title">Security</span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="menu-link">
-                                    <span class="menu-icon">
-                                        <i class="fi fi-br-sign-out-alt"></i>
-                                    </span>
-                                    <span class="menu-title">Log Out</span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                            </li>
-                        </ul>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="card sidebar-card mobileapp-card">
+                        <div class="card-body">
+                            <div class="card-content text-center">
+                                <h2 class="text-gray-800 text-center">
+                                    <span>Have your tried</span>
+                                    <br>
+                                    <span>new</span>
+                                    <span class="fw-bold">Mobile Application ?</span>
+                                </h2>
+                                <div class="pt-3 pb-5">
+                                    <img src="assets/img/app.svg" alt="">
+                                </div>
+                                <div>
+                                    <a class="btn btn-sm btn-primary me-2" href="#">Try Now</a>
+                                    <a class="btn btn-sm btn-light" href="#">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="topbar">
-                <div class="d-flex flex-row justify-content-between align-items-center">
-                    <h2>Transactions History</h2>
-                    <div class="d-flex align-items-center">
-                        <a href="#" class="btn btn-sm btn-primary rounded-pill me-2" data-bs-toggle="modal" data-bs-target="#addOperationModal">
-                            <i class="fi fi-br-plus me-2"></i>
-                            <span>New Transaction</span>
-                        </a>
-                        <a href="profile.html" class="profile-btn me-2">
-                            <i class="fi fi-br-bell"></i>
-                        </a>
-                        <a href="profile.html" class="profile-btn">
-                            <i class="fi fi-br-user"></i>
-                        </a>
+        <!-- New Operation Modal -->
+        <div class="modal fade new-operation-modal" id="newOperationModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title mb-2">Add New Operation</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                </div>
-            </div>
-            <div class="dashboard-content">
-                <div class="row">
-                    <div class="col-12 col-lg-8">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table align-middle">
-                                        <thead>
-                                            <tr class='clickable-row' data-href='#'>
-                                                <th>Operation Label</th>
-                                                <th>Operation Type</th>
-                                                <th>Date</th>
-                                                <th class="text-end">Amount</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class='clickable-row' data-href='#'>
-                                                <td>Solde My Car</td>
-                                                <td>
-                                                    <span class="badge badge-light-success">Income</span>
-                                                </td>
-                                                <td>02 Apr, 2023</td>
-                                                <td class="text-end">4,500 MAD</td>
-                                                <td><i class="fi fi-br-menu-dots"></i></td>
-                                            </tr>
-                                            <tr class='clickable-row' data-href='#'>
-                                                <td>Solde Macbook Air M1</td>
-                                                <td>
-                                                    <span class="badge badge-light-success">Income</span>
-                                                </td>
-                                                <td>02 Apr, 2023</td>
-                                                <td class="text-end">1,230 MAD</td>
-                                            </tr>
-                                            <tr class='clickable-row' data-href='#'>
-                                                <td>Google Pixel 6 Pro</td>
-                                                <td>
-                                                    <span class="badge badge-light-danger">Expense</span>
-                                                </td>
-                                                <td>02 Apr, 2023</td>
-                                                <td class="text-end">1,060 MAD</td>
-                                            </tr>
-                                            <tr class='clickable-row' data-href='#'>
-                                                <td>Logitech MX 250</td>
-                                                <td>
-                                                    <span class="badge badge-light-danger">Expense</span>
-                                                </td>
-                                                <td>02 Apr, 2023</td>
-                                                <td class="text-end">64 MAD</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-4">
-                        <div class="card sidebar-card mobileapp-card">
-                            <div class="card-body">
-                                <div class="card-content text-center">
-                                    <h2 class="text-gray-800 text-center">
-                                        <span>Have your tried</span>
-                                        <br>
-                                        <span>new</span>
-                                        <span class="fw-bold">Mobile Application ?</span>
-                                    </h2>
-                                    <div class="pt-3 pb-5">
-                                        <img src="assets/img/app.svg" alt="">
+                    <div class="modal-body">
+                        <div class="sign-form">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">Operation Type <span
+                                                class="form-label-required">*</span></label>
+                                        <div class="radio-btns">
+                                            <label>
+                                                <input type="radio" name="gendre">
+                                                <span>Income</span>
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="gendre">
+                                                <span>Expense</span>
+                                            </label>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <a class="btn btn-sm btn-primary me-2" href="#">Try Now</a>
-                                        <a class="btn btn-sm btn-light" href="#">Learn More</a>
+                                </div>
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Amount <span
+                                                class="form-label-required">*</span></label>
+                                        <input type="text" class="form-control" id="address" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Motif / Description <span
+                                                class="form-label-required">*</span></label>
+                                        <input type="text" class="form-control" id="address" placeholder="">
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal -->
-                <div class="modal fade delete-modal" id="addOperationModal" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h3 class="modal-title mb-2">Add New Operation</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="sign-form">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <div class="mb-3">
-                                                <label class="form-label">Operation Type <span
-                                                        class="form-label-required">*</span></label>
-                                                <div class="radio-btns">
-                                                    <label>
-                                                        <input type="radio" name="gendre">
-                                                        <span>Income</span>
-                                                    </label>
-                                                    <label>
-                                                        <input type="radio" name="gendre">
-                                                        <span>Expense</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="mb-3">
-                                                <label for="" class="form-label">Amount <span
-                                                        class="form-label-required">*</span></label>
-                                                <input type="text" class="form-control" id="address" placeholder="">
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="mb-3">
-                                                <label for="" class="form-label">Motif / Description <span
-                                                        class="form-label-required">*</span></label>
-                                                <input type="text" class="form-control" id="address" placeholder="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="d-grid">
-                                        <a href="signup-3.html">
-                                            <button class="btn btn-primary" type="button">Submit</button>
-                                        </a>
-                                    </div>
-                                </div>
+                            <div class="d-grid">
+                                <a href="signup-3.html">
+                                    <button class="btn btn-primary" type="button">Submit</button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -252,7 +245,8 @@
             </div>
         </div>
     </div>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/vendor/axios/axios.min.js"></script>
     <script src="assets/js/app.js"></script>
 </body>
 

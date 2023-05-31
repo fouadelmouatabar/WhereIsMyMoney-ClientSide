@@ -10,8 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/iconfonts/uicons-bold-rounded.css">
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/uicons-bold/uicons-bold-rounded.css">
     <link rel="stylesheet" href="assets/css/core.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -29,53 +29,57 @@
                             <h6 class="page-subtitle">Nice to see you again</h6>
                         </div>
                         <div class="sign-form">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Email address <span class="form-label-required">*</span></label>
-                                        <input type="email" class="form-control" id="email" placeholder="johndoe@email.com">
+                            <form>
+                                <div class="register-feedback" id="registerFeedback"></div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label for="registerEmail" class="form-label">Email address <span class="form-label-required">*</span></label>
+                                            <input type="email" class="form-control" id="registerEmail" placeholder="johndoe@email.com">
+                                            <div class="invalid-feedback"></div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Password <span class="form-label-required">*</span></label>
-                                        <input type="password" class="form-control" id="password" placeholder="At leat 8 characters">
-                                        <div class="password-progress">
-                                            <div class="row gx-3">
-                                                <div class="col">
-                                                    <div class="password-bar"></div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="password-bar"></div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="password-bar"></div>
-                                                </div>
-                                                <div class="col">
-                                                    <div class="password-bar"></div>
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label for="registerPass" class="form-label">Password <span class="form-label-required">*</span></label>
+                                            <input type="password" class="form-control" id="registerPass" placeholder="At leat 8 characters">
+                                            <div class="invalid-feedback"></div>
+                                            <div class="password-strength">
+                                                <div class="row gx-3">
+                                                    <div class="col">
+                                                        <div class="strength-bar"></div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="strength-bar"></div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="strength-bar"></div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="strength-bar"></div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="strength-bar"></div>
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <div class="form-helper">
+                                                <span>Utilisez au moins huit caractères avec des lettres, des chiffres et des symboles</span>
+                                            </div>
                                         </div>
-                                        <div class="form-helper">
-                                            <span>Utilisez au moins huit caractères avec des lettres, des chiffres et des symboles</span>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="mb-4">
+                                            <label for="registerConfirmPass" class="form-label">Confirm Password <span class="form-label-required">*</span></label>
+                                            <input type="password" class="form-control" id="registerConfirmPass" placeholder="Confirm your password">
+                                            <div class="invalid-feedback"></div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12">
-                                    <div class="mb-4">
-                                        <label for="" class="form-label">Confirm Password <span class="form-label-required">*</span></label>
-                                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password">
-                                    </div>
+                                <div class="d-grid mb-4">
+                                    <button class="btn btn-primary" type="button" id="registerBtn">Sign Up</button>
                                 </div>
-                            </div>
-                            <!-- <div class="pass-forgotten text-helper text-end mb-3">
-                                <a href="#">Forgot password?</a>
-                            </div> -->
-                            <div class="d-grid mb-4">
-                                <a href="signup-2.html">
-                                    <button class="btn btn-primary" type="button">Sign Up</button>
-                                </a>
-                            </div>
+                            </form>
                         </div>
                         <div class="signup-helper text-helper text-center">
                             <span>Already have an account?</span>
@@ -100,7 +104,8 @@
             </div>
         </div>
     </div>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/vendor/axios/axios.min.js"></script>
     <script src="assets/js/app.js"></script>
 </body>
 </html>

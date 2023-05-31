@@ -3,6 +3,7 @@
     margin-bottom: 40px;
     height: 30px;
 }
+
 .logo-login img {
     height: 100%;
 }
@@ -12,55 +13,67 @@
     font-weight: 700;
     margin-bottom: 0.75rem;
 }
+
 .login-page .page-subtitle {
     font-size: 13px;
     font-weight: 500;
     color: #606770;
     margin-bottom: 30px
 }
+
 .login-page .text-helper {
     font-weight: 500;
     font-size: 13px;
     color: #606770;
 }
+
 .login-page .text-helper a {
     color: #4153ef;
     text-decoration: none;
 }
+
 .login-page .left-section {
     padding-top: 60px;
     position: relative;
 }
+
 .login-page .right-section {
     background-color: #4153ef;
     text-align: center;
 }
+
 .login-page .right-section .d-flex {
     min-height: 100vh;
 }
+
 .login-page .right-section h2 {
     color: #f1f1f1;
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 1rem;
 }
+
 .login-page .right-section p {
     font-size: 13px;
     font-weight: 500;
     color: #ffffffb5;
     line-height: 1.8;
 }
+
 .login-page .login-hero {
     padding: 20px;
 }
+
 .login-page .login-hero img {
     max-width: 100%;
 }
+
 .sign-section {
     width: 100%;
     max-width: 500px;
     padding-bottom: 80px;
 }
+
 .slider-section {
     width: 100%;
     max-width: 500px;
@@ -69,15 +82,39 @@
     padding-top: 100px;
     padding-bottom: 100px;
 }
-.password-progress {
+
+.password-strength {
     margin-top: 10px;
 }
-.password-progress .password-bar {
+
+.password-strength .strength-bar {
     width: 100%;
-    height: 6px;
+    height: 7px;
     border-radius: 999px;
     background-color: #E6E6E6;
 }
+.password-risky .col:nth-child(1) .strength-bar {
+    background-color: #f95e68;
+}
+.password-guessable .col:nth-child(1) .strength-bar,
+.password-guessable .col:nth-child(2) .strength-bar {
+    background-color: #fb964d;
+}
+.password-weak .col:nth-child(1) .strength-bar,
+.password-waek .col:nth-child(2) .strength-bar,
+.password-waek .col:nth-child(3) .strength-bar {
+    background-color: #fdd244;
+}
+.password-safe .col:nth-child(1) .strength-bar,
+.password-safe .col:nth-child(2) .strength-bar,
+.password-safe .col:nth-child(3) .strength-bar,
+.password-safe .col:nth-child(4) .strength-bar {
+    background-color: #b0dc53;
+}
+.password-secure .strength-bar {
+    background-color: #35cc62;
+}
+
 .login-page .copyrights {
     font-size: 12px;
     color: #979BAD;
@@ -88,17 +125,30 @@
     width: 100%;
     text-align: center;
 }
-.login-page .phone-negatif > .form-control {
+
+.login-page .phone-negatif>.form-control {
     max-width: 100px;
 }
+
 .dashboard-page {
     background-color: #f4f4fa;
 }
+
+.dashboard-page .page-wrap {
+    padding-left: 260px;
+}
+
 .dashboard-page .dash-sidebar {
     display: block;
     background-color: #0B2239;
     width: 260px;
+    position: fixed;
+    z-index: 105;
+    top: 0;
+    bottom: 0;
+    left: 0;
 }
+
 .dashboard-page .dash-sidebar .logo {
     height: 60px;
     display: flex;
@@ -110,29 +160,35 @@
     padding-left: 1.5rem;
     border-bottom: 1px dashed #ffffff33;
 }
+
 .dashboard-page .dash-sidebar .logo img {
     height: 25px;
 }
+
 .dash-menu {
     padding-left: 1rem;
     padding-right: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 60px);
 }
+
 .menu-column ul {
     padding: 0;
     margin: 0;
     list-style: none;
 }
+
 .menu-column ul li+li {
     margin-top: 0.4rem;
 }
+
 .menu-column {
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
+
 .menu-column-title {
     display: block;
     font-size: 12px;
@@ -142,6 +198,7 @@
     margin-bottom: 1rem;
     padding-left: 1rem;
 }
+
 .menu-column .menu-link {
     font-size: 13px;
     font-weight: 600;
@@ -157,29 +214,35 @@
     color: #eee;
     line-height: 1;
 }
+
 .menu-column .menu-link.active {
     background-color: #4153ef;
     color: #ffffff;
 }
+
 .menu-column .menu-icon {
     margin-right: 1rem;
     font-size: 18px;
     line-height: 1rem;
 }
+
 .dashboard-page .topbar {
     display: block;
     background-color: #fff;
     height: 60px;
     padding: 0 1.5rem;
 }
+
 .dashboard-page .topbar .d-flex {
     height: 100%;
 }
+
 .dashboard-page .topbar h2 {
     font-size: 16px;
     margin: 0;
     font-weight: 700;
 }
+
 .nav-profile {
     display: flex;
     align-items: center;
@@ -187,6 +250,7 @@
     border-radius: 999px;
     padding: 2px 16px 2px 2px;
 }
+
 .nav-profile-avatar {
     display: block;
     width: 30px;
@@ -195,16 +259,19 @@
     overflow: hidden;
     margin-right: 0.6rem;
 }
+
 .nav-profile-avatar img {
     max-width: 100%;
     max-height: 100%;
 }
+
 .nav-profile-name {
     text-transform: uppercase;
     font-size: 13px;
     font-weight: bold;
     color: #323338;
 }
+
 .profile-btn {
     width: 34px;
     height: 34px;
@@ -217,22 +284,27 @@
     padding-left: 1px;
     transition: all 0.15s ease-in-out;
 }
+
 .profile-btn:hover {
     color: #4153ef;
     background-color: #4153ef26;
 }
+
 .dashboard-content {
     padding: 1.5rem;
 }
+
 .dashboard-page .card-heading {
     margin-bottom: 1.2rem;
 }
+
 .dashboard-page .card-title {
     font-size: 16px;
     font-weight: 700;
     margin-bottom: 0.8rem;
     color: #323338;
 }
+
 .dashboard-page .card-subtitle {
     font-size: 12px;
     color: #979BAD;
@@ -243,34 +315,40 @@
     height: 60px;
     margin-right: 1rem;
 }
+
 .profile-box .profile-infos {
     padding-bottom: 6px;
 }
+
 .profile-box .profile-name {
     line-height: 1;
     font-size: 16px;
     font-weight: 700;
 }
+
 .profile-box .profile-email {
     font-size: 12px;
     color: #979BAD;
     font-weight: 500;
 }
+
 .sidebar-card .card-title {
     font-size: 15px;
 }
+
 .sidebar-card .link {
     font-size: 13px;
     font-weight: 700;
 }
 
-.delete-modal .delete-help {
+.delete-account-modal .delete-help {
     color: #ababab;
     font-size: 12px;
     font-weight: 500;
     margin-bottom: 0.6rem;
 }
-.delete-modal .delete-icon {
+
+.delete-account-modal .delete-icon {
     display: block;
     width: 42px;
     height: 42px;
@@ -286,6 +364,7 @@
 .mobileapp-card .card-content {
     padding: 1rem 0;
 }
+
 .mobileapp-card h2 {
     font-size: 20px;
     line-height: 1.5;

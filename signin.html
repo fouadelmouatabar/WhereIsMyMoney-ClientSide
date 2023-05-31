@@ -10,8 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/iconfonts/uicons-bold-rounded.css">
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/uicons-bold/uicons-bold-rounded.css">
     <link rel="stylesheet" href="assets/css/core.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -28,29 +28,32 @@
                             <h2 class="page-title">Sign In</h2>
                             <h6 class="page-subtitle">Nice to see you again</h6>
                         </div>
-                        <div class="sign-form">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="mb-3">
-                                        <label for="email" class="form-label">Email address <span class="form-label-required">*</span></label>
-                                        <input type="email" class="form-control" id="email" placeholder="johndoe@email.com">
+                        <div class="login-form" id="loginForm">
+                            <form>
+                                <div class="login-feedback" id="loginFeedback"></div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label for="loginEmail" class="form-label">Email address <span class="form-label-required">*</span></label>
+                                            <input type="email" class="form-control" id="loginEmail" placeholder="johndoe@email.com">
+                                            <div class="invalid-feedback"></div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="mb-3">
-                                        <label for="password" class="form-label">Password <span class="form-label-required">*</span></label>
-                                        <input type="email" class="form-control" id="password" placeholder="At leat 8 characters">
-                                        <div class="form-link text-end">
-                                            <a href="forgot-password.html">Forgot Password?</a>
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label for="loginPass" class="form-label">Password <span class="form-label-required">*</span></label>
+                                            <input type="password" class="form-control" id="loginPass" placeholder="At leat 8 characters">
+                                            <div class="invalid-feedback"></div>
+                                            <div class="form-link text-end">
+                                                <a href="forgot-password.html">Forgot Password?</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="d-grid mb-4">
-                                <a href="dashboard.html">
-                                    <button class="btn btn-primary" type="button">Connexion</button>
-                                </a>
-                            </div>
+                                <div class="d-grid mb-4">
+                                    <button class="btn btn-primary" type="button" id="loginBtn">Connexion</button>
+                                </div>
+                            </form>
                         </div>
                         <div class="signup-helper text-helper text-center">
                             <span>Don't have an account?</span>
@@ -75,7 +78,8 @@
             </div>
         </div>
     </div>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/vendor/axios/axios.min.js"></script>
     <script src="assets/js/app.js"></script>
 </body>
 </html>
