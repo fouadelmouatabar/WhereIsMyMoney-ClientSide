@@ -609,8 +609,12 @@ a:hover, a:focus, .link-primary:hover, .link-primary:focus {
 .invalid-feedback {
     font-weight: 500;
 }
-.form-control.input-invalid {
-    border-color: var(--bs-danger);
+.form-control.input-invalid,
+.form-select.input-invalid,
+.input-invalid input,
+.input-invalid select,
+.input-invalid.radio-btns label span {
+    border-color: var(--bs-danger) !important;
 }
 .form-helper {
     margin-top: 10px;

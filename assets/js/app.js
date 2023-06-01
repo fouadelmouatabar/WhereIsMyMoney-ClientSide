@@ -4,23 +4,6 @@ const baseUrl = "http://localhost:8080/wmm/api/v1"
 
 document.addEventListener("DOMContentLoaded", clickableRows());
 
-const loginBtn = document.getElementById("loginBtn");
-if(loginBtn) {
-    loginBtn.addEventListener("click", loginBtnClicked);
-}
-
-const registerBtn = document.getElementById("registerBtn");
-if(registerBtn) {
-    registerBtn.addEventListener("click", registerBtnClicked);
-}
-
-const registerPass = document.getElementById('registerPass');
-if(registerPass) {
-    checkPassStrength(registerPass);
-    registerPass.addEventListener("keyup", function() {
-        checkPassStrength(registerPass);
-    });
-}
 
 function clickableRows() {
     const rows = document.querySelectorAll(".clickable-row");
@@ -37,83 +20,6 @@ function checkLoggedIn() {
     if(token == null || userId == null) {
         window.location = `signin.html`;
     }
-}
-
-function loginBtnClicked() {
-    const email = document.getElementById("loginEmail");
-    const password = document.getElementById("loginPass");
-    const loginFeedback = document.getElementById("loginFeedback");
-    const url = `${baseUrl}/account/authenticate`;
-    const params = {
-        "email": email.value,
-        "password": password.value
-    }
-
-    if(email.value == "") {
-        inputError(email, "This field is required.");
-    } else if(validateEmail(email.value) == false) {
-        inputError(email, "Please enter a valid email address.");
-    } else {
-        inputValid(email);
-    }
-
-    if(password.value == "") {
-        inputError(password, "This field is required.");
-    } else {
-        inputValid(password);
-    }
-
-    axios.post(url, params)
-    .then((response) => {
-        console.log(response);
-        loginFeedback.innerHTML = "";
-        localStorage.setItem("userId", response.data.accountId);
-        localStorage.setItem("token", response.data.access_token);
-        // window.location = `dashboard.html`;
-    }).catch((err) => {
-        const errorHTML = `<div id="formFeedback" class="login-feedback alert alert-danger" role="alert">${err.response.data.message}</div>`;
-        const loginErrorElem = document.getElementById("formFeedback");
-        if (loginErrorElem !== null) {
-            console.log(err.response.data.message);
-            loginErrorElem.innerText = err.response.data.message;
-        } else {
-            loginFeedback.innerHTML = errorHTML;
-        }
-    });
-}
-
-function registerBtnClicked() {
-    const email = document.getElementById("registerEmail");
-    const password = document.getElementById("registerPass");
-    const cPassword = document.getElementById("registerConfirmPass");
-
-    // const registerFeedback = document.getElementById("registerFeedback");
-    // const url = `${baseUrl}/account/register`;
-
-    if(email.value == "") {
-        inputError(email, "This field is required.");
-    } else if(validateEmail(email.value) == false) {
-        inputError(email, "Please enter a valid email address.");
-    } else {
-        inputValid(email);
-    }
-
-    if(password.value == "") {
-        inputError(password, "This field is required.");
-    } else if(checkPassStrength(password) < 4) {
-        inputError(password, "Please choose a stronger password.");
-    } else {
-        inputValid(password);
-    }
-
-    if(cPassword.value == "") {
-        inputError(cPassword, "This field is required.");
-    } else if(password.value !== cPassword.value) {
-        inputError(cPassword, "Passwords do not match.");
-    } else {
-        inputValid(cPassword);
-    }
-
 }
 
 function validateEmail(input) {
@@ -189,4 +95,29 @@ function findSiblingByClassName(element, className) {
     }
     
     return null;
+}
+
+function selectJSON(selectElement, dataJSON) {
+    fetch(dataJSON)
+    .then(response => response.json())
+    .then(data => {
+        data.forEach(country => {
+            const optionElement = document.createElement('option');
+            optionElement.value = country.value;
+            optionElement.textContent = country.textContent;
+            selectElement.appendChild(optionElement);
+        });
+    });
+}
+
+function radioBtnValue(inputRadio, btnName) {
+    // let radios = inputRadio.getElementsByName(btnName);
+    let radios = inputRadio.querySelectorAll(`input[name="${btnName}"]`);
+    for (let i = 0; i < radios.length; i++) {
+      if (radios[i].checked) {
+        let selectedValue = radios[i].value;
+        return selectedValue;
+      }
+      return "";
+    }
 }

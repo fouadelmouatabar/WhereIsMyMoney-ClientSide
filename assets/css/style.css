@@ -101,8 +101,8 @@
     background-color: #fb964d;
 }
 .password-weak .col:nth-child(1) .strength-bar,
-.password-waek .col:nth-child(2) .strength-bar,
-.password-waek .col:nth-child(3) .strength-bar {
+.password-weak .col:nth-child(2) .strength-bar,
+.password-weak .col:nth-child(3) .strength-bar {
     background-color: #fdd244;
 }
 .password-safe .col:nth-child(1) .strength-bar,

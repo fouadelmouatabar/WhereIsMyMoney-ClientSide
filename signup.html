@@ -31,59 +31,218 @@
                         <div class="sign-form">
                             <form>
                                 <div class="register-feedback" id="registerFeedback"></div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="mb-3">
-                                            <label for="registerEmail" class="form-label">Email address <span class="form-label-required">*</span></label>
-                                            <input type="email" class="form-control" id="registerEmail" placeholder="johndoe@email.com">
-                                            <div class="invalid-feedback"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="mb-3">
-                                            <label for="registerPass" class="form-label">Password <span class="form-label-required">*</span></label>
-                                            <input type="password" class="form-control" id="registerPass" placeholder="At leat 8 characters">
-                                            <div class="invalid-feedback"></div>
-                                            <div class="password-strength">
-                                                <div class="row gx-3">
-                                                    <div class="col">
-                                                        <div class="strength-bar"></div>
+                                <div class="register-steps">
+                                    <div class="register-step">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="mb-3">
+                                                    <label for="registerEmail" class="form-label">Email address <span class="form-label-required">*</span></label>
+                                                    <input type="email" class="form-control" id="registerEmail" placeholder="johndoe@email.com" value="email@example.com">
+                                                    <div class="invalid-feedback"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="mb-3">
+                                                    <label for="registerPass" class="form-label">Password <span class="form-label-required">*</span></label>
+                                                    <input type="password" class="form-control" id="registerPass" placeholder="At leat 8 characters" value="Qwerty@123">
+                                                    <div class="invalid-feedback"></div>
+                                                    <div class="password-strength">
+                                                        <div class="row gx-3">
+                                                            <div class="col">
+                                                                <div class="strength-bar"></div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="strength-bar"></div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="strength-bar"></div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="strength-bar"></div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="strength-bar"></div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="col">
-                                                        <div class="strength-bar"></div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="strength-bar"></div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="strength-bar"></div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="strength-bar"></div>
+                                                    <div class="form-helper">
+                                                        <span>Utilisez au moins huit caractères avec des lettres, des chiffres et des symboles</span>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-helper">
-                                                <span>Utilisez au moins huit caractères avec des lettres, des chiffres et des symboles</span>
+                                            <div class="col-12">
+                                                <div class="mb-3">
+                                                    <label for="registerConfirmPass" class="form-label">Confirm Password <span class="form-label-required">*</span></label>
+                                                    <input type="password" class="form-control" id="registerConfirmPass" placeholder="Confirm your password" value="Qwerty@123">
+                                                    <div class="invalid-feedback"></div>
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="d-grid mt-3 mb-4">
+                                            <button class="btn btn-primary" type="button" id="registerBtn" onclick="registerAuthValidate()">Next Step</button>
+                                        </div>
+                                        <div class="signup-helper text-helper text-center">
+                                            <span>Already have an account?</span>
+                                            <a href="signin.html">Log in</a>
+                                        </div>
                                     </div>
-                                    <div class="col-12">
-                                        <div class="mb-4">
-                                            <label for="registerConfirmPass" class="form-label">Confirm Password <span class="form-label-required">*</span></label>
-                                            <input type="password" class="form-control" id="registerConfirmPass" placeholder="Confirm your password">
-                                            <div class="invalid-feedback"></div>
+                                    <div class="register-step d-none">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="mb-3">
+                                                    <label for="" class="form-label">First Name <span class="form-label-required">*</span></label>
+                                                    <input type="text" class="form-control" id="accountFname" placeholder="John">
+                                                    <div class="invalid-feedback"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="mb-3">
+                                                    <label for="" class="form-label">Last Name <span class="form-label-required">*</span></label>
+                                                    <input type="text" class="form-control" id="accountLname" placeholder="Doe">
+                                                    <div class="invalid-feedback"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Gendre <span class="form-label-required">*</span></label>
+                                                    <div class="radio-btns" id="accountGendre">
+                                                        <label>
+                                                            <input type="radio" name="gendre" value="MALE">
+                                                            <span>Male</span>
+                                                        </label>
+                                                        <label>
+                                                            <input type="radio" name="gendre" value="FEMALE">
+                                                            <span>Female</span>
+                                                        </label>
+                                                        <label>
+                                                            <input type="radio" name="gendre" value="UNDEFINED">
+                                                            <span>Undefined</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="invalid-feedback"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="mb-3">
+                                                    <label for="" class="form-label">Address <span class="form-label-required">*</span></label>
+                                                    <input type="text" class="form-control" id="accountAddress" placeholder="">
+                                                    <div class="invalid-feedback"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="mb-3">
+                                                    <label for="" class="form-label">City <span class="form-label-required">*</span></label>
+                                                    <input type="text" class="form-control" id="accountCity" placeholder="">
+                                                    <div class="invalid-feedback"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="mb-3">
+                                                    <label for="" class="form-label">Country <span class="form-label-required">*</span></label>
+                                                    <select class="form-select" id="accountCountry">
+                                                        <option value="" selected>Select Country</option>
+                                                    </select>
+                                                    <div class="invalid-feedback"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Birthday <span class="form-label-required">*</span></label>
+                                                    <div class="row" id="accountBirthdate">
+                                                        <div class="col-auto">
+                                                            <select class="form-select" id="accountBirthdateDD"></select>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <select class="form-select" id="accountBirthdateMM"></select>
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <select class="form-select" id="accountBirthdateYY"></select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="invalid-feedback"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="mb-3">
+                                                    <label for="email" class="form-label">Phone Number <span class="form-label-required">*</span></label>
+                                                    <div class="row" id="accountPhone">
+                                                        <div class="col-auto phone-negatif">
+                                                            <select class="form-select" id="accountPhoneCode" aria-label="Default select example"></select>
+                                                        </div>
+                                                        <div class="col">
+                                                            <input type="tel" class="form-control" id="accountPhoneNumber" placeholder="e.g. 0610101010">
+                                                        </div>
+                                                    </div>
+                                                    <div class="invalid-feedback"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="mb-3">
+                                                    <label for="email" class="form-label">Currency <span class="form-label-required">*</span></label>
+                                                    <select class="form-select" id="accountCurrency" aria-label="Default select example">
+                                                        <option value="" selected>Select Currency</option>
+                                                        <option value="MAD">MAD</option>
+                                                        <option value="EURO">EURO</option>
+                                                        <option value="USD">USD</option>
+                                                    </select>
+                                                    <div class="invalid-feedback"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-between mt-3 mb-4">
+                                            <button class="btn btn-secondary" id="backStepOne" type="button" onclick="registerStep(1)">Back</button>
+                                            <button class="btn btn-primary" id="accountSetupBtn" type="button" onclick="registerInfosValidate()">Next Step</button>
+                                        </div>
+                                    </div>
+                                    <div class="register-step d-none">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="mb-2">
+                                                    <label for="email" class="form-label">Security Question 1 <span class="form-label-required">*</span></label>
+                                                    <select class="form-select" aria-label="Default select example">
+                                                        <option value="q1">What is your best friend's name?</option>
+                                                        <option value="q2">What is your favourite food?</option>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <input type="text" class="form-control" placeholder="Your Answer">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="mb-2">
+                                                    <label for="email" class="form-label">Security Question 2 <span class="form-label-required">*</span></label>
+                                                    <select class="form-select" aria-label="Default select example">
+                                                        <option value="q1">What is your best friend's name?</option>
+                                                        <option value="q2">What is your favourite food?</option>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <input type="text" class="form-control" placeholder="Your Answer">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="mb-2">
+                                                    <label for="email" class="form-label">Security Question 3 <span class="form-label-required">*</span></label>
+                                                    <select class="form-select" aria-label="Default select example">
+                                                        <option value="q1">What is your best friend's name?</option>
+                                                        <option value="q2">What is your favourite food?</option>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <input type="text" class="form-control" placeholder="Your Answer">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-between mt-3 mb-4">
+                                            <button class="btn btn-secondary" id="backStepTwo" type="button" onclick="registerStep(2)">Back</button>
+                                            <button class="btn btn-primary" type="button">Sign Up</button>
+                                        </div>
+                                        <div class="d-grid mb-4">
+                                            
                                         </div>
                                     </div>
                                 </div>
-                                <div class="d-grid mb-4">
-                                    <button class="btn btn-primary" type="button" id="registerBtn">Sign Up</button>
-                                </div>
                             </form>
-                        </div>
-                        <div class="signup-helper text-helper text-center">
-                            <span>Already have an account?</span>
-                            <a href="signin.html">Log in</a>
                         </div>
                     </div>
                     <div class="copyrights">
@@ -107,5 +266,6 @@
     <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/vendor/axios/axios.min.js"></script>
     <script src="assets/js/app.js"></script>
+    <script src="assets/js/register.js"></script>
 </body>
 </html>
