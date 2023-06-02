@@ -91,31 +91,31 @@
                                             <div class="col-6">
                                                 <div class="mb-3">
                                                     <label for="" class="form-label">First Name <span class="form-label-required">*</span></label>
-                                                    <input type="text" class="form-control" id="accountFname" placeholder="John">
+                                                    <input type="text" class="form-control" id="registerFname" placeholder="John">
                                                     <div class="invalid-feedback"></div>
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="mb-3">
                                                     <label for="" class="form-label">Last Name <span class="form-label-required">*</span></label>
-                                                    <input type="text" class="form-control" id="accountLname" placeholder="Doe">
+                                                    <input type="text" class="form-control" id="registerLname" placeholder="Doe">
                                                     <div class="invalid-feedback"></div>
                                                 </div>
                                             </div>
                                             <div class="col-12">
                                                 <div class="mb-3">
-                                                    <label class="form-label">Gendre <span class="form-label-required">*</span></label>
-                                                    <div class="radio-btns" id="accountGendre">
+                                                    <label class="form-label">Gender <span class="form-label-required">*</span></label>
+                                                    <div class="radio-btns" id="registerGender">
                                                         <label>
-                                                            <input type="radio" name="gendre" value="MALE">
+                                                            <input type="radio" name="gender" value="MALE">
                                                             <span>Male</span>
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="gendre" value="FEMALE">
+                                                            <input type="radio" name="gender" value="FEMALE">
                                                             <span>Female</span>
                                                         </label>
                                                         <label>
-                                                            <input type="radio" name="gendre" value="UNDEFINED">
+                                                            <input type="radio" name="gender" value="UNDEFINED">
                                                             <span>Undefined</span>
                                                         </label>
                                                     </div>
@@ -125,21 +125,21 @@
                                             <div class="col-12">
                                                 <div class="mb-3">
                                                     <label for="" class="form-label">Address <span class="form-label-required">*</span></label>
-                                                    <input type="text" class="form-control" id="accountAddress" placeholder="">
+                                                    <input type="text" class="form-control" id="registerAddress" placeholder="">
                                                     <div class="invalid-feedback"></div>
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="mb-3">
                                                     <label for="" class="form-label">City <span class="form-label-required">*</span></label>
-                                                    <input type="text" class="form-control" id="accountCity" placeholder="">
+                                                    <input type="text" class="form-control" id="registerCity" placeholder="">
                                                     <div class="invalid-feedback"></div>
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="mb-3">
                                                     <label for="" class="form-label">Country <span class="form-label-required">*</span></label>
-                                                    <select class="form-select" id="accountCountry">
+                                                    <select class="form-select" id="registerCountry">
                                                         <option value="" selected>Select Country</option>
                                                     </select>
                                                     <div class="invalid-feedback"></div>
@@ -148,15 +148,15 @@
                                             <div class="col-12">
                                                 <div class="mb-3">
                                                     <label class="form-label">Birthday <span class="form-label-required">*</span></label>
-                                                    <div class="row" id="accountBirthdate">
+                                                    <div class="row" id="registerBirthDate">
                                                         <div class="col-auto">
-                                                            <select class="form-select" id="accountBirthdateDD"></select>
+                                                            <select class="form-select" id="registerBirthDateDD"></select>
                                                         </div>
                                                         <div class="col-auto">
-                                                            <select class="form-select" id="accountBirthdateMM"></select>
+                                                            <select class="form-select" id="registerBirthDateMM"></select>
                                                         </div>
                                                         <div class="col-auto">
-                                                            <select class="form-select" id="accountBirthdateYY"></select>
+                                                            <select class="form-select" id="registerBirthDateYY"></select>
                                                         </div>
                                                     </div>
                                                     <div class="invalid-feedback"></div>
@@ -165,12 +165,12 @@
                                             <div class="col-12">
                                                 <div class="mb-3">
                                                     <label for="email" class="form-label">Phone Number <span class="form-label-required">*</span></label>
-                                                    <div class="row" id="accountPhone">
+                                                    <div class="row" id="registerPhone">
                                                         <div class="col-auto phone-negatif">
-                                                            <select class="form-select" id="accountPhoneCode" aria-label="Default select example"></select>
+                                                            <select class="form-select" id="registerPhoneCode" aria-label="Default select example"></select>
                                                         </div>
                                                         <div class="col">
-                                                            <input type="tel" class="form-control" id="accountPhoneNumber" placeholder="e.g. 0610101010">
+                                                            <input type="tel" class="form-control" id="registerPhoneNumber" placeholder="e.g. 0610101010">
                                                         </div>
                                                     </div>
                                                     <div class="invalid-feedback"></div>
@@ -179,7 +179,7 @@
                                             <div class="col-12">
                                                 <div class="mb-3">
                                                     <label for="email" class="form-label">Currency <span class="form-label-required">*</span></label>
-                                                    <select class="form-select" id="accountCurrency" aria-label="Default select example">
+                                                    <select class="form-select" id="registerCurrency" aria-label="Default select example">
                                                         <option value="" selected>Select Currency</option>
                                                         <option value="MAD">MAD</option>
                                                         <option value="EURO">EURO</option>
@@ -190,52 +190,51 @@
                                             </div>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mt-3 mb-4">
-                                            <button class="btn btn-secondary" id="backStepOne" type="button" onclick="registerStep(1)">Back</button>
+                                            <button class="btn btn-secondary" id="backStepOne" type="button" onclick="registerGoStep(1)">Back</button>
                                             <button class="btn btn-primary" id="accountSetupBtn" type="button" onclick="registerInfosValidate()">Next Step</button>
                                         </div>
                                     </div>
                                     <div class="register-step d-none">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="mb-2">
-                                                    <label for="email" class="form-label">Security Question 1 <span class="form-label-required">*</span></label>
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option value="q1">What is your best friend's name?</option>
-                                                        <option value="q2">What is your favourite food?</option>
-                                                    </select>
+                                        <div id="securityQuestions">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="mb-2">
+                                                        <label for="email" class="form-label">Security Question 1 <span class="form-label-required">*</span></label>
+                                                        <select class="form-select" id="registerQuestionOne"></select>
+                                                        <div class="invalid-feedback"></div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <input type="text" class="form-control" id="registerAnswerOne" placeholder="Your Answer">
+                                                        <div class="invalid-feedback"></div>
+                                                    </div>
                                                 </div>
-                                                <div class="mb-3">
-                                                    <input type="text" class="form-control" placeholder="Your Answer">
+                                                <div class="col-12">
+                                                    <div class="mb-2">
+                                                        <label for="email" class="form-label">Security Question 2 <span class="form-label-required">*</span></label>
+                                                        <select class="form-select" id="registerQuestionTwo"></select>
+                                                        <div class="invalid-feedback"></div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <input type="text" class="form-control" id="registerAnswerTwo" placeholder="Your Answer">
+                                                        <div class="invalid-feedback"></div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="mb-2">
-                                                    <label for="email" class="form-label">Security Question 2 <span class="form-label-required">*</span></label>
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option value="q1">What is your best friend's name?</option>
-                                                        <option value="q2">What is your favourite food?</option>
-                                                    </select>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <input type="text" class="form-control" placeholder="Your Answer">
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="mb-2">
-                                                    <label for="email" class="form-label">Security Question 3 <span class="form-label-required">*</span></label>
-                                                    <select class="form-select" aria-label="Default select example">
-                                                        <option value="q1">What is your best friend's name?</option>
-                                                        <option value="q2">What is your favourite food?</option>
-                                                    </select>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <input type="text" class="form-control" placeholder="Your Answer">
+                                                <div class="col-12">
+                                                    <div class="mb-2">
+                                                        <label for="email" class="form-label">Security Question 3 <span class="form-label-required">*</span></label>
+                                                        <select class="form-select" id="registerQuestionThree"></select>
+                                                        <div class="invalid-feedback"></div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <input type="text" class="form-control" id="registerAnswerThree" placeholder="Your Answer">
+                                                        <div class="invalid-feedback"></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mt-3 mb-4">
-                                            <button class="btn btn-secondary" id="backStepTwo" type="button" onclick="registerStep(2)">Back</button>
-                                            <button class="btn btn-primary" type="button">Sign Up</button>
+                                            <button class="btn btn-secondary" id="backStepTwo" type="button" onclick="registerGoStep(2)">Back</button>
+                                            <button class="btn btn-primary" type="button" onclick="registerFinalStep()">Sign Up</button>
                                         </div>
                                         <div class="d-grid mb-4">
                                             

@@ -1,5 +1,6 @@
 
-const baseUrl = "http://localhost:8080/wmm/api/v1"
+const baseUrl = "https://whereismymoney-production-9d7f.up.railway.app/api/v1";
+// const baseUrl =  "http://localhost:8080/wmm/api/v1"
 
 
 document.addEventListener("DOMContentLoaded", clickableRows());
@@ -43,7 +44,6 @@ function checkPassStrength(input) {
     if (/[A-Z]/.test(password)) strength++;
     if (/\d/.test(password)) strength++;
     if (/[!@#$%^&*]/.test(password)) strength++;
-    console.log(strength);
     switch (strength) {
       case 1:
         strengthClass = 'password-risky';
@@ -110,14 +110,14 @@ function selectJSON(selectElement, dataJSON) {
     });
 }
 
-function radioBtnValue(inputRadio, btnName) {
-    // let radios = inputRadio.getElementsByName(btnName);
-    let radios = inputRadio.querySelectorAll(`input[name="${btnName}"]`);
+function radioInputValue(inputRadio, btnName) {
+    let radios = inputRadio.querySelectorAll(`input[type="radio"][name="${btnName}"]`);
+    let selectedValue = "";
     for (let i = 0; i < radios.length; i++) {
-      if (radios[i].checked) {
-        let selectedValue = radios[i].value;
-        return selectedValue;
-      }
-      return "";
+        console.log(radios[i].value);
+        if (radios[i].checked) {
+            selectedValue = radios[i].value;
+        }
     }
+    return selectedValue;
 }

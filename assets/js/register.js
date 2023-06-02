@@ -1,12 +1,42 @@
+
 const countriesJsonPath = "assets/js/JSON/countries.json";
 const phoneCodesJsonPath = "assets/js/JSON/phoneCodes.json";
+
 const currentDate = new Date();
 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const currentYear = currentDate.getFullYear();
 const currentMonth = currentDate.getMonth() + 1;
 const currentMonthName = monthNames[currentDate.getMonth()];
 const currentDay = currentDate.getDate();
-const registerPass = document.getElementById('registerPass');
+
+
+const registerEmail = document.getElementById("registerEmail");
+const registerPass = document.getElementById("registerPass");
+const registerConfirmPass = document.getElementById("registerConfirmPass");
+const registerFname = document.getElementById("registerFname");
+const registerLname = document.getElementById("registerLname");
+const registerGender = document.getElementById("registerGender");
+const registerAddress = document.getElementById("registerAddress");
+const registerCity = document.getElementById("registerCity");
+const registerCountry = document.getElementById("registerCountry");
+const registerCurrency = document.getElementById("registerCurrency");
+const registerPhone = document.getElementById("registerPhone");
+const registerPhoneCode = document.getElementById("registerPhoneCode");
+const registerPhoneNumber = document.getElementById("registerPhoneNumber");
+const registerBirthDate = document.getElementById("registerBirthDate");
+const registerBirthDateYY = document.getElementById("registerBirthDateYY");
+const registerBirthDateMM = document.getElementById("registerBirthDateMM");
+const registerBirthDateDD = document.getElementById("registerBirthDateDD");
+let registerBirthDateVal = `${registerBirthDateYY.value}-${registerBirthDateMM.value}-${registerBirthDateDD.value}`;
+const securityQuestionsForm = document.getElementById("securityQuestions");
+const registerQuestionOne = document.getElementById("registerQuestionOne");
+const registerQuestionTwo = document.getElementById("registerQuestionTwo");
+const registerQuestionThree = document.getElementById("registerQuestionThree");
+const registerAnswerOne = document.getElementById("registerAnswerOne");
+const registerAnswerTwo = document.getElementById("registerAnswerTwo");
+const registerAnswerThree = document.getElementById("registerAnswerThree");
+const errorMsgRequired = "This field is required.";
+
 if(registerPass) {
     checkPassStrength(registerPass);
     registerPass.addEventListener("keyup", function() {
@@ -14,21 +44,15 @@ if(registerPass) {
     });
 }
 
-const selectCountry = document.getElementById("accountCountry");
-if(selectCountry) {
-    selectJSON(selectCountry, countriesJsonPath);
+if(registerCountry) {
+    selectJSON(registerCountry, countriesJsonPath);
 }
 
-const selectPhoneCode = document.getElementById("accountPhoneCode");
-if(selectPhoneCode) {
-    selectJSON(selectPhoneCode, phoneCodesJsonPath);
+if(registerPhoneCode) {
+    selectJSON(registerPhoneCode, phoneCodesJsonPath);
 }
 
-const accountBirthdate = document.getElementById("accountBirthdate");
-const accountBirthdateYY = document.getElementById("accountBirthdateYY");
-const accountBirthdateMM = document.getElementById("accountBirthdateMM");
-const accountBirthdateDD = document.getElementById("accountBirthdateDD");
-if(accountBirthdateYY) {
+if(registerBirthDateYY) {
     let year = currentYear;
     for (let i = 1; i <=100; i++) {
         var option = document.createElement("option");
@@ -37,189 +61,286 @@ if(accountBirthdateYY) {
         if(year == currentYear) {
             option.selected = true;
         }
-        accountBirthdateYY.appendChild(option);
+        registerBirthDateYY.appendChild(option);
         year--;
     }
 }
-if(accountBirthdateMM) {
+if(registerBirthDateMM) {
     for (let i = 0; i < monthNames.length; i++) {
         var option = document.createElement("option");
-        option.value = i+1;
+        option.value = (i+1).toString().padStart(2, '0');
         option.text = monthNames[i];
         if(monthNames[i] == currentMonthName) {
             option.selected = true;
         }
-        accountBirthdateMM.appendChild(option);
+        registerBirthDateMM.appendChild(option);
     }
 }
-if(accountBirthdateDD) {
+if(registerBirthDateDD) {
     for (let i = 1; i <= 31; i++) {
         var option = document.createElement("option");
-        option.value = i;
-        option.text = i;
+        option.value = i.toString().padStart(2, '0');
+        option.text = i.toString().padStart(2, '0');
         if(i == currentDay) {
             option.selected = true;
         }
-        accountBirthdateDD.appendChild(option);
+        registerBirthDateDD.appendChild(option);
     }
 }
 
+setSecurityQuestions(securityQuestionsForm);
+
 
 function registerAuthValidate() {
-    const email = document.getElementById("registerEmail");
-    const password = document.getElementById("registerPass");
-    const cPassword = document.getElementById("registerConfirmPass");
     let formErrors = false;
-    // const registerFeedback = document.getElementById("registerFeedback");
-    // const url = `${baseUrl}/account/register`;
 
-    if(email.value == "") {
+    if(registerEmail.value == "") {
         formErrors = true;
-        inputError(email, "This field is required.");
-    } else if(validateEmail(email.value) == false) {
+        inputError(registerEmail, "This field is required.");
+    } else if(validateEmail(registerEmail.value) == false) {
         formErrors = true;
-        inputError(email, "Please enter a valid email address.");
+        inputError(registerEmail, "Please enter a valid email address.");
     } else {
-        inputValid(email);
+        inputValid(registerEmail);
     }
 
-    if(password.value == "") {
+    if(registerPass.value == "") {
         formErrors = true;
-        inputError(password, "This field is required.");
-    } else if(checkPassStrength(password) < 4) {
+        inputError(registerPass, "This field is required.");
+    } else if(checkPassStrength(registerPass) < 4) {
         formErrors = true;
-        inputError(password, "Please choose a stronger password.");
+        inputError(registerPass, "Please choose a stronger password.");
     } else {
-        inputValid(password);
+        inputValid(registerPass);
     }
 
-    if(cPassword.value == "") {
+    if(registerConfirmPass.value == "") {
         formErrors = true;
-        inputError(cPassword, "This field is required.");
-    } else if(password.value !== cPassword.value) {
+        inputError(registerConfirmPass, "This field is required.");
+    } else if(registerPass.value !== registerConfirmPass.value) {
         formErrors = true;
-        inputError(cPassword, "Passwords do not match.");
+        inputError(registerConfirmPass, "Passwords do not match.");
     } else {
-        inputValid(cPassword);
+        inputValid(registerConfirmPass);
     }
     if(formErrors == false) {
-        let elements = document.getElementsByClassName("register-step");
-        let elementsArray = Array.from(elements);
-        elementsArray[0].classList.add("d-none");
-        elementsArray[1].classList.remove("d-none");
+        registerGoStep(2);
     }
 }
 
 function registerInfosValidate() {
-    const accountFname = document.getElementById("accountFname");
-    const accountLname = document.getElementById("accountLname");
-    const accountGendre = document.getElementById("accountGendre");
-    const accountAddress = document.getElementById("accountAddress");
-    const accountCity = document.getElementById("accountCity");
-    const accountCountry = document.getElementById("accountCountry");
-    const accountCurrency = document.getElementById("accountCurrency");
-    const accountPhone = document.getElementById("accountPhone");
-    const accountPhoneCode = document.getElementById("accountPhoneCode");
-    const accountPhoneNumber = document.getElementById("accountPhoneNumber");
-    const accountBirthdate = document.getElementById("accountBirthdate");
-    const accountBirthdateYY = document.getElementById("accountBirthdateYY");
-    const accountBirthdateMM = document.getElementById("accountBirthdateMM");
-    const accountBirthdateDD = document.getElementById("accountBirthdateDD");
-    const errorRequiredMsg = "This field is required.";
-
     let formErrors = false;
 
-    if(accountFname.value == "") {
-        inputError(accountFname, errorRequiredMsg);
+    if(registerFname.value == "") {
+        inputError(registerFname, errorMsgRequired);
         formErrors = true;
     } else {
-        inputValid(accountFname);
+        inputValid(registerFname);
     }
 
-    if(accountLname.value == "") {
-        inputError(accountLname, errorRequiredMsg);
+    if(registerLname.value == "") {
+        inputError(registerLname, errorMsgRequired);
         formErrors = true;
     } else {
-        inputValid(accountLname);
+        inputValid(registerLname);
     }
 
-    if(accountAddress.value == "") {
-        inputError(accountAddress, errorRequiredMsg);
+    if(registerAddress.value == "") {
+        inputError(registerAddress, errorMsgRequired);
         formErrors = true;
     } else {
-        inputValid(accountAddress);
+        inputValid(registerAddress);
     }
 
-    if(accountCity.value == "") {
-        inputError(accountCity, errorRequiredMsg);
+    if(registerCity.value == "") {
+        inputError(registerCity, errorMsgRequired);
         formErrors = true;
     } else {
-        inputValid(accountCity);
+        inputValid(registerCity);
     }
 
-    if(accountCountry.value == "") {
-        inputError(accountCountry, errorRequiredMsg);
+    if(registerCountry.value == "") {
+        inputError(registerCountry, errorMsgRequired);
         formErrors = true;
     } else {
-        inputValid(accountCountry);
+        inputValid(registerCountry);
     }
 
-    if(accountCurrency.value == "") {
-        inputError(accountCurrency, errorRequiredMsg);
+    if(registerCurrency.value == "") {
+        inputError(registerCurrency, errorMsgRequired);
         formErrors = true;
     } else {
-        inputValid(accountCurrency);
+        inputValid(registerCurrency);
     }
 
-    if(radioBtnValue(accountGendre, "gendre") == "") {
-        inputError(accountGendre, errorRequiredMsg);
+    if(radioInputValue(registerGender, "gender") == "") {
+        inputError(registerGender, errorMsgRequired);
         formErrors = true;
     } else {
-        inputValid(accountGendre);
+        inputValid(registerGender);
     }
 
-    if(accountBirthdateYY.value == currentYear &&
-        accountBirthdateMM.value == currentMonth &&
-        accountBirthdateDD.value == currentDay ) {
-        inputError(accountBirthdate, errorRequiredMsg);
+    if(registerBirthDateYY.value == currentYear &&
+        registerBirthDateMM.value == currentMonth &&
+        registerBirthDateDD.value == currentDay ) {
+        inputError(registerBirthDate, errorMsgRequired);
         formErrors = true;
     } else {
-        inputValid(accountBirthdate);
+        inputValid(registerBirthDate);
     }
 
-    if(accountPhoneNumber.value == "") {
-        inputError(accountPhone, errorRequiredMsg);
+    if(registerPhoneNumber.value == "") {
+        inputError(registerPhone, errorMsgRequired);
         formErrors = true;
     } else {
-        inputValid(accountPhone);
+        inputValid(registerPhone);
     }
 
 
     if(formErrors == false) {
-        let elements = document.getElementsByClassName("register-step");
-        let elementsArray = Array.from(elements);
-        elementsArray[1].classList.add("d-none");
-        elementsArray[2].classList.remove("d-none");
+        registerGoStep(3);
 
-        // let accountPhoneVal = `${accountPhoneCode.value} ${accountPhoneNumber.value}`;
-        // let accountBirthdateVal = `${accountBirthdateYY.value}/${accountBirthdateMM.value}/${accountBirthdateDD.value}`;
+        // let elements = document.getElementsByClassName("register-step");
+        // let elementsArray = Array.from(elements);
+        // elementsArray[1].classList.add("d-none");
+        // elementsArray[2].classList.remove("d-none");
+
+        // let registerPhoneVal = `${registerPhoneCode.value} ${registerPhoneNumber.value}`;
+        // let registerBirthDateVal = `${registerBirthDateYY.value}/${registerBirthDateMM.value}/${registerBirthDateDD.value}`;
         // let accountGendreVal = radioBtnValue(accountGendre, "gendre");
-        // localStorage.setItem("registerFname", accountFname.value);
-        // localStorage.setItem("registerLname", accountLname.value);
+        // localStorage.setItem("registerFname", registerFname.value);
+        // localStorage.setItem("registerLname", registerLname.value);
         // localStorage.setItem("registerGender", accountGendreVal);
-        // localStorage.setItem("registerBirthdate", accountBirthdateVal);
-        // localStorage.setItem("registerAddress", accountAddress.value);
-        // localStorage.setItem("registerCity", accountCity.value);
-        // localStorage.setItem("registerCountry", accountCountry.value);
-        // localStorage.setItem("registerCurrency", accountCurrency.value);
-        // localStorage.setItem("registerPhone", accountPhoneVal);
+        // localStorage.setItem("registerBirthdate", registerBirthDateVal);
+        // localStorage.setItem("registerAddress", registerAddress.value);
+        // localStorage.setItem("registerCity", registerCity.value);
+        // localStorage.setItem("registerCountry", registerCountry.value);
+        // localStorage.setItem("registerCurrency", registerCurrency.value);
+        // localStorage.setItem("registerPhone", registerPhoneVal);
     }
 }
 
+function registerFinalStep() {
+    let formErrors = false;
 
-function registerStep(i) {
+    if(registerQuestionOne.value == "") {
+        inputError(registerQuestionOne, errorMsgRequired);
+        formErrors = true;
+    } else {
+        inputValid(registerQuestionOne);
+    }
+    if(registerQuestionTwo.value == "") {
+        inputError(registerQuestionTwo, errorMsgRequired);
+        formErrors = true;
+    } else {
+        inputValid(registerQuestionTwo);
+    }
+    if(registerQuestionThree.value == "") {
+        inputError(registerQuestionThree, errorMsgRequired);
+        formErrors = true;
+    } else {
+        inputValid(registerQuestionThree);
+    }
+    if(registerAnswerOne.value == "") {
+        inputError(registerAnswerOne, errorMsgRequired);
+        formErrors = true;
+    } else {
+        inputValid(registerAnswerOne);
+    }
+    if(registerAnswerTwo.value == "") {
+        inputError(registerAnswerTwo, errorMsgRequired);
+        formErrors = true;
+    } else {
+        inputValid(registerAnswerTwo);
+    }
+    if(registerAnswerThree.value == "") {
+        inputError(registerAnswerThree, errorMsgRequired);
+        formErrors = true;
+    } else {
+        inputValid(registerAnswerThree);
+    }
+    if(formErrors == false) {
+        let url = `${baseUrl}/account/register`;
+        let params = {
+            "firstName":registerFname.value,
+            "lastName":registerLname.value,
+            "birthDate": `${registerBirthDateYY.value}-${registerBirthDateMM.value}-${registerBirthDateDD.value}`,
+            "gender":radioInputValue(registerGender, "gender"),
+            "phoneNumber":`(${registerPhoneCode.value})${registerPhoneNumber.value}`,
+            "addressLabel":registerAddress.value,
+            "country":registerCountry.value,
+            "city":registerCity.value,
+            "email":registerEmail.value,
+            "password":registerPass.value,
+            "currency":registerCurrency.value,
+            "securityAnswers": [
+              {
+                "questionId": Number(registerQuestionOne.value),
+                "answer": registerAnswerOne.value
+              },
+              {
+                "questionId": Number(registerQuestionTwo.value),
+                "answer": registerAnswerTwo.value
+              },
+              {
+                "questionId": Number(registerQuestionThree.value),
+                "answer": registerAnswerThree.value
+              }
+            ]
+        }
+        console.log(params);
+        axios.post(url, params)
+        .then((response) => {
+            console.log(response);
+            window.location = `dashboard.html`;
+        });
+    }
+}
+
+function registerGoStep(index) {
     let elements = document.getElementsByClassName("register-step");
     let elementsArray = Array.from(elements);
-    elementsArray[i-1].classList.remove("d-none");
-    elementsArray[i].classList.add("d-none");
+    for (let i = 0; i < elementsArray.length; i++) {
+        if (index === i+1) {
+            elementsArray[i].classList.remove("d-none");
+        } else {
+            elementsArray[i].classList.add("d-none");
+        }
+    }
+}
+
+function getSecurityQuestions() {
+    axios.get(`${baseUrl}/questions`)
+    .then((response) => {
+        let questions = response.data;
+        for(question of questions) {
+            console.log(question.question);
+        }
+        
+    }).catch((err) => {
+        console.log(err);
+    });
+}
+
+
+function setSecurityQuestions(form) {
+    let select = form.querySelectorAll("select");
+    let option = `<option value="">Select Question</option>`;
+    for (let i = 0; i < select.length; i++) {
+        select[i].innerHTML += option;
+    }
+    axios.get(`${baseUrl}/questions`)
+    .then((response) => {
+        let questions = response.data;
+        return questions;
+    }).then((questions) => {
+        for (let i = 0; i < select.length; i++) {
+            for(question of questions) {
+                let option = `<option value="${question.questionId}">${question.question}</option>`;
+                select[i].innerHTML += option;
+            }
+        }
+    }).catch((err) => {
+        console.error(err);
+    });
 }
