@@ -28,7 +28,7 @@ const registerBirthDateYY = document.getElementById("registerBirthDateYY");
 const registerBirthDateMM = document.getElementById("registerBirthDateMM");
 const registerBirthDateDD = document.getElementById("registerBirthDateDD");
 let registerBirthDateVal = `${registerBirthDateYY.value}-${registerBirthDateMM.value}-${registerBirthDateDD.value}`;
-const securityQuestionsForm = document.getElementById("securityQuestions");
+const registerQuestionsForm = document.getElementById("securityQuestions");
 const registerQuestionOne = document.getElementById("registerQuestionOne");
 const registerQuestionTwo = document.getElementById("registerQuestionTwo");
 const registerQuestionThree = document.getElementById("registerQuestionThree");
@@ -36,6 +36,7 @@ const registerAnswerOne = document.getElementById("registerAnswerOne");
 const registerAnswerTwo = document.getElementById("registerAnswerTwo");
 const registerAnswerThree = document.getElementById("registerAnswerThree");
 const errorMsgRequired = "This field is required.";
+const registerFeedback = document.getElementById("registerFeedback");
 
 if(registerPass) {
     checkPassStrength(registerPass);
@@ -88,7 +89,7 @@ if(registerBirthDateDD) {
     }
 }
 
-setSecurityQuestions(securityQuestionsForm);
+formSetQuestions(registerQuestionsForm);
 
 
 function registerAuthValidate() {
@@ -288,11 +289,20 @@ function registerFinalStep() {
               }
             ]
         }
-        console.log(params);
+        // console.log(params);
         axios.post(url, params)
         .then((response) => {
-            console.log(response);
             window.location = `dashboard.html`;
+        }).catch((err) => {
+            registerGoStep(1);
+            const errorHTML = `<div id="formFeedback" class="login-feedback alert alert-danger" role="alert">${err.response.data.message}</div>`;
+            const registerErrorElem = document.getElementById("formFeedback");
+            if (registerErrorElem !== null) {
+                console.log(err.response.data.message);
+                registerErrorElem.innerText = err.response.data.message;
+            } else {
+                registerFeedback.innerHTML = errorHTML;
+            }
         });
     }
 }
@@ -309,38 +319,69 @@ function registerGoStep(index) {
     }
 }
 
-function getSecurityQuestions() {
-    axios.get(`${baseUrl}/questions`)
-    .then((response) => {
-        let questions = response.data;
-        for(question of questions) {
-            console.log(question.question);
-        }
+// function getSecurityQuestions() {
+//     axios.get(`${baseUrl}/questions`)
+//     .then((response) => {
+//         let questions = response.data;
+//         for(let question of questions) {
+//             console.log(question.question);
+//         }
         
-    }).catch((err) => {
-        console.log(err);
-    });
+//     }).catch((err) => {
+//         console.log(err);
+//     });
+// }
+
+function updateQuestions(formId, select) {
+    let selectParent = document.getElementById(formId);
+    let selectElems = selectParent.querySelectorAll("select");
+    for (let i = 0; i < selectElems.length; i++) {
+        if(i != select-1) {
+            let excludes = new Array();
+            for (let j = 0; j < selectElems.length; j++) {
+                if(j != i && selectElems[j].value != "") {
+                    excludes.push(selectElems[j].value);
+                }
+            }
+            const options = selectElems[i].options;
+            for (option of options) {
+                let optionDisabled = false;
+                for(let exclude of excludes) {
+                    if(option.value == exclude) {
+                        optionDisabled = true;
+                    }
+                }
+                if(optionDisabled == true) {
+                    console.log(option)
+                    option.disabled = true;
+                } else {
+                    option.disabled = false;
+                }
+            }
+        }
+    }
 }
 
-
-function setSecurityQuestions(form) {
-    let select = form.querySelectorAll("select");
+function setQuestions(select) {
     let option = `<option value="">Select Question</option>`;
-    for (let i = 0; i < select.length; i++) {
-        select[i].innerHTML += option;
-    }
+    select.innerHTML = option;
     axios.get(`${baseUrl}/questions`)
     .then((response) => {
         let questions = response.data;
         return questions;
     }).then((questions) => {
-        for (let i = 0; i < select.length; i++) {
-            for(question of questions) {
-                let option = `<option value="${question.questionId}">${question.question}</option>`;
-                select[i].innerHTML += option;
-            }
+        for(let question of questions) {
+            let option = `<option value="${question.questionId}">${question.question}</option>`;
+            select.innerHTML += option;
         }
     }).catch((err) => {
         console.error(err);
     });
+}
+
+function formSetQuestions(form) {
+    let selects = form.querySelectorAll("select");
+    for (let select of selects) {
+        setQuestions(select);
+    }
 }

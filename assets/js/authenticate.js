@@ -1,28 +1,28 @@
 function loginValidate() {
-    const email = document.getElementById("loginEmail");
-    const password = document.getElementById("loginPass");
+    const loginEmail = document.getElementById("loginEmail");
+    const loginPass = document.getElementById("loginPass");
     const loginFeedback = document.getElementById("loginFeedback");
     const url = `${baseUrl}/account/authenticate`;
     const params = {
-        "email": email.value,
-        "password": password.value
+        "email": loginEmail.value,
+        "password": loginPass.value
     }
     let formErrors = false;
-    if(email.value == "") {
-        inputError(email, "This field is required.");
+    if(loginEmail.value == "") {
+        inputError(loginEmail, "This field is required.");
         formErrors = true;
-    } else if(validateEmail(email.value) == false) {
-        inputError(email, "Please enter a valid email address.");
+    } else if(validateEmail(loginEmail.value) == false) {
+        inputError(loginEmail, "Please enter a valid loginEmail address.");
         formErrors = true;
     } else {
-        inputValid(email);
+        inputValid(loginEmail);
     }
 
-    if(password.value == "") {
-        inputError(password, "This field is required.");
+    if(loginPass.value == "") {
+        inputError(loginPass, "This field is required.");
         formErrors = true;
     } else {
-        inputValid(password);
+        inputValid(loginPass);
     }
     if(formErrors == false) {
         axios.post(url, params)

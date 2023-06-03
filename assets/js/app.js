@@ -1,5 +1,5 @@
 
-const baseUrl = "https://whereismymoney-production-9d7f.up.railway.app/api/v1";
+const baseUrl = "https://wmm.up.railway.app/api/v1";
 // const baseUrl =  "http://localhost:8080/wmm/api/v1"
 
 

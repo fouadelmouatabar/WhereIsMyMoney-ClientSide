@@ -784,3 +784,7 @@ a:hover, a:focus, .link-primary:hover, .link-primary:focus {
     color: #50CD89;
     background-color: #E8FFF3;
 }
+
+select option[disabled] {
+    display: none;
+}
