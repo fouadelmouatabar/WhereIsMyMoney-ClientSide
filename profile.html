@@ -136,7 +136,7 @@
                                 </div>
                                 <div class="profile-infos w-100">
                                     <h4 class="profile-name mb-1 mt-0" id="profileName">John J. Morgan</h4>
-                                    <span class="profile-email" id="profileDate">Created :</span>
+                                    <span class="profile-email" id="profileDate">Account Created :</span>
                                 </div>
                             </div>
                             <div class="card-content">
@@ -337,19 +337,19 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <p class="mb-4">Deleting your account will remove all of your information
-                            from our database. This cannot be undone.</p>
+                        <div id="deleteAccountFeedback"></div>
+                        <p class="mb-4">Deleting your account will remove all of your information from our database. This cannot be undone.</p>
                         <div class="delete-help">
-                            <span>To confirm this, type "DELETE"</span>
+                            <span id="deleteHelper">To confirm this, type "DELETE"</span>
                         </div>
-                        <form class="row g-2">
+                        <div class="row g-2">
                             <div class="col-auto">
-                                <input type="text" class="form-control" placeholder="DELETE">
+                                <input type="text" class="form-control" placeholder="DELETE" id="confirmDeleteInput">
                             </div>
                             <div class="col-auto">
-                                <button type="submit" class="btn btn-danger">Delete Account</button>
+                                <button type="button" class="btn btn-danger" onclick="deleteAccount()">Delete Account</button>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>

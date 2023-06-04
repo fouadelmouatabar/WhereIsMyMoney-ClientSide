@@ -8,6 +8,9 @@ const securityAnswer2 = document.getElementById("securityAnswer2");
 const securityAnswer3 = document.getElementById("securityAnswer3");
 const errorMsgRequired = "This field is required.";
 const questionsFeedback = document.getElementById("questionsFeedback");
+const currentPass = document.getElementById("currentPass");
+const newPass = document.getElementById("newPass");
+const confirmPass = document.getElementById("confirmPass");
 
 window.onload = setAnswers(sQuestionsForm);
 
@@ -86,6 +89,67 @@ function updateAnswers() {
               }
             ]
         }
+        let cons = `(${url}, ${JSON.stringify(bodyParams)}, { headers: { Authorization: Bearer ${accessToken} }, params: { id: ${userId} } })`;
+        console.log(cons);
+        axios.put(url, bodyParams, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            },
+            params: {
+                id: userId,
+            },
+        })
+        .then((response) => {
+            questionsFeedback.innerHTML = "";
+            localStorage.setItem("securityAnswers", JSON.stringify(response.data.securityAnswers));
+            location.reload();
+        }).catch((err) => {
+            const errorHTML = `<div id="formFeedbackQA" class="login-feedback alert alert-danger" role="alert">${err.response.data.message}</div>`;
+            const formFeedback = document.getElementById("formFeedbackQA");
+            if (formFeedback !== null) {
+                console.log(err.response.data.message);
+                formFeedback.innerText = err.response.data.message;
+            } else {
+                questionsFeedback.innerHTML = errorHTML;
+            }
+        });
+    }
+}
+
+
+function updatePassword() {
+    let formErrors = false;
+
+    if(currentPass.value == "") {
+        formErrors = true;
+        inputError(currentPass, "This field is required.");
+    } else {
+        inputValid(currentPass);
+    }
+
+    if(newPass.value == "") {
+        formErrors = true;
+        inputError(newPass, "This field is required.");
+    } else if(checkPassStrength(newPass) < 4) {
+        formErrors = true;
+        inputError(newPass, "Please choose a stronger password.");
+    } else {
+        inputValid(newPass);
+    }
+
+    if(confirmPass.value == "") {
+        formErrors = true;
+        inputError(confirmPass, "This field is required.");
+    } else if(newPass.value !== confirmPass.value) {
+        formErrors = true;
+        inputError(confirmPass, "Passwords do not match.");
+    } else {
+        inputValid(confirmPass);
+    }
+    if(formErrors == false) {
+        const accessToken = localStorage.getItem("accessToken");
+        const userId = localStorage.getItem("accountId");
+        const url = `${baseUrl}/account/password-recovery/`;
         axios.put(url, bodyParams, {
             headers: {
                 Authorization: `Bearer ${accessToken}`,

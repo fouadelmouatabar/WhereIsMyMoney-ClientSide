@@ -125,26 +125,31 @@
                                     <div class="col-12">
                                         <div class="mb-4">
                                             <label for="" class="form-label">Current Password <span class="form-label-required">*</span></label>
-                                            <input type="password" class="form-control" id="currentPassword" placeholder="Confirm your password">
+                                            <input type="password" class="form-control" id="currentPass" placeholder="Your current password">
+                                            <div class="invalid-feedback"></div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="mb-3">
-                                            <label for="" class="form-label">Password <span class="form-label-required">*</span></label>
-                                            <input type="password" class="form-control" id="newPassword" placeholder="At leat 8 characters">
-                                            <div class="password-progress">
+                                            <label for="" class="form-label">New Password <span class="form-label-required">*</span></label>
+                                            <input type="password" class="form-control" id="newPass" placeholder="At leat 8 characters" onkeyup="checkPassStrength(event)">
+                                            <div class="invalid-feedback"></div>
+                                            <div class="password-strength">
                                                 <div class="row gx-3">
                                                     <div class="col">
-                                                        <div class="password-bar"></div>
+                                                        <div class="strength-bar"></div>
                                                     </div>
                                                     <div class="col">
-                                                        <div class="password-bar"></div>
+                                                        <div class="strength-bar"></div>
                                                     </div>
                                                     <div class="col">
-                                                        <div class="password-bar"></div>
+                                                        <div class="strength-bar"></div>
                                                     </div>
                                                     <div class="col">
-                                                        <div class="password-bar"></div>
+                                                        <div class="strength-bar"></div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="strength-bar"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -156,11 +161,12 @@
                                     <div class="col-12">
                                         <div class="mb-4">
                                             <label for="" class="form-label">Confirm Password <span class="form-label-required">*</span></label>
-                                            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password">
+                                            <input type="password" class="form-control" id="confirmPass" placeholder="Confirm your password">
+                                            <div class="invalid-feedback"></div>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn btn-primary" type="button">Update Password</button>
+                                        <button class="btn btn-primary" type="button" onclick="updatePassword()">Update Password</button>
                                     </div>
                                 </div>
                             </div>

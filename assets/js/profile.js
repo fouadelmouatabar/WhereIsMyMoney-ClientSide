@@ -16,6 +16,8 @@ const userBirthYear = document.getElementById("userBirthYear");
 const userCurrency = document.getElementById("userCurrency");
 const errorMsgRequired = "This field is required.";
 const profileFeedback = document.getElementById("profileFeedback");
+const deleteAccountFeedback = document.getElementById("deleteAccountFeedback");
+const confirmDeleteInput = document.getElementById("confirmDeleteInput");
 
 
 window.onload = setUserInfo;
@@ -151,16 +153,43 @@ function updateProfileInfo() {
             localStorage.setItem("city", response.data.city);
             localStorage.setItem("currency", response.data.currency);
             localStorage.setItem("creationDate", response.data.creationDate);
-            location.reload();
+            let alertSuccess = `<div class="alert alert-danger">${response.data.message}</div>`;
+            profileFeedback.innerHTML = alertSuccess;
         }).catch((err) => {
-            const errorHTML = `<div id="formFeedback" class="login-feedback alert alert-danger" role="alert">${err.response.data.message}</div>`;
-            const formFeedback = document.getElementById("formFeedback");
-            if (formFeedback !== null) {
-                console.log(err.response.data.message);
-                formFeedback.innerText = err.response.data.message;
-            } else {
-                profileFeedback.innerHTML = errorHTML;
-            }
+            let alertError = `<div class="alert alert-danger">${err.response.data.message}</div>`;
+            profileFeedback.innerHTML = alertError;
+        });
+    }
+}
+
+function deleteAccount() {
+    let formErrors = false;
+    if(confirmDeleteInput.value != "DELETE") {
+        inputError(confirmDeleteInput);
+        document.getElementById("deleteHelper").classList.add("text-danger"); 
+        formErrors = true;
+    } else {
+        inputValid(confirmDeleteInput);
+        document.getElementById("deleteHelper").classList.remove("text-danger");
+    }
+    if(formErrors === false) {
+        const accessToken = localStorage.getItem("accessToken");
+        const userId = localStorage.getItem("accountId");
+        const url = `${baseUrl}/account/delete/`;
+        axios.delete(url, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+            params: {
+                id: userId,
+            },
+        })
+        .then((response) => {
+            let alertSuccess = `<div class="alert alert-success">${response.data.message}</div>`;
+            deleteAccountFeedback.innerHTML = alertSuccess;
+        }).catch((err) => {
+            let alertError = `<div class="alert alert-danger">${err.response.data.message}</div>`;
+            deleteAccountFeedback.innerHTML = alertError;
         });
     }
 }

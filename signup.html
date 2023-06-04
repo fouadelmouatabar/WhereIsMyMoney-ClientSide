@@ -31,8 +31,8 @@
                         <div class="sign-form">
                             <form>
                                 <div class="register-feedback" id="registerFeedback"></div>
-                                <div class="register-steps">
-                                    <div class="register-step">
+                                <div class="page-tabs">
+                                    <div class="page-tab">
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="mb-3">
@@ -86,7 +86,7 @@
                                             <a href="signin.html">Log in</a>
                                         </div>
                                     </div>
-                                    <div class="register-step d-none">
+                                    <div class="page-tab d-none">
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="mb-3">
@@ -185,11 +185,11 @@
                                             </div>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mt-3 mb-4">
-                                            <button class="btn btn-secondary" id="backStepOne" type="button" onclick="registerGoStep(1)">Back</button>
+                                            <button class="btn btn-secondary" id="backStepOne" type="button" onclick="pageTab(1)">Back</button>
                                             <button class="btn btn-primary" id="accountSetupBtn" type="button" onclick="registerInfosValidate()">Next Step</button>
                                         </div>
                                     </div>
-                                    <div class="register-step d-none">
+                                    <div class="page-tab d-none">
                                         <div id="securityQuestions">
                                             <div class="row">
                                                 <div class="col-12">
@@ -228,7 +228,7 @@
                                             </div>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-between mt-3 mb-4">
-                                            <button class="btn btn-secondary" id="backStepTwo" type="button" onclick="registerGoStep(2)">Back</button>
+                                            <button class="btn btn-secondary" id="backStepTwo" type="button" onclick="pageTab(2)">Back</button>
                                             <button class="btn btn-primary" type="button" onclick="registerFinalStep()">Sign Up</button>
                                         </div>
                                         <div class="d-grid mb-4">

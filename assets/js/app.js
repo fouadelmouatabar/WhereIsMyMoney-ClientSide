@@ -29,7 +29,11 @@ function validateEmail(input) {
     }  
 }
 
-function checkPassStrength(input) {
+function checkPassStrength(e) {
+    let input = e;
+    if (input instanceof Event) {
+        input = e.target;
+    }
     const password = input.value;
     const strengthIndicator = findSiblingByClassName(input, "password-strength");
 
@@ -66,17 +70,21 @@ function checkPassStrength(input) {
 
 function inputError(input, message) {
     input.classList.add("input-invalid");
-    if (input.nextElementSibling.classList.contains("invalid-feedback")) {
-        input.nextElementSibling.classList.add("d-block");
-        input.nextElementSibling.innerText = message;
+    if (message !== undefined) {
+        if (input.nextElementSibling.classList.contains("invalid-feedback")) {
+            input.nextElementSibling.classList.add("d-block");
+            input.nextElementSibling.innerText = message;
+        }
     }
 }
 
 function inputValid(input) {
     input.classList.remove("input-invalid");
-    if (input.nextElementSibling.classList.contains("invalid-feedback")) {
-        input.nextElementSibling.classList.remove("d-block");
-        input.nextElementSibling.innerText = "";
+    if (input.nextElementSibling !== null) {
+        if (input.nextElementSibling.classList.contains("invalid-feedback")) {
+            input.nextElementSibling.classList.remove("d-block");
+            input.nextElementSibling.innerText = "";
+        }
     }
 }
 
@@ -275,5 +283,17 @@ function formSetQuestions(form) {
     let selects = form.querySelectorAll("select");
     for (let select of selects) {
         setQuestions(select);
+    }
+}
+
+function pageTab(index) {
+    let elements = document.getElementsByClassName("page-tab");
+    let elementsArray = Array.from(elements);
+    for (let i = 0; i < elementsArray.length; i++) {
+        if (index === i+1) {
+            elementsArray[i].classList.remove("d-none");
+        } else {
+            elementsArray[i].classList.add("d-none");
+        }
     }
 }

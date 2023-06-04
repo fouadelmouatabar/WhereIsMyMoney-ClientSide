@@ -81,7 +81,7 @@ function registerAuthValidate() {
         inputValid(registerConfirmPass);
     }
     if(formErrors == false) {
-        registerGoStep(2);
+        pageTab(2);
     }
 }
 
@@ -155,9 +155,9 @@ function registerInfosValidate() {
 
 
     if(formErrors == false) {
-        registerGoStep(3);
+        pageTab(3);
 
-        // let elements = document.getElementsByClassName("register-step");
+        // let elements = document.getElementsByClassName("pageTab");
         // let elementsArray = Array.from(elements);
         // elementsArray[1].classList.add("d-none");
         // elementsArray[2].classList.remove("d-none");
@@ -265,7 +265,7 @@ function registerFinalStep() {
             localStorage.setItem("securityAnswers", JSON.stringify(response.data.securityAnswers));
             window.location = `profile.html`;
         }).catch((err) => {
-            registerGoStep(1);
+            pageTab(1);
             const errorHTML = `<div id="formFeedback" class="login-feedback alert alert-danger" role="alert">${err.response.data.message}</div>`;
             const formFeedback = document.getElementById("formFeedback");
             if (formFeedback !== null) {
@@ -278,14 +278,4 @@ function registerFinalStep() {
     }
 }
 
-function registerGoStep(index) {
-    let elements = document.getElementsByClassName("register-step");
-    let elementsArray = Array.from(elements);
-    for (let i = 0; i < elementsArray.length; i++) {
-        if (index === i+1) {
-            elementsArray[i].classList.remove("d-none");
-        } else {
-            elementsArray[i].classList.add("d-none");
-        }
-    }
-}
+
