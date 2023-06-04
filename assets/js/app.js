@@ -1,10 +1,15 @@
-
 const baseUrl = "https://wmm.up.railway.app/api/v1";
 // const baseUrl =  "http://localhost:8080/wmm/api/v1"
-
+const countriesJSON = "assets/js/JSON/countries.json";
+const phoneCodesJSON = "assets/js/JSON/phoneCodes.json";
+const currenciesJSON = "assets/js/JSON/currencies.json";
+const currentDate = new Date();
+const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const currentYear = currentDate.getFullYear();
+const currentMonth = currentDate.getMonth() + 1;
+// const currentMonthName = monthNames[currentDate.getMonth()];
 
 document.addEventListener("DOMContentLoaded", clickableRows());
-
 
 function clickableRows() {
     const rows = document.querySelectorAll(".clickable-row");
@@ -12,14 +17,6 @@ function clickableRows() {
         row.addEventListener("click", function () {
             window.location = this.getAttribute("data-href");
         }); 
-    }
-}
-
-function checkLoggedIn() {
-    const userId = localStorage.getItem("userId");
-    const token = localStorage.getItem("token");
-    if(token == null || userId == null) {
-        window.location = `signin.html`;
     }
 }
 
@@ -97,7 +94,7 @@ function findSiblingByClassName(element, className) {
     return null;
 }
 
-function selectJSON(selectElement, dataJSON) {
+function selectOptions(selectElement, dataJSON, selectedOption) {
     fetch(dataJSON)
     .then(response => response.json())
     .then(data => {
@@ -105,19 +102,178 @@ function selectJSON(selectElement, dataJSON) {
             const optionElement = document.createElement('option');
             optionElement.value = country.value;
             optionElement.textContent = country.textContent;
+            if(selectedOption != undefined) {
+                if(selectedOption == country.value) {
+                    optionElement.selected = true; 
+                }
+            }
             selectElement.appendChild(optionElement);
         });
     });
 }
 
-function radioInputValue(inputRadio, btnName) {
+function getRadiosVal(inputRadio, btnName) {
     let radios = inputRadio.querySelectorAll(`input[type="radio"][name="${btnName}"]`);
-    let selectedValue = "";
+    let selectedVal = "";
     for (let i = 0; i < radios.length; i++) {
-        console.log(radios[i].value);
         if (radios[i].checked) {
-            selectedValue = radios[i].value;
+            selectedVal = radios[i].value;
         }
     }
-    return selectedValue;
+    return selectedVal;
+}
+
+function setRadiosVal(inputRadio, btnName, selectedVal) {
+    let radios = inputRadio.querySelectorAll(`input[type="radio"][name="${btnName}"]`);
+    for (let i = 0; i < radios.length; i++) {
+        if (radios[i].value == selectedVal) {
+            radios[i].checked = true;
+        } else {
+            radios[i].checked = false;
+        }
+    }
+}
+
+function birthDateSelect(form, selectedYear, selectedMonth, selectedDay) {
+    const currentDay = currentDate.getDate();
+    let selectElems = form.querySelectorAll("select");
+    let year = currentYear;
+    for (let i = 1; i <= 31; i++) {
+        let option = document.createElement("option");
+        let day = i.toString().padStart(2, '0');
+        option.value = day;
+        option.text = day;
+        if(selectedDay != undefined) {
+            if(day == selectedDay){
+                option.selected = true; 
+            }
+        } else if(day == currentDay) {
+            option.selected = true;
+        } else {
+            option.selected = false;
+        }
+        selectElems[0].appendChild(option);
+    }
+    for (let i = 0; i < monthNames.length; i++) {
+        let option = document.createElement("option");
+        let month = (i+1).toString().padStart(2, '0');
+        option.value = month;
+        option.text = monthNames[i];
+        if(selectedMonth != undefined) {
+            if(month == selectedMonth){
+                option.selected = true; 
+            }
+        } else if(month == currentMonth) {
+            option.selected = true;
+        } else {
+            option.selected = false;
+        }
+        selectElems[1].appendChild(option);
+    }
+    for (let i = 1; i <=100; i++) {
+        var option = document.createElement("option");
+        option.value = year;
+        option.text = year;
+        if(selectedYear != undefined) {
+            if(year == selectedYear) {
+                option.selected = true;
+            }
+        } else if(year == currentYear) {
+            option.selected = true;
+        } else {
+            option.selected = false;
+        }
+        selectElems[2].appendChild(option);
+        year--;
+    }
+}
+
+function getPhoneComponents(phone) {
+    const matches = phone.match(/^\((\+\d+)\)(\d+)$/);
+    if (matches) {
+        return [matches[1], matches[2]]
+    } else {
+        console.log("Invalid phone number format");
+    }
+}
+
+function getDateComponents(dateString) {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    return [year, month, day];
+}
+
+function checkLoggedIn() {
+    const userId = localStorage.getItem("accessToken");
+    const token = localStorage.getItem("accountId");
+    if(token == null || userId == null) {
+        window.location = `signin.html`;
+    }
+}
+
+
+function updateQuestions(formId, select) {
+    let selectParent = document.getElementById(formId);
+    let selectElems = selectParent.querySelectorAll("select");
+    for (let i = 0; i < selectElems.length; i++) {
+        if(i != select-1) {
+            let excludes = new Array();
+            for (let j = 0; j < selectElems.length; j++) {
+                if(j != i && selectElems[j].value != "") {
+                    excludes.push(selectElems[j].value);
+                }
+            }
+            const options = selectElems[i].options;
+            for (option of options) {
+                let optionDisabled = false;
+                for(let exclude of excludes) {
+                    if(option.value == exclude) {
+                        optionDisabled = true;
+                    }
+                }
+                if(optionDisabled == true) {
+                    console.log(option)
+                    option.disabled = true;
+                } else {
+                    option.disabled = false;
+                }
+            }
+        }
+    }
+}
+
+function setQuestions(select, selectedOption) {
+    let option = `<option value="">Select Question</option>`;
+    select.innerHTML = option;
+    axios.get(`${baseUrl}/questions`)
+    .then((response) => {
+        let questions = response.data;
+        return questions;
+    }).then((questions) => {
+        for(let question of questions) {
+            const option = document.createElement('option');
+            option.value = question.questionId;
+            option.text = question.question;
+            if(selectedOption !== null) {
+                if(selectedOption == question.questionId) {
+                    option.selected = true;
+                } else {
+                    option.selected = false;
+                }
+            }
+            console.log(option);
+            select.appendChild(option);
+        }
+    }).catch((err) => {
+        console.error(err);
+    });
+}
+
+function formSetQuestions(form) {
+    let selects = form.querySelectorAll("select");
+    for (let select of selects) {
+        setQuestions(select);
+    }
 }

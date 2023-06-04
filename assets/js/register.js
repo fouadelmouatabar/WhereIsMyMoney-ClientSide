@@ -1,15 +1,3 @@
-
-const countriesJsonPath = "assets/js/JSON/countries.json";
-const phoneCodesJsonPath = "assets/js/JSON/phoneCodes.json";
-
-const currentDate = new Date();
-const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-const currentYear = currentDate.getFullYear();
-const currentMonth = currentDate.getMonth() + 1;
-const currentMonthName = monthNames[currentDate.getMonth()];
-const currentDay = currentDate.getDate();
-
-
 const registerEmail = document.getElementById("registerEmail");
 const registerPass = document.getElementById("registerPass");
 const registerConfirmPass = document.getElementById("registerConfirmPass");
@@ -46,48 +34,16 @@ if(registerPass) {
 }
 
 if(registerCountry) {
-    selectJSON(registerCountry, countriesJsonPath);
+    selectOptions(registerCountry, countriesJSON, "MA");
 }
-
 if(registerPhoneCode) {
-    selectJSON(registerPhoneCode, phoneCodesJsonPath);
+    selectOptions(registerPhoneCode, phoneCodesJSON, "+212");
+}
+if(registerCurrency) {
+    selectOptions(registerCurrency, currenciesJSON, "MAD");
 }
 
-if(registerBirthDateYY) {
-    let year = currentYear;
-    for (let i = 1; i <=100; i++) {
-        var option = document.createElement("option");
-        option.value = year;
-        option.text = year;
-        if(year == currentYear) {
-            option.selected = true;
-        }
-        registerBirthDateYY.appendChild(option);
-        year--;
-    }
-}
-if(registerBirthDateMM) {
-    for (let i = 0; i < monthNames.length; i++) {
-        var option = document.createElement("option");
-        option.value = (i+1).toString().padStart(2, '0');
-        option.text = monthNames[i];
-        if(monthNames[i] == currentMonthName) {
-            option.selected = true;
-        }
-        registerBirthDateMM.appendChild(option);
-    }
-}
-if(registerBirthDateDD) {
-    for (let i = 1; i <= 31; i++) {
-        var option = document.createElement("option");
-        option.value = i.toString().padStart(2, '0');
-        option.text = i.toString().padStart(2, '0');
-        if(i == currentDay) {
-            option.selected = true;
-        }
-        registerBirthDateDD.appendChild(option);
-    }
-}
+birthDateSelect(registerBirthDate);
 
 formSetQuestions(registerQuestionsForm);
 
@@ -174,7 +130,7 @@ function registerInfosValidate() {
         inputValid(registerCurrency);
     }
 
-    if(radioInputValue(registerGender, "gender") == "") {
+    if(getRadiosVal(registerGender, "gender") == "") {
         inputError(registerGender, errorMsgRequired);
         formErrors = true;
     } else {
@@ -208,10 +164,10 @@ function registerInfosValidate() {
 
         // let registerPhoneVal = `${registerPhoneCode.value} ${registerPhoneNumber.value}`;
         // let registerBirthDateVal = `${registerBirthDateYY.value}/${registerBirthDateMM.value}/${registerBirthDateDD.value}`;
-        // let accountGendreVal = radioBtnValue(accountGendre, "gendre");
+        // let accountGenderVal = radioBtnValue(accountGender, "gender");
         // localStorage.setItem("registerFname", registerFname.value);
         // localStorage.setItem("registerLname", registerLname.value);
-        // localStorage.setItem("registerGender", accountGendreVal);
+        // localStorage.setItem("registerGender", accountGenderVal);
         // localStorage.setItem("registerBirthdate", registerBirthDateVal);
         // localStorage.setItem("registerAddress", registerAddress.value);
         // localStorage.setItem("registerCity", registerCity.value);
@@ -262,11 +218,11 @@ function registerFinalStep() {
     }
     if(formErrors == false) {
         let url = `${baseUrl}/account/register`;
-        let params = {
+        let bodyParams = {
             "firstName":registerFname.value,
             "lastName":registerLname.value,
             "birthDate": `${registerBirthDateYY.value}-${registerBirthDateMM.value}-${registerBirthDateDD.value}`,
-            "gender":radioInputValue(registerGender, "gender"),
+            "gender":getRadiosVal(registerGender, "gender"),
             "phoneNumber":`(${registerPhoneCode.value})${registerPhoneNumber.value}`,
             "addressLabel":registerAddress.value,
             "country":registerCountry.value,
@@ -290,16 +246,31 @@ function registerFinalStep() {
             ]
         }
         // console.log(params);
-        axios.post(url, params)
+        axios.post(url, bodyParams)
         .then((response) => {
-            window.location = `dashboard.html`;
+            registerFeedback.innerHTML = "";
+            localStorage.setItem("accessToken", response.data.access_token);
+            localStorage.setItem("accountId", response.data.accountId);
+            localStorage.setItem("email", response.data.email);
+            localStorage.setItem("firstName", response.data.firstName);
+            localStorage.setItem("lastName", response.data.lastName);
+            localStorage.setItem("birthDate", response.data.birthDate);
+            localStorage.setItem("gender", response.data.gender);
+            localStorage.setItem("phoneNumber", response.data.phoneNumber);
+            localStorage.setItem("addressLabel", response.data.addressLabel);
+            localStorage.setItem("country", response.data.country);
+            localStorage.setItem("city", response.data.city);
+            localStorage.setItem("currency", response.data.currency);
+            localStorage.setItem("creationDate", response.data.creationDate);
+            localStorage.setItem("securityAnswers", JSON.stringify(response.data.securityAnswers));
+            window.location = `profile.html`;
         }).catch((err) => {
             registerGoStep(1);
             const errorHTML = `<div id="formFeedback" class="login-feedback alert alert-danger" role="alert">${err.response.data.message}</div>`;
-            const registerErrorElem = document.getElementById("formFeedback");
-            if (registerErrorElem !== null) {
+            const formFeedback = document.getElementById("formFeedback");
+            if (formFeedback !== null) {
                 console.log(err.response.data.message);
-                registerErrorElem.innerText = err.response.data.message;
+                formFeedback.innerText = err.response.data.message;
             } else {
                 registerFeedback.innerHTML = errorHTML;
             }
@@ -316,72 +287,5 @@ function registerGoStep(index) {
         } else {
             elementsArray[i].classList.add("d-none");
         }
-    }
-}
-
-// function getSecurityQuestions() {
-//     axios.get(`${baseUrl}/questions`)
-//     .then((response) => {
-//         let questions = response.data;
-//         for(let question of questions) {
-//             console.log(question.question);
-//         }
-        
-//     }).catch((err) => {
-//         console.log(err);
-//     });
-// }
-
-function updateQuestions(formId, select) {
-    let selectParent = document.getElementById(formId);
-    let selectElems = selectParent.querySelectorAll("select");
-    for (let i = 0; i < selectElems.length; i++) {
-        if(i != select-1) {
-            let excludes = new Array();
-            for (let j = 0; j < selectElems.length; j++) {
-                if(j != i && selectElems[j].value != "") {
-                    excludes.push(selectElems[j].value);
-                }
-            }
-            const options = selectElems[i].options;
-            for (option of options) {
-                let optionDisabled = false;
-                for(let exclude of excludes) {
-                    if(option.value == exclude) {
-                        optionDisabled = true;
-                    }
-                }
-                if(optionDisabled == true) {
-                    console.log(option)
-                    option.disabled = true;
-                } else {
-                    option.disabled = false;
-                }
-            }
-        }
-    }
-}
-
-function setQuestions(select) {
-    let option = `<option value="">Select Question</option>`;
-    select.innerHTML = option;
-    axios.get(`${baseUrl}/questions`)
-    .then((response) => {
-        let questions = response.data;
-        return questions;
-    }).then((questions) => {
-        for(let question of questions) {
-            let option = `<option value="${question.questionId}">${question.question}</option>`;
-            select.innerHTML += option;
-        }
-    }).catch((err) => {
-        console.error(err);
-    });
-}
-
-function formSetQuestions(form) {
-    let selects = form.querySelectorAll("select");
-    for (let select of selects) {
-        setQuestions(select);
     }
 }

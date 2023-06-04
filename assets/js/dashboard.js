@@ -1,9 +1,10 @@
+
+checkLoggedIn();
+
 function logout(e) {
     if(e != undefined) {
         e.preventDefault();
     }
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    console.log("Logged out successfully");
+    localStorage.clear();
     window.location = "signin.html";
 }

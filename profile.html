@@ -92,7 +92,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="menu-link">
+                            <a href="#" class="menu-link" onclick="logout(event)">
                                 <span class="menu-icon">
                                     <i class="fi fi-br-sign-out-alt"></i>
                                 </span>
@@ -135,162 +135,106 @@
                                     <img src="assets/img/avatar.png" class="img-fluid rounded-pill" width="70">
                                 </div>
                                 <div class="profile-infos w-100">
-                                    <h4 class="profile-name mb-0 mt-0">John J. Morgan</h4>
-                                    <span class="profile-email">johndoe@email.com</span>
+                                    <h4 class="profile-name mb-1 mt-0" id="profileName">John J. Morgan</h4>
+                                    <span class="profile-email" id="profileDate">Created :</span>
                                 </div>
                             </div>
                             <div class="card-content">
                                 <div class="sign-form">
+                                    <div class="profile-feedback" id="profileFeedback"></div>
                                     <div class="row">
                                         <div class="col-6">
                                             <div class="mb-3">
-                                                <label for="" class="form-label">First Name <span
-                                                        class="form-label-required">*</span></label>
-                                                <input type="text" class="form-control" id="fname"
-                                                    placeholder="John" value="John">
+                                                <label for="" class="form-label">First Name <span class="form-label-required">*</span></label>
+                                                <input type="text" class="form-control" id="userFname" placeholder="John" value="John">
+                                                <div class="invalid-feedback"></div>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="mb-3">
-                                                <label for="" class="form-label">Last Name <span
-                                                        class="form-label-required">*</span></label>
-                                                <input type="text" class="form-control" id="lname" placeholder="Doe"
-                                                    value="Morgan">
+                                                <label for="" class="form-label">Last Name <span class="form-label-required">*</span></label>
+                                                <input type="text" class="form-control" id="userLname" placeholder="Doe" value="Morgan">
+                                                <div class="invalid-feedback"></div>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="mb-3">
-                                                <label class="form-label">Gendre <span
-                                                        class="form-label-required">*</span></label>
-                                                <div class="radio-btns">
+                                                <label class="form-label">Gender <span class="form-label-required">*</span></label>
+                                                <div class="radio-btns" id="userGender">
                                                     <label>
-                                                        <input type="radio" name="gendre" checked>
+                                                        <input type="radio" name="gender" value="MALE">
                                                         <span>Male</span>
                                                     </label>
                                                     <label>
-                                                        <input type="radio" name="gendre">
+                                                        <input type="radio" name="gender" value="FEMALE">
                                                         <span>Female</span>
                                                     </label>
+                                                    <label>
+                                                        <input type="radio" name="gender" value="UNDEFINED">
+                                                        <span>Undefined</span>
+                                                    </label>
                                                 </div>
+                                                <div class="invalid-feedback"></div>
                                             </div>
                                         </div>
                                         <div class="w-100"></div>
                                         <div class="col-6">
                                             <div class="mb-3">
-                                                <label class="form-label">Birthday <span
-                                                        class="form-label-required">*</span></label>
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <select class="form-select" aria-label="Day">
-                                                            <option value="1" selected="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                            <option value="6">6</option>
-                                                            <option value="7">7</option>
-                                                            <option value="8">8</option>
-                                                            <option value="9">9</option>
-                                                            <option value="10">10</option>
-                                                            <option value="11">11</option>
-                                                            <option value="12">12</option>
-                                                            <option value="13">13</option>
-                                                            <option value="14">14</option>
-                                                            <option value="15">15</option>
-                                                            <option value="16">16</option>
-                                                            <option value="17">17</option>
-                                                            <option value="18">18</option>
-                                                            <option value="19">19</option>
-                                                            <option value="20">20</option>
-                                                            <option value="21">21</option>
-                                                            <option value="22">22</option>
-                                                            <option value="23">23</option>
-                                                            <option value="24">24</option>
-                                                            <option value="25">25</option>
-                                                            <option value="26">26</option>
-                                                            <option value="27">27</option>
-                                                            <option value="28">28</option>
-                                                            <option value="29">29</option>
-                                                            <option value="30">30</option>
-                                                            <option value="31">31</option>
-                                                        </select>
+                                                <label class="form-label">Birthday <span class="form-label-required">*</span></label>
+                                                <div class="row" id="userBirthDate">
+                                                    <div class="col-auto">
+                                                        <select class="form-select" id="userBirthDay"></select>
                                                     </div>
-                                                    <div class="col">
-                                                        <select class="form-select" aria-label="Month">
-                                                            <option value="1" selected="1">Jan</option>
-                                                            <option value="2">Feb</option>
-                                                            <option value="3">Mar</option>
-                                                            <option value="4">Apr</option>
-                                                            <option value="5">May</option>
-                                                            <option value="6">Jun</option>
-                                                            <option value="7">Jul</option>
-                                                            <option value="8">Aug</option>
-                                                            <option value="9">Sep</option>
-                                                            <option value="10">Oct</option>
-                                                            <option value="11">Nov</option>
-                                                            <option value="12">Dec</option>
-                                                        </select>
+                                                    <div class="col-auto">
+                                                        <select class="form-select" id="userBirthMonth"></select>
                                                     </div>
-                                                    <div class="col">
-                                                        <select class="form-select">
-                                                            <option value="1" selected>2022</option>
-                                                            <option value="2">2021</option>
-                                                            <option value="2">2020</option>
-                                                            <option value="3">2019</option>
-                                                        </select>
+                                                    <div class="col-auto">
+                                                        <select class="form-select" id="userBirthYear"></select>
                                                     </div>
                                                 </div>
+                                                <div class="invalid-feedback"></div>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="mb-3">
-                                                <label for="" class="form-label">Address <span
-                                                        class="form-label-required">*</span></label>
-                                                <input type="text" class="form-control" id="address" placeholder=""
-                                                    value="3951 rue Levy, Montreal, QC H3C 5K4">
+                                                <label for="" class="form-label">Address <span class="form-label-required">*</span></label>
+                                                <input type="text" class="form-control" id="userAddress" placeholder="" value="3951 rue Levy, Montreal, QC H3C 5K4">
+                                                <div class="invalid-feedback"></div>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="mb-3">
-                                                <label for="" class="form-label">City <span
-                                                        class="form-label-required">*</span></label>
-                                                <input type="text" class="form-control" id="city" placeholder=""
-                                                    value="Montreal">
+                                                <label for="" class="form-label">City <span class="form-label-required">*</span></label>
+                                                <input type="text" class="form-control" id="userCity" placeholder="" value="Montreal">
+                                                <div class="invalid-feedback"></div>
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="mb-3">
-                                                <label for="" class="form-label">Country <span
-                                                        class="form-label-required">*</span></label>
-                                                <input type="text" class="form-control" id="country" placeholder=""
-                                                    value="Canada">
+                                                <label for="" class="form-label">Country <span lass="form-label-required">*</span></label>
+                                                <select class="form-select" id="userCountry">
+                                                    <option value="" selected>Select Country</option>
+                                                </select>
+                                                <div class="invalid-feedback"></div>
                                             </div>
                                         </div>                                            
                                         <div class="col-6">
                                             <div class="mb-3">
-                                                <label for="email" class="form-label">Phone Number <span
-                                                        class="form-label-required">*</span></label>
-                                                <div class="row">
+                                                <label for="email" class="form-label">Phone Number <span class="form-label-required">*</span></label>
+                                                <div class="row" id="userPhone">
                                                     <div class="col-auto phone-negatif">
-                                                        <select class="form-select"
-                                                            aria-label="Default select example">
-                                                            <option value="1">+1</option>
-                                                            <option value="2">+91</option>
-                                                            <option value="3">+212</option>
-                                                        </select>
+                                                        <select class="form-select" id="userPhoneCode"></select>
                                                     </div>
                                                     <div class="col">
-                                                        <input type="tel" class="form-control" id="email"
-                                                            placeholder="e.g. 999-999-9999" value="514-701-0534">
+                                                        <input type="tel" class="form-control" id="userPhoneNumber" placeholder="e.g. 999-999-9999" value="514-701-0534">
                                                     </div>
                                                 </div>
+                                                <div class="invalid-feedback"></div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="d-grid mt-4">
-                                        <a href="signup-3.html">
-                                            <button class="btn btn-primary" type="button">Save Changes</button>
-                                        </a>
+                                    <div class="mt-4">
+                                        <button class="btn btn-primary" type="button" onclick="updateProfileInfo()">Save Changes</button>
                                     </div>
                                 </div>
                             </div>
@@ -342,11 +286,11 @@
                                                 class="form-label-required">*</span></label>
                                         <div class="radio-btns">
                                             <label>
-                                                <input type="radio" name="gendre">
+                                                <input type="radio" name="gender">
                                                 <span>Income</span>
                                             </label>
                                             <label>
-                                                <input type="radio" name="gendre">
+                                                <input type="radio" name="gender">
                                                 <span>Expense</span>
                                             </label>
                                         </div>
@@ -417,6 +361,7 @@
     <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/vendor/axios/axios.min.js"></script>
     <script src="assets/js/app.js"></script>
-
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/profile.js"></script>
 </body>
 </html>

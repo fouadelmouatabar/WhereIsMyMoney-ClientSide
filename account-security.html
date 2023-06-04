@@ -85,7 +85,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="menu-link">
+                            <a href="#" class="menu-link" onclick="logout(event)">
                                 <span class="menu-icon">
                                     <i class="fi fi-br-sign-out-alt"></i>
                                 </span>
@@ -125,13 +125,13 @@
                                     <div class="col-12">
                                         <div class="mb-4">
                                             <label for="" class="form-label">Current Password <span class="form-label-required">*</span></label>
-                                            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password">
+                                            <input type="password" class="form-control" id="currentPassword" placeholder="Confirm your password">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label for="" class="form-label">Password <span class="form-label-required">*</span></label>
-                                            <input type="password" class="form-control" id="password" placeholder="At leat 8 characters">
+                                            <input type="password" class="form-control" id="newPassword" placeholder="At leat 8 characters">
                                             <div class="password-progress">
                                                 <div class="row gx-3">
                                                     <div class="col">
@@ -175,45 +175,45 @@
                                 <h6 class="card-subtitle">Stay safe, stay secure.</h6>
                             </div>
                             <div class="card-content">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="mb-2">
-                                            <label for="email" class="form-label">Security Question 1 <span class="form-label-required">*</span></label>
-                                            <select class="form-select" aria-label="Default select example">
-                                                <option value="q1">What is your best friend's name?</option>
-                                                <option value="q2">What is your favourite food?</option>
-                                            </select>
+                                <div id="securityQuestions">
+                                    <div class="qquestions-feedback" id="qquestionsFeedback"></div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="mb-2">
+                                                <label for="email" class="form-label">Security Question 1 <span class="form-label-required">*</span></label>
+                                                <select class="form-select" id="securityQuestion1" onchange="updateQuestions('securityQuestions', 1)"></select>
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <input type="text" class="form-control" id="securityAnswer1" placeholder="Your Answer">
+                                                <div class="invalid-feedback"></div>
+                                            </div>
                                         </div>
-                                        <div class="mb-3">
-                                            <input type="email" class="form-control" id="email" placeholder="The answer">
+                                        <div class="col-12">
+                                            <div class="mb-2">
+                                                <label for="email" class="form-label">Security Question 2 <span class="form-label-required">*</span></label>
+                                                <select class="form-select" id="securityQuestion2" onchange="updateQuestions('securityQuestions', 2)"></select>
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <input type="text" class="form-control" id="securityAnswer2" placeholder="Your Answer">
+                                                <div class="invalid-feedback"></div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="mb-2">
-                                            <label for="email" class="form-label">Security Question 2 <span class="form-label-required">*</span></label>
-                                            <select class="form-select" aria-label="Default select example">
-                                                <option value="q1">What is your best friend's name?</option>
-                                                <option value="q2">What is your favourite food?</option>
-                                            </select>
+                                        <div class="col-12">
+                                            <div class="mb-2">
+                                                <label for="email" class="form-label">Security Question 3 <span class="form-label-required">*</span></label>
+                                                <select class="form-select" id="securityQuestion3" onchange="updateQuestions('securityQuestions', 3)"></select>
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <input type="text" class="form-control" id="securityAnswer3" placeholder="Your Answer">
+                                                <div class="invalid-feedback"></div>
+                                            </div>
                                         </div>
-                                        <div class="mb-3">
-                                            <input type="email" class="form-control" id="email" placeholder="The answer" value="Achraf Benjelloun">
+                                        <div class="col-12">
+                                            <button class="btn btn-primary" type="button" onclick="updateAnswers()">Update Questions</button>
                                         </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="mb-2">
-                                            <label for="email" class="form-label">Security Question 3 <span class="form-label-required">*</span></label>
-                                            <select class="form-select" aria-label="Default select example">
-                                                <option value="q1">What is your best friend's name?</option>
-                                                <option value="q2">What is your favourite food?</option>
-                                            </select>
-                                        </div>
-                                        <div class="mb-3">
-                                            <input type="email" class="form-control" id="email" placeholder="The answer" value="Achraf Benjelloun">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <button class="btn btn-primary" type="button">Update Questions</button>
                                     </div>
                                 </div>
                             </div>
@@ -239,11 +239,11 @@
                                                 class="form-label-required">*</span></label>
                                         <div class="radio-btns">
                                             <label>
-                                                <input type="radio" name="gendre">
+                                                <input type="radio" name="gender">
                                                 <span>Income</span>
                                             </label>
                                             <label>
-                                                <input type="radio" name="gendre">
+                                                <input type="radio" name="gender">
                                                 <span>Expense</span>
                                             </label>
                                         </div>
@@ -251,16 +251,14 @@
                                 </div>
                                 <div class="col-12">
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Amount <span
-                                                class="form-label-required">*</span></label>
-                                        <input type="text" class="form-control" id="address" placeholder="">
+                                        <label for="" class="form-label">Amount <span class="form-label-required">*</span></label>
+                                        <input type="text" class="form-control" placeholder="">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Motif / Description <span
-                                                class="form-label-required">*</span></label>
-                                        <input type="text" class="form-control" id="address" placeholder="">
+                                        <label for="" class="form-label">Motif / Description <span class="form-label-required">*</span></label>
+                                        <input type="text" class="form-control" placeholder="">
                                     </div>
                                 </div>
                             </div>
@@ -278,5 +276,7 @@
     <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/vendor/axios/axios.min.js"></script>
     <script src="assets/js/app.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/security.js"></script>
 </body>
 </html>
