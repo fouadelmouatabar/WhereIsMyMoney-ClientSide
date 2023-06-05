@@ -14,7 +14,6 @@ const userBirthDay = document.getElementById("userBirthDay");
 const userBirthMonth = document.getElementById("userBirthMonth");
 const userBirthYear = document.getElementById("userBirthYear");
 const userCurrency = document.getElementById("userCurrency");
-const errorMsgRequired = "This field is required.";
 const profileFeedback = document.getElementById("profileFeedback");
 const deleteAccountFeedback = document.getElementById("deleteAccountFeedback");
 const confirmDeleteInput = document.getElementById("confirmDeleteInput");
@@ -60,19 +59,19 @@ function setUserInfo() {
 function updateProfileInfo() {
     let formErrors = false;
     if(userFname.value == "") {
-        inputError(userFname, errorMsgRequired);
+        inputError(userFname, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(userFname);
     }
     if(userLname.value == "") {
-        inputError(userLname, errorMsgRequired);
+        inputError(userLname, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(userLname);
     }
     if(getRadiosVal(userGender, "gender") == "") {
-        inputError(userGender, errorMsgRequired);
+        inputError(userGender, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(userGender);
@@ -80,38 +79,38 @@ function updateProfileInfo() {
     if(userBirthYear.value == "" ||
         userBirthMonth.value == "" ||
         userBirthDay.value == "" ) {
-        inputError(userBirthDate, errorMsgRequired);
+        inputError(userBirthDate, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(userBirthDate);
     }
     if(userAddress.value == "") {
-        inputError(userAddress, errorMsgRequired);
+        inputError(userAddress, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(userAddress);
     }
     if(userCity.value == "") {
-        inputError(userCity, errorMsgRequired);
+        inputError(userCity, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(userCity);
     }
     if(userCountry.value == "") {
-        inputError(userCountry, errorMsgRequired);
+        inputError(userCountry, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(userCountry);
     }
     if(userPhoneCode.value == "" ||
         userPhoneNumber.value == "") {
-        inputError(userPhone, errorMsgRequired);
+        inputError(userPhone, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(userPhone);
     }
     if(userPhoneNumber.value == "") {
-        inputError(userPhone, errorMsgRequired);
+        inputError(userPhone, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(userPhone);

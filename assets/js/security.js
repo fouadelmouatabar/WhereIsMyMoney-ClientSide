@@ -6,7 +6,6 @@ const securityQuestion3 = document.getElementById("securityQuestion3");
 const securityAnswer1 = document.getElementById("securityAnswer1");
 const securityAnswer2 = document.getElementById("securityAnswer2");
 const securityAnswer3 = document.getElementById("securityAnswer3");
-const errorMsgRequired = "This field is required.";
 const questionsFeedback = document.getElementById("questionsFeedback");
 const currentPass = document.getElementById("currentPass");
 const newPass = document.getElementById("newPass");
@@ -34,37 +33,37 @@ function updateAnswers() {
     let formErrors = false;
 
     if(securityQuestion1.value == "") {
-        inputError(securityQuestion1, errorMsgRequired);
+        inputError(securityQuestion1, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(securityQuestion1);
     }
     if(securityQuestion2.value == "") {
-        inputError(securityQuestion2, errorMsgRequired);
+        inputError(securityQuestion2, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(securityQuestion2);
     }
     if(securityQuestion3.value == "") {
-        inputError(securityQuestion3, errorMsgRequired);
+        inputError(securityQuestion3, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(securityQuestion3);
     }
     if(securityAnswer1.value == "") {
-        inputError(securityAnswer1, errorMsgRequired);
+        inputError(securityAnswer1, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(securityAnswer1);
     }
     if(securityAnswer2.value == "") {
-        inputError(securityAnswer2, errorMsgRequired);
+        inputError(securityAnswer2, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(securityAnswer2);
     }
     if(securityAnswer3.value == "") {
-        inputError(securityAnswer3, errorMsgRequired);
+        inputError(securityAnswer3, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(securityAnswer3);
@@ -132,7 +131,7 @@ function updatePassword() {
         inputError(newPass, "This field is required.");
     } else if(checkPassStrength(newPass) < 4) {
         formErrors = true;
-        inputError(newPass, "Please choose a stronger password.");
+        inputError(newPass, errorPassWeak);
     } else {
         inputValid(newPass);
     }
@@ -142,7 +141,7 @@ function updatePassword() {
         inputError(confirmPass, "This field is required.");
     } else if(newPass.value !== confirmPass.value) {
         formErrors = true;
-        inputError(confirmPass, "Passwords do not match.");
+        inputError(confirmPass, errorPassMatch);
     } else {
         inputValid(confirmPass);
     }

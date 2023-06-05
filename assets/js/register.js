@@ -23,7 +23,6 @@ const registerQuestionThree = document.getElementById("registerQuestionThree");
 const registerAnswerOne = document.getElementById("registerAnswerOne");
 const registerAnswerTwo = document.getElementById("registerAnswerTwo");
 const registerAnswerThree = document.getElementById("registerAnswerThree");
-const errorMsgRequired = "This field is required.";
 const registerFeedback = document.getElementById("registerFeedback");
 
 if(registerPass) {
@@ -53,30 +52,30 @@ function registerAuthValidate() {
 
     if(registerEmail.value == "") {
         formErrors = true;
-        inputError(registerEmail, "This field is required.");
+        inputError(registerEmail, errorRequiredField);
     } else if(validateEmail(registerEmail.value) == false) {
         formErrors = true;
-        inputError(registerEmail, "Please enter a valid email address.");
+        inputError(registerEmail, errorValidEmail);
     } else {
         inputValid(registerEmail);
     }
 
     if(registerPass.value == "") {
         formErrors = true;
-        inputError(registerPass, "This field is required.");
+        inputError(registerPass, errorRequiredField);
     } else if(checkPassStrength(registerPass) < 4) {
         formErrors = true;
-        inputError(registerPass, "Please choose a stronger password.");
+        inputError(registerPass, errorPassWeak);
     } else {
         inputValid(registerPass);
     }
 
     if(registerConfirmPass.value == "") {
         formErrors = true;
-        inputError(registerConfirmPass, "This field is required.");
+        inputError(registerConfirmPass, errorRequiredField);
     } else if(registerPass.value !== registerConfirmPass.value) {
         formErrors = true;
-        inputError(registerConfirmPass, "Passwords do not match.");
+        inputError(registerConfirmPass, errorPassMatch);
     } else {
         inputValid(registerConfirmPass);
     }
@@ -89,49 +88,49 @@ function registerInfosValidate() {
     let formErrors = false;
 
     if(registerFname.value == "") {
-        inputError(registerFname, errorMsgRequired);
+        inputError(registerFname, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(registerFname);
     }
 
     if(registerLname.value == "") {
-        inputError(registerLname, errorMsgRequired);
+        inputError(registerLname, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(registerLname);
     }
 
     if(registerAddress.value == "") {
-        inputError(registerAddress, errorMsgRequired);
+        inputError(registerAddress, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(registerAddress);
     }
 
     if(registerCity.value == "") {
-        inputError(registerCity, errorMsgRequired);
+        inputError(registerCity, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(registerCity);
     }
 
     if(registerCountry.value == "") {
-        inputError(registerCountry, errorMsgRequired);
+        inputError(registerCountry, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(registerCountry);
     }
 
     if(registerCurrency.value == "") {
-        inputError(registerCurrency, errorMsgRequired);
+        inputError(registerCurrency, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(registerCurrency);
     }
 
     if(getRadiosVal(registerGender, "gender") == "") {
-        inputError(registerGender, errorMsgRequired);
+        inputError(registerGender, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(registerGender);
@@ -140,14 +139,14 @@ function registerInfosValidate() {
     if(registerBirthDateYY.value == currentYear &&
         registerBirthDateMM.value == currentMonth &&
         registerBirthDateDD.value == currentDay ) {
-        inputError(registerBirthDate, errorMsgRequired);
+        inputError(registerBirthDate, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(registerBirthDate);
     }
 
     if(registerPhoneNumber.value == "") {
-        inputError(registerPhone, errorMsgRequired);
+        inputError(registerPhone, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(registerPhone);
@@ -156,24 +155,6 @@ function registerInfosValidate() {
 
     if(formErrors == false) {
         pageTab(3);
-
-        // let elements = document.getElementsByClassName("pageTab");
-        // let elementsArray = Array.from(elements);
-        // elementsArray[1].classList.add("d-none");
-        // elementsArray[2].classList.remove("d-none");
-
-        // let registerPhoneVal = `${registerPhoneCode.value} ${registerPhoneNumber.value}`;
-        // let registerBirthDateVal = `${registerBirthDateYY.value}/${registerBirthDateMM.value}/${registerBirthDateDD.value}`;
-        // let accountGenderVal = radioBtnValue(accountGender, "gender");
-        // localStorage.setItem("registerFname", registerFname.value);
-        // localStorage.setItem("registerLname", registerLname.value);
-        // localStorage.setItem("registerGender", accountGenderVal);
-        // localStorage.setItem("registerBirthdate", registerBirthDateVal);
-        // localStorage.setItem("registerAddress", registerAddress.value);
-        // localStorage.setItem("registerCity", registerCity.value);
-        // localStorage.setItem("registerCountry", registerCountry.value);
-        // localStorage.setItem("registerCurrency", registerCurrency.value);
-        // localStorage.setItem("registerPhone", registerPhoneVal);
     }
 }
 
@@ -181,37 +162,37 @@ function registerFinalStep() {
     let formErrors = false;
 
     if(registerQuestionOne.value == "") {
-        inputError(registerQuestionOne, errorMsgRequired);
+        inputError(registerQuestionOne, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(registerQuestionOne);
     }
     if(registerQuestionTwo.value == "") {
-        inputError(registerQuestionTwo, errorMsgRequired);
+        inputError(registerQuestionTwo, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(registerQuestionTwo);
     }
     if(registerQuestionThree.value == "") {
-        inputError(registerQuestionThree, errorMsgRequired);
+        inputError(registerQuestionThree, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(registerQuestionThree);
     }
     if(registerAnswerOne.value == "") {
-        inputError(registerAnswerOne, errorMsgRequired);
+        inputError(registerAnswerOne, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(registerAnswerOne);
     }
     if(registerAnswerTwo.value == "") {
-        inputError(registerAnswerTwo, errorMsgRequired);
+        inputError(registerAnswerTwo, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(registerAnswerTwo);
     }
     if(registerAnswerThree.value == "") {
-        inputError(registerAnswerThree, errorMsgRequired);
+        inputError(registerAnswerThree, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(registerAnswerThree);

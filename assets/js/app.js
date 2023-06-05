@@ -8,6 +8,10 @@ const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep
 const currentYear = currentDate.getFullYear();
 const currentMonth = currentDate.getMonth() + 1;
 // const currentMonthName = monthNames[currentDate.getMonth()];
+const errorRequiredField = "This field is required.";
+const errorValidEmail = "Please enter a valid email address.";
+const errorPassMatch = "Passwords do not match.";
+const errorPassWeak = "Please choose a stronger password.";
 
 document.addEventListener("DOMContentLoaded", clickableRows());
 
@@ -242,7 +246,6 @@ function updateQuestions(formId, select) {
                     }
                 }
                 if(optionDisabled == true) {
-                    console.log(option)
                     option.disabled = true;
                 } else {
                     option.disabled = false;
@@ -271,7 +274,6 @@ function setQuestions(select, selectedOption) {
                     option.selected = false;
                 }
             }
-            console.log(option);
             select.appendChild(option);
         }
     }).catch((err) => {
