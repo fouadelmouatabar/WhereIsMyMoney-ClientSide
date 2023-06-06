@@ -185,42 +185,41 @@
                     </div>
                     <div class="modal-body">
                         <div class="sign-form">
+                            <div class="operation-feedback" id="operFeedback"></div>
                             <div class="row">
                                 <div class="col-12">
                                     <div class="mb-3">
-                                        <label class="form-label">Operation Type <span
-                                                class="form-label-required">*</span></label>
-                                        <div class="radio-btns">
+                                        <label class="form-label">Operation Type <span class="form-label-required">*</span></label>
+                                        <div class="radio-btns" id="operType">
                                             <label>
-                                                <input type="radio" name="gender">
+                                                <input type="radio" name="operType" value="INCOME">
                                                 <span>Income</span>
                                             </label>
                                             <label>
-                                                <input type="radio" name="gender">
+                                                <input type="radio" name="operType" value="EXPENSE">
                                                 <span>Expense</span>
                                             </label>
                                         </div>
+                                        <div class="invalid-feedback"></div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Amount <span
-                                                class="form-label-required">*</span></label>
-                                        <input type="text" class="form-control" id="address" placeholder="">
+                                        <label for="" class="form-label">Amount <span class="form-label-required">*</span></label>
+                                        <input type="text" class="form-control" id="operAmount" placeholder="">
+                                        <div class="invalid-feedback"></div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="mb-3">
-                                        <label for="" class="form-label">Motif / Description <span
-                                                class="form-label-required">*</span></label>
-                                        <input type="text" class="form-control" id="address" placeholder="">
+                                        <label for="" class="form-label">Motif / Description <span class="form-label-required">*</span></label>
+                                        <input type="text" class="form-control" id="operDesc" placeholder="">
+                                        <div class="invalid-feedback"></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="d-grid">
-                                <a href="signup-3.html">
-                                    <button class="btn btn-primary" type="button">Submit</button>
-                                </a>
+                                <button class="btn btn-primary" type="button" onclick="addTransaction()">Submit</button>
                             </div>
                         </div>
                     </div>

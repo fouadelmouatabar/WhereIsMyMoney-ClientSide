@@ -1,7 +1,7 @@
 function loginValidate() {
-    const loginEmail = document.getElementById("loginEmail");
-    const loginPass = document.getElementById("loginPass");
-    const loginFeedback = document.getElementById("loginFeedback");
+    const loginEmail = document.querySelector("#loginEmail");
+    const loginPass = document.querySelector("#loginPass");
+    const loginFeedback = document.querySelector("#loginFeedback");
     const url = `${baseUrl}/account/authenticate`;
     const bodyParams = {
         "email": loginEmail.value,
@@ -42,10 +42,11 @@ function loginValidate() {
             localStorage.setItem("city", response.data.city);
             localStorage.setItem("currency", response.data.currency);
             localStorage.setItem("creationDate", response.data.creationDate);
+            localStorage.setItem("securityAnswers", JSON.stringify(response.data.securityAnswers));
             window.location = `profile.html`;
         }).catch((err) => {
             const errorHTML = `<div id="formFeedback" class="login-feedback alert alert-danger" role="alert">${err.response.data.message}</div>`;
-            const loginErrorElem = document.getElementById("formFeedback");
+            const loginErrorElem = document.querySelector("#formFeedback");
             if (loginErrorElem !== null) {
                 console.log(err.response.data.message);
                 loginErrorElem.innerText = err.response.data.message;

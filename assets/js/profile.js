@@ -1,22 +1,22 @@
-const userFullName = document.getElementById("profileName");
-const userDate = document.getElementById("profileDate");
-const userFname = document.getElementById("userFname");
-const userLname = document.getElementById("userLname");
-const userGender = document.getElementById("userGender");
-const userAddress = document.getElementById("userAddress");
-const userCity = document.getElementById("userCity");
-const userCountry = document.getElementById("userCountry");
-const userPhone = document.getElementById("userPhone");
-const userPhoneCode = document.getElementById("userPhoneCode");
-const userPhoneNumber = document.getElementById("userPhoneNumber");
-const userBirthDate = document.getElementById("userBirthDate");
-const userBirthDay = document.getElementById("userBirthDay");
-const userBirthMonth = document.getElementById("userBirthMonth");
-const userBirthYear = document.getElementById("userBirthYear");
-const userCurrency = document.getElementById("userCurrency");
-const profileFeedback = document.getElementById("profileFeedback");
-const deleteAccountFeedback = document.getElementById("deleteAccountFeedback");
-const confirmDeleteInput = document.getElementById("confirmDeleteInput");
+const userFullName = document.querySelector("#profileName");
+const userDate = document.querySelector("#profileDate");
+const userFname = document.querySelector("#userFname");
+const userLname = document.querySelector("#userLname");
+const userGender = document.querySelector("#userGender");
+const userAddress = document.querySelector("#userAddress");
+const userCity = document.querySelector("#userCity");
+const userCountry = document.querySelector("#userCountry");
+const userPhone = document.querySelector("#userPhone");
+const userPhoneCode = document.querySelector("#userPhoneCode");
+const userPhoneNumber = document.querySelector("#userPhoneNumber");
+const userBirthDate = document.querySelector("#userBirthDate");
+const userBirthDay = document.querySelector("#userBirthDay");
+const userBirthMonth = document.querySelector("#userBirthMonth");
+const userBirthYear = document.querySelector("#userBirthYear");
+const userCurrency = document.querySelector("#userCurrency");
+const profileFeedback = document.querySelector("#profileFeedback");
+const deleteAccountFeedback = document.querySelector("#deleteAccountFeedback");
+const confirmDeleteInput = document.querySelector("#confirmDeleteInput");
 
 
 window.onload = setUserInfo;
@@ -118,7 +118,7 @@ function updateProfileInfo() {
     if(formErrors == false) {
         const accessToken = localStorage.getItem("accessToken");
         const userId = localStorage.getItem("accountId");
-        const url = `${baseUrl}/account/update/user-infos/`;
+        const url = `${baseUrl}/account/update/user-infos/${userId}`;
         const bodyParams = {
             "firstName":userFname.value,
             "lastName":userLname.value,
@@ -131,13 +131,11 @@ function updateProfileInfo() {
         }
         axios.put(url, bodyParams, {
             headers: {
-                Authorization: `Bearer ${accessToken}`,
-            },
-            params: {
-                id: userId,
-            },
+                Authorization: `Bearer ${accessToken}`
+            }
         })
         .then((response) => {
+            console.log(response);
             profileFeedback.innerHTML = "";
             localStorage.setItem("accessToken", response.data.access_token);
             localStorage.setItem("accountId", response.data.accountId);
@@ -152,7 +150,7 @@ function updateProfileInfo() {
             localStorage.setItem("city", response.data.city);
             localStorage.setItem("currency", response.data.currency);
             localStorage.setItem("creationDate", response.data.creationDate);
-            let alertSuccess = `<div class="alert alert-danger">${response.data.message}</div>`;
+            let alertSuccess = `<div class="alert alert-success">You have successfully updated your profile.</div>`;
             profileFeedback.innerHTML = alertSuccess;
         }).catch((err) => {
             let alertError = `<div class="alert alert-danger">${err.response.data.message}</div>`;
@@ -165,23 +163,20 @@ function deleteAccount() {
     let formErrors = false;
     if(confirmDeleteInput.value != "DELETE") {
         inputError(confirmDeleteInput);
-        document.getElementById("deleteHelper").classList.add("text-danger"); 
+        document.querySelector("#deleteHelper").classList.add("text-danger"); 
         formErrors = true;
     } else {
         inputValid(confirmDeleteInput);
-        document.getElementById("deleteHelper").classList.remove("text-danger");
+        document.querySelector("#deleteHelper").classList.remove("text-danger");
     }
     if(formErrors === false) {
         const accessToken = localStorage.getItem("accessToken");
         const userId = localStorage.getItem("accountId");
-        const url = `${baseUrl}/account/delete/`;
+        const url = `${baseUrl}/account/delete/${userId}`;
         axios.delete(url, {
             headers: {
-                Authorization: `Bearer ${accessToken}`,
-            },
-            params: {
-                id: userId,
-            },
+                Authorization: `Bearer ${accessToken}`
+            }
         })
         .then((response) => {
             let alertSuccess = `<div class="alert alert-success">${response.data.message}</div>`;

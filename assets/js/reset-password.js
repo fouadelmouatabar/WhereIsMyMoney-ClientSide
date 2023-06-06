@@ -1,13 +1,13 @@
-const recoveryEmail = document.getElementById("recoveryEmail");
-const recoveryQuestion1 = document.getElementById("recoveryQuestion1");
-const recoveryQuestion2 = document.getElementById("recoveryQuestion2");
-const recoveryQuestion3 = document.getElementById("recoveryQuestion3");
-const recoveryAnswer1 = document.getElementById("recoveryAnswer1");
-const recoveryAnswer2 = document.getElementById("recoveryAnswer2");
-const recoveryAnswer3 = document.getElementById("recoveryAnswer3");
-const recoveryPass = document.getElementById("recoveryPass");
-const recoveryConfirmPass = document.getElementById("recoveryConfirmPass");
-const recoveryFeedback = document.getElementById("registerFeedback");
+const recoveryEmail = document.querySelector("#recoveryEmail");
+const recoveryQuestion1 = document.querySelector("#recoveryQuestion1");
+const recoveryQuestion2 = document.querySelector("#recoveryQuestion2");
+const recoveryQuestion3 = document.querySelector("#recoveryQuestion3");
+const recoveryAnswer1 = document.querySelector("#recoveryAnswer1");
+const recoveryAnswer2 = document.querySelector("#recoveryAnswer2");
+const recoveryAnswer3 = document.querySelector("#recoveryAnswer3");
+const recoveryPass = document.querySelector("#recoveryPass");
+const recoveryConfirmPass = document.querySelector("#recoveryConfirmPass");
+const recoveryFeedback = document.querySelector("#registerFeedback");
 
 
 function passRecoveryCheck() {
@@ -87,7 +87,7 @@ function passRecovery() {
     }
 
     if(formErrors == false) {
-        const url = `${baseUrl}/account/password-recovery/`;
+        const url = `${baseUrl}/account/password-recovery/${recoveryEmail.value}/${recoveryPass.value}`;
         const bodyParams = [
             {
                 "questionId": Number(recoveryQuestion1.value),
@@ -102,12 +102,7 @@ function passRecovery() {
                 "answer": recoveryAnswer3.value
             }
         ];
-        axios.put(url, bodyParams, {
-            params: {
-                email: recoveryEmail.value,
-                newPassword: recoveryPass.value,
-            },
-        })
+        axios.put(url, bodyParams)
         .then((response) => {
             console.log(response);
             recoveryFeedback.innerHTML = "";

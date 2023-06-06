@@ -1,29 +1,29 @@
-const registerEmail = document.getElementById("registerEmail");
-const registerPass = document.getElementById("registerPass");
-const registerConfirmPass = document.getElementById("registerConfirmPass");
-const registerFname = document.getElementById("registerFname");
-const registerLname = document.getElementById("registerLname");
-const registerGender = document.getElementById("registerGender");
-const registerAddress = document.getElementById("registerAddress");
-const registerCity = document.getElementById("registerCity");
-const registerCountry = document.getElementById("registerCountry");
-const registerCurrency = document.getElementById("registerCurrency");
-const registerPhone = document.getElementById("registerPhone");
-const registerPhoneCode = document.getElementById("registerPhoneCode");
-const registerPhoneNumber = document.getElementById("registerPhoneNumber");
-const registerBirthDate = document.getElementById("registerBirthDate");
-const registerBirthDateYY = document.getElementById("registerBirthDateYY");
-const registerBirthDateMM = document.getElementById("registerBirthDateMM");
-const registerBirthDateDD = document.getElementById("registerBirthDateDD");
+const registerEmail = document.querySelector("#registerEmail");
+const registerPass = document.querySelector("#registerPass");
+const registerConfirmPass = document.querySelector("#registerConfirmPass");
+const registerFname = document.querySelector("#registerFname");
+const registerLname = document.querySelector("#registerLname");
+const registerGender = document.querySelector("#registerGender");
+const registerAddress = document.querySelector("#registerAddress");
+const registerCity = document.querySelector("#registerCity");
+const registerCountry = document.querySelector("#registerCountry");
+const registerCurrency = document.querySelector("#registerCurrency");
+const registerPhone = document.querySelector("#registerPhone");
+const registerPhoneCode = document.querySelector("#registerPhoneCode");
+const registerPhoneNumber = document.querySelector("#registerPhoneNumber");
+const registerBirthDate = document.querySelector("#registerBirthDate");
+const registerBirthDateYY = document.querySelector("#registerBirthDateYY");
+const registerBirthDateMM = document.querySelector("#registerBirthDateMM");
+const registerBirthDateDD = document.querySelector("#registerBirthDateDD");
 let registerBirthDateVal = `${registerBirthDateYY.value}-${registerBirthDateMM.value}-${registerBirthDateDD.value}`;
-const registerQuestionsForm = document.getElementById("securityQuestions");
-const registerQuestionOne = document.getElementById("registerQuestionOne");
-const registerQuestionTwo = document.getElementById("registerQuestionTwo");
-const registerQuestionThree = document.getElementById("registerQuestionThree");
-const registerAnswerOne = document.getElementById("registerAnswerOne");
-const registerAnswerTwo = document.getElementById("registerAnswerTwo");
-const registerAnswerThree = document.getElementById("registerAnswerThree");
-const registerFeedback = document.getElementById("registerFeedback");
+const registerQuestionsForm = document.querySelector("#securityQuestions");
+const registerQuestionOne = document.querySelector("#registerQuestionOne");
+const registerQuestionTwo = document.querySelector("#registerQuestionTwo");
+const registerQuestionThree = document.querySelector("#registerQuestionThree");
+const registerAnswerOne = document.querySelector("#registerAnswerOne");
+const registerAnswerTwo = document.querySelector("#registerAnswerTwo");
+const registerAnswerThree = document.querySelector("#registerAnswerThree");
+const registerFeedback = document.querySelector("#registerFeedback");
 
 if(registerPass) {
     checkPassStrength(registerPass);
@@ -248,7 +248,7 @@ function registerFinalStep() {
         }).catch((err) => {
             pageTab(1);
             const errorHTML = `<div id="formFeedback" class="login-feedback alert alert-danger" role="alert">${err.response.data.message}</div>`;
-            const formFeedback = document.getElementById("formFeedback");
+            const formFeedback = document.querySelector("#formFeedback");
             if (formFeedback !== null) {
                 console.log(err.response.data.message);
                 formFeedback.innerText = err.response.data.message;

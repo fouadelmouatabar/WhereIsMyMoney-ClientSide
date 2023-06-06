@@ -1,15 +1,16 @@
 
-const sQuestionsForm = document.getElementById("securityQuestions");
-const securityQuestion1 = document.getElementById("securityQuestion1");
-const securityQuestion2 = document.getElementById("securityQuestion2");
-const securityQuestion3 = document.getElementById("securityQuestion3");
-const securityAnswer1 = document.getElementById("securityAnswer1");
-const securityAnswer2 = document.getElementById("securityAnswer2");
-const securityAnswer3 = document.getElementById("securityAnswer3");
-const questionsFeedback = document.getElementById("questionsFeedback");
-const currentPass = document.getElementById("currentPass");
-const newPass = document.getElementById("newPass");
-const confirmPass = document.getElementById("confirmPass");
+const sQuestionsForm = document.querySelector("#securityQuestions");
+const securityQuestion1 = document.querySelector("#securityQuestion1");
+const securityQuestion2 = document.querySelector("#securityQuestion2");
+const securityQuestion3 = document.querySelector("#securityQuestion3");
+const securityAnswer1 = document.querySelector("#securityAnswer1");
+const securityAnswer2 = document.querySelector("#securityAnswer2");
+const securityAnswer3 = document.querySelector("#securityAnswer3");
+const questionsFeedback = document.querySelector("#questionsFeedback");
+const passFeedback = document.querySelector("#passFeedback");
+const currentPass = document.querySelector("#currentPass");
+const newPass = document.querySelector("#newPass");
+const confirmPass = document.querySelector("#confirmPass");
 
 window.onload = setAnswers(sQuestionsForm);
 
@@ -25,7 +26,7 @@ function setAnswers(form) {
         for (let i = 0; i < sAnswers.length; i++) {
             sAnswers[i].value = answers[i].answer;
         }
-        form.sQuestionsForm.querySelectorAll("select");
+        form.querySelectorAll("select");
     }
 }
 
@@ -71,46 +72,33 @@ function updateAnswers() {
     if(formErrors == false) {
         const accessToken = localStorage.getItem("accessToken");
         const userId = localStorage.getItem("accountId");
-        const url = `${baseUrl}/account/update/security-infos/`;
-        const bodyParams = {
-            "securityAnswers": [
-              {
+        const url = `${baseUrl}/account/update/security-infos/${userId}`;
+        const bodyParams = [
+            {
                 "questionId": Number(securityQuestion1.value),
                 "answer": securityAnswer1.value
-              },
-              {
+            },
+            {
                 "questionId": Number(securityQuestion2.value),
                 "answer": securityAnswer2.value
-              },
-              {
+            },
+            {
                 "questionId": Number(securityQuestion3.value),
                 "answer": securityAnswer3.value
-              }
-            ]
-        }
-        let cons = `(${url}, ${JSON.stringify(bodyParams)}, { headers: { Authorization: Bearer ${accessToken} }, params: { id: ${userId} } })`;
-        console.log(cons);
+            }
+        ];
         axios.put(url, bodyParams, {
             headers: {
                 Authorization: `Bearer ${accessToken}`
-            },
-            params: {
-                id: userId,
-            },
+            }
         })
         .then((response) => {
             questionsFeedback.innerHTML = "";
             localStorage.setItem("securityAnswers", JSON.stringify(response.data.securityAnswers));
-            location.reload();
+            // location.reload();
         }).catch((err) => {
-            const errorHTML = `<div id="formFeedbackQA" class="login-feedback alert alert-danger" role="alert">${err.response.data.message}</div>`;
-            const formFeedback = document.getElementById("formFeedbackQA");
-            if (formFeedback !== null) {
-                console.log(err.response.data.message);
-                formFeedback.innerText = err.response.data.message;
-            } else {
-                questionsFeedback.innerHTML = errorHTML;
-            }
+            const errorHTML = `<div class="alert alert-danger">${err.response.data.message}</div>`;
+            questionsFeedback.innerHTML = errorHTML;
         });
     }
 }
@@ -148,28 +136,21 @@ function updatePassword() {
     if(formErrors == false) {
         const accessToken = localStorage.getItem("accessToken");
         const userId = localStorage.getItem("accountId");
-        const url = `${baseUrl}/account/password-recovery/`;
-        axios.put(url, bodyParams, {
+        const url = `${baseUrl}/account/password-reset/${userId}/${currentPass.value}/${newPass.value}`;
+        axios.put(url, {}, {
             headers: {
-                Authorization: `Bearer ${accessToken}`,
-            },
-            params: {
-                id: userId,
-            },
+                Authorization: `Bearer ${accessToken}`
+            }
         })
         .then((response) => {
-            questionsFeedback.innerHTML = "";
-            localStorage.setItem("securityAnswers", JSON.stringify(response.data.securityAnswers));
-            location.reload();
+            console.log(response);
+            localStorage.setItem("notifType", "success");
+            localStorage.setItem("notifText", "Your password successfully updated!");
+            showNotification(passFeedback);
+            window.location = "signin.html";
         }).catch((err) => {
-            const errorHTML = `<div id="formFeedbackQA" class="login-feedback alert alert-danger" role="alert">${err.response.data.message}</div>`;
-            const formFeedback = document.getElementById("formFeedbackQA");
-            if (formFeedback !== null) {
-                console.log(err.response.data.message);
-                formFeedback.innerText = err.response.data.message;
-            } else {
-                questionsFeedback.innerHTML = errorHTML;
-            }
+            const errorHTML = `<div class="alert alert-danger">${err.response.data.message}</div>`;
+            questionsFeedback.innerHTML = errorHTML;
         });
     }
 }
