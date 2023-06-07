@@ -42,8 +42,9 @@ function loginValidate() {
             localStorage.setItem("city", response.data.city);
             localStorage.setItem("currency", response.data.currency);
             localStorage.setItem("creationDate", response.data.creationDate);
+            localStorage.setItem("profileImageId", response.data.profileImageId);
             localStorage.setItem("securityAnswers", JSON.stringify(response.data.securityAnswers));
-            window.location = `profile.html`;
+            window.location = `dashboard.html`;
         }).catch((err) => {
             const errorHTML = `<div id="formFeedback" class="login-feedback alert alert-danger" role="alert">${err.response.data.message}</div>`;
             const loginErrorElem = document.querySelector("#formFeedback");

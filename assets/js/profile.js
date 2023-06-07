@@ -1,5 +1,7 @@
 const userFullName = document.querySelector("#profileName");
 const userDate = document.querySelector("#profileDate");
+const userEmail = document.querySelector("#profileEmail");
+const userAvatar = document.querySelector("#profileAvatar");
 const userFname = document.querySelector("#userFname");
 const userLname = document.querySelector("#userLname");
 const userGender = document.querySelector("#userGender");
@@ -21,15 +23,77 @@ const confirmDeleteInput = document.querySelector("#confirmDeleteInput");
 
 window.onload = setUserInfo;
 
+function setUserAvatar(e) {
+    let fileInput = e.target;
+    if (fileInput.files && fileInput.files[0]) {
+        
+        let file = fileInput.files[0];
+
+        let reader = new FileReader();
+        reader.onload = function(e) {
+            userAvatar.src= e.target.result;
+        }
+        reader.readAsDataURL(file);
+
+        const accessToken = localStorage.getItem("accessToken");
+        const userId = localStorage.getItem("accountId");
+        const url = `${baseUrl}/image/add/${userId}`;
+        
+        let formData = new FormData();
+        formData.append('image', file);
+        
+        axios.post(url, formData, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        })
+        .then((response) => {
+            console.log(response);
+            localStorage.setItem("profileImageId", response.data.imageId);
+        });
+    }
+}
+
+function getUserAvatar() {
+    if(localStorage.getItem("profileImageId") !== null &&
+    localStorage.getItem("accountId") !== null ) {
+        const accessToken = localStorage.getItem("accessToken");
+        const userId = localStorage.getItem("accountId");
+        const imageId = localStorage.getItem("profileImageId");
+        const url = `${baseUrl}/image/`;
+        const bodyParams = {
+            "accountId":userId,
+            "imageId":imageId
+        }
+        axios.post(url, bodyParams, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            },
+            responseType: 'blob'
+        })
+        .then(response => {
+            const url = window.URL.createObjectURL(response.data);
+            userAvatar.src = url;
+        })
+        .catch((err) => {
+            console.log(err);
+            return;
+        });
+    }
+}
+
 function setUserInfo() {
+    getUserAvatar();
     if(localStorage.getItem("firstName")  !== null && localStorage.getItem("lastName")  !== null ) {
         userFullName.innerText = `${localStorage.getItem("firstName")} ${localStorage.getItem("lastName")}`;
         userFname.value = localStorage.getItem("firstName");
         userLname.value = localStorage.getItem("lastName");
     }
     if(localStorage.getItem("creationDate")  !== null ) {
-        let creationDate = localStorage.getItem("creationDate");
-        userDate.innerText += ` ${creationDate}`;
+        userDate.innerText += ` ${localStorage.getItem("creationDate")}`;
+    }
+    if(localStorage.getItem("email")  !== null ) {
+        userEmail.innerText = localStorage.getItem("email");
     }
     if(localStorage.getItem("addressLabel")  !== null ) {
         userAddress.value = localStorage.getItem("addressLabel");
@@ -54,7 +118,6 @@ function setUserInfo() {
     }
 
 }
-
 
 function updateProfileInfo() {
     let formErrors = false;

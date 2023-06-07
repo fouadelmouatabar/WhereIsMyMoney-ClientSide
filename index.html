@@ -8,159 +8,71 @@
     <link rel="icon" type="image/png" sizes="196x196" href="assets/img/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/uicons-bold/uicons-bold-rounded.css">
     <link rel="stylesheet" href="assets/css/core.css">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="dashboard-page">
-    <div class="page-wrap">
-        <div class="dash-sidebar">
-            <div class="logo">
-                <a href="#">
-                    <img src="assets/img/logo-light.png" alt="">
-                </a>
-            </div>
-            <div class="dash-menu">
-                <div class="menu-column">
-                    <ul>
-                        <li>
-                            <a href="index.html" class="menu-link active">
-                                <span class="menu-icon">
-                                    <i class="fi fi-br-home"></i>
-                                </span>
-                                <span class="menu-title">Dashboards</span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="transactions.html" class="menu-link">
-                                <span class="menu-icon">
-                                    <i class="fi fi-br-time-forward"></i>
-                                </span>
-                                <span class="menu-title">Transactions</span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="incomes.html" class="menu-link">
-                                <span class="menu-icon">
-                                    <i class="fi fi-br-wallet"></i>
-                                </span>
-                                <span class="menu-title">Incomes</span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="expenses.html" class="menu-link">
-                                <span class="menu-icon">
-                                    <i class="fi fi-br-cart-shopping-fast"></i>
-                                </span>
-                                <span class="menu-title">Expenses</span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="menu-column">
-                    <span class="menu-column-title">Account</span>
-                    <ul>
-                        <li>
-                            <a href="profile.html" class="menu-link">
-                                <span class="menu-icon">
-                                    <i class="fi fi-br-circle-user"></i>
-                                </span>
-                                <span class="menu-title">Profile</span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="account-security.html" class="menu-link">
-                                <span class="menu-icon">
-                                    <i class="fi fi-br-fingerprint"></i>
-                                </span>
-                                <span class="menu-title">Security</span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="menu-link" onclick="logout(event)">
-                                <span class="menu-icon">
-                                    <i class="fi fi-br-sign-out-alt"></i>
-                                </span>
-                                <span class="menu-title">Log Out</span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="topbar">
-            <div class="d-flex flex-row justify-content-between align-items-center">
-                <h2>Dashboard</h2>
-                <div class="d-flex align-items-center">
-                    <a href="#" class="btn btn-sm btn-primary rounded-pill me-2" data-bs-toggle="modal" data-bs-target="#newOperationModal">New Transaction</a>
-                    <a href="profile.html" class="profile-btn me-2">
-                        <i class="fi fi-br-bell"></i>
-                    </a>
-                    <a href="profile.html" class="profile-btn">
-                        <i class="fi fi-br-user"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="dashboard-content">
-            
-        </div>
-        <!-- New Operation Modal -->
-        <div class="modal fade new-operation-modal" id="newOperationModal" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title mb-2">Add New Operation</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="sign-form">
-                            <div class="operation-feedback" id="operFeedback"></div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="mb-3">
-                                        <label class="form-label">Operation Type <span class="form-label-required">*</span></label>
-                                        <div class="radio-btns" id="operType">
-                                            <label>
-                                                <input type="radio" name="operType" value="INCOME">
-                                                <span>Income</span>
-                                            </label>
-                                            <label>
-                                                <input type="radio" name="operType" value="EXPENSE">
-                                                <span>Expense</span>
-                                            </label>
-                                        </div>
-                                        <div class="invalid-feedback"></div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Amount <span class="form-label-required">*</span></label>
-                                        <input type="text" class="form-control" id="operAmount" placeholder="">
-                                        <div class="invalid-feedback"></div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Motif / Description <span class="form-label-required">*</span></label>
-                                        <input type="text" class="form-control" id="operDesc" placeholder="">
-                                        <div class="invalid-feedback"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-grid">
-                                <button class="btn btn-primary" type="button" onclick="addTransaction()">Submit</button>
-                            </div>
+<body class="login-page signin-page">
+    <div class="container-fluid">
+        <div class="row row-cols-1 row-cols-lg-2">
+            <div class="col left-section">
+                <div class="d-flex align-items-center justify-content-center">
+                    <div class="sign-section w-100">
+                        <div class="logo logo-login">
+                            <img src="assets/img/logo.png" alt="logo">
                         </div>
+                        <div class="sign-heading">
+                            <h2 class="page-title">Sign In</h2>
+                            <h6 class="page-subtitle">Nice to see you again</h6>
+                        </div>
+                        <div class="login-form" id="loginForm">
+                            <form>
+                                <div class="login-feedback" id="loginFeedback"></div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label for="loginEmail" class="form-label">Email address <span class="form-label-required">*</span></label>
+                                            <input type="email" class="form-control" id="loginEmail" placeholder="johndoe@email.com">
+                                            <div class="invalid-feedback"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label for="loginPass" class="form-label">Password <span class="form-label-required">*</span></label>
+                                            <input type="password" class="form-control" id="loginPass" placeholder="At leat 8 characters">
+                                            <div class="invalid-feedback"></div>
+                                            <div class="form-link text-end">
+                                                <a href="forgot-password.html">Forgot Password?</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-grid mb-4">
+                                    <button class="btn btn-primary" type="button" id="loginBtn" onclick="loginValidate()">Connexion</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="signup-helper text-helper text-center">
+                            <span>Don't have an account?</span>
+                            <a href="signup.html">Sign Up</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyrights">
+                    <span class="text-uppercase">@2023 ALL Rights RESERVED</span>
+                </div>
+            </div>
+            <div class="col right-section">
+                <div class="d-flex align-items-center justify-content-center">
+                    <div class="slider-section w-100">
+                        <div class="login-hero">
+                            <img src="assets/img/hero-1.png" alt="">
+                        </div>
+                        <h2>The simplest way to manage your money</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia atque repellendus incidunt amet laboriosam, dolorum inventore.</p>
                     </div>
                 </div>
             </div>
@@ -169,6 +81,7 @@
     <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/vendor/axios/axios.min.js"></script>
     <script src="assets/js/app.js"></script>
-    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/authenticate.js"></script>
+    <script src="assets/js/login.js"></script>
 </body>
 </html>

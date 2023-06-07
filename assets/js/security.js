@@ -145,21 +145,24 @@ function updatePassword() {
     if(formErrors == false) {
         const accessToken = localStorage.getItem("accessToken");
         const userId = localStorage.getItem("accountId");
-        const url = `${baseUrl}/account/password-reset/${userId}/${currentPass.value}/${newPass.value}`;
-        axios.put(url, {}, {
-            headers: {
-                Authorization: `Bearer ${accessToken}`
-            }
-        })
+        const url = `${baseUrl}/account/password-reset/${userId}`;
+        const bodyParams = {
+            "oldPassword": currentPass.value,
+            "newPassword": newPass.value
+        }
+        axios.put(url, bodyParams,
+            // {params: { oldPassword: currentPass.value, newPassword: newPass.value}},
+            {headers: { Authorization: `Bearer ${accessToken}`}}
+        )
         .then((response) => {
             const errorHTML = `<div class="alert alert-success">Your password has been changed!</div>`;
             passResetFeedback.innerHTML = errorHTML;
             setTimeout(() => {
                 logout();
-                window.location = "signin.html";
-            }, 10000);
+                window.location = "index.html";
+            }, 2000);
         }).catch((err) => {
-            const errorHTML = `<div class="alert alert-danger">${err.response.data.message}</div>`;
+            const errorHTML = `<div class="alert alert-danger">Something went wrong, please try again later.</div>`;
             passResetFeedback.innerHTML = errorHTML;
         });
     }

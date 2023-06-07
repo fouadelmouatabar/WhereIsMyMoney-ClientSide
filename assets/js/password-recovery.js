@@ -7,7 +7,7 @@ const recoveryAnswer2 = document.querySelector("#recoveryAnswer2");
 const recoveryAnswer3 = document.querySelector("#recoveryAnswer3");
 const recoveryPass = document.querySelector("#recoveryPass");
 const recoveryConfirmPass = document.querySelector("#recoveryConfirmPass");
-const recoveryFeedback = document.querySelector("#registerFeedback");
+const recoveryFeedback = document.querySelector("#recoveryFeedback");
 
 
 function passRecoveryCheck() {
@@ -87,9 +87,11 @@ function passRecovery() {
     }
 
     if(formErrors == false) {
-        const url = `${baseUrl}/account/password-recovery/${recoveryEmail.value}/${recoveryPass.value}`;
-        const bodyParams = [
-            {
+        const url = `${baseUrl}/account/password-recovery`;
+        const bodyParams = {
+            "email": recoveryEmail.value,
+            "newPassword": recoveryPass.value,
+            "securityAnswers": [{
                 "questionId": Number(recoveryQuestion1.value),
                 "answer": recoveryAnswer1.value
             },
@@ -100,15 +102,16 @@ function passRecovery() {
             {
                 "questionId": Number(recoveryQuestion3.value),
                 "answer": recoveryAnswer3.value
-            }
-        ];
+            }]
+        };
         axios.put(url, bodyParams)
         .then((response) => {
             console.log(response);
             recoveryFeedback.innerHTML = "";
-            window.location = "signin.html";
+            window.location = "index.html";
         }).catch((err) => {
-            const errorHTML = `<div class="alert alert-danger">${err.response.data.message}</div>`;
+            pageTab(1);
+            const errorHTML = `<div class="alert alert-danger">Your answers doesn't match our records. try, or verify your submitted the correct questions and answers.</div>`;
             recoveryFeedback.innerHTML = errorHTML;
         });
     }

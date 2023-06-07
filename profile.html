@@ -130,13 +130,23 @@
                 <div class="col-12 col-lg-8">
                     <div class="card">
                         <div class="card-body">
-                            <div class="profile-box d-flex align-items-center mb-4">
-                                <div class="profile-avatar">
+                            <div class="profile-box d-flex align-items-center mb-5">
+                                <!-- <div class="profile-avatar">
                                     <img src="assets/img/avatar.png" class="img-fluid rounded-pill" width="70">
+                                </div> -->
+                                <div class="profile-avatar">
+                                    <div class="avatar-preview">
+                                        <img id="profileAvatar" src="assets/img/avatar.png" class="img-fluid">
+                                    </div>
+                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" onchange="setUserAvatar(event)" />
+                                    <label for="imageUpload">
+                                        <i class="fi fi-br-camera"></i>
+                                    </label>
                                 </div>
                                 <div class="profile-infos w-100">
-                                    <h4 class="profile-name mb-1 mt-0" id="profileName">John J. Morgan</h4>
-                                    <span class="profile-email" id="profileDate">Account Created :</span>
+                                    <h4 class="profile-name" id="profileName">John J. Morgan</h4>
+                                    <div class="profile-email" id="profileEmail">f.elmouatabar@gmail.com</div>
+                                    <div class="profile-date" id="profileDate">Account Created :</div>
                                 </div>
                             </div>
                             <div class="card-content">

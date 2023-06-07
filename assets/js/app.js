@@ -229,7 +229,7 @@ function checkLoggedIn() {
     const userId = localStorage.getItem("accessToken");
     const token = localStorage.getItem("accountId");
     if(token == null || userId == null) {
-        window.location = `signin.html`;
+        window.location = `index.html`;
     }
 }
 

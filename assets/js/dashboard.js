@@ -27,7 +27,7 @@ function logout(e) {
         e.preventDefault();
     }
     localStorage.clear();
-    window.location = "signin.html";
+    window.location = "index.html";
 }
 
 function addTransaction() {
