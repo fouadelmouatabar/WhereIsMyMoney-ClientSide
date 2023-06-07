@@ -7,6 +7,7 @@ const securityAnswer1 = document.querySelector("#securityAnswer1");
 const securityAnswer2 = document.querySelector("#securityAnswer2");
 const securityAnswer3 = document.querySelector("#securityAnswer3");
 const questionsFeedback = document.querySelector("#questionsFeedback");
+const passResetFeedback = document.querySelector("#passResetFeedback");
 const passFeedback = document.querySelector("#passFeedback");
 const currentPass = document.querySelector("#currentPass");
 const newPass = document.querySelector("#newPass");
@@ -73,20 +74,26 @@ function updateAnswers() {
         const accessToken = localStorage.getItem("accessToken");
         const userId = localStorage.getItem("accountId");
         const url = `${baseUrl}/account/update/security-infos/${userId}`;
+        const answers = JSON.parse(localStorage.getItem("securityAnswers"));
+        console.log(accessToken);
         const bodyParams = [
             {
                 "questionId": Number(securityQuestion1.value),
+                "answerId": answers[0].answerId,
                 "answer": securityAnswer1.value
             },
             {
                 "questionId": Number(securityQuestion2.value),
+                "answerId": answers[1].answerId,
                 "answer": securityAnswer2.value
             },
             {
                 "questionId": Number(securityQuestion3.value),
+                "answerId": answers[2].answerId,
                 "answer": securityAnswer3.value
             }
         ];
+        console.log(bodyParams)
         axios.put(url, bodyParams, {
             headers: {
                 Authorization: `Bearer ${accessToken}`
@@ -94,15 +101,17 @@ function updateAnswers() {
         })
         .then((response) => {
             questionsFeedback.innerHTML = "";
+            console.log(response);
+            localStorage.setItem("accessToken", response.data.access_token);
             localStorage.setItem("securityAnswers", JSON.stringify(response.data.securityAnswers));
-            // location.reload();
+            const errorHTML = `<div class="alert alert-success">Your security questions have been successfully updated.</div>`;
+            questionsFeedback.innerHTML = errorHTML;
         }).catch((err) => {
             const errorHTML = `<div class="alert alert-danger">${err.response.data.message}</div>`;
             questionsFeedback.innerHTML = errorHTML;
         });
     }
 }
-
 
 function updatePassword() {
     let formErrors = false;
@@ -143,14 +152,15 @@ function updatePassword() {
             }
         })
         .then((response) => {
-            console.log(response);
-            localStorage.setItem("notifType", "success");
-            localStorage.setItem("notifText", "Your password successfully updated!");
-            showNotification(passFeedback);
-            window.location = "signin.html";
+            const errorHTML = `<div class="alert alert-success">Your password has been changed!</div>`;
+            passResetFeedback.innerHTML = errorHTML;
+            setTimeout(() => {
+                logout();
+                window.location = "signin.html";
+            }, 10000);
         }).catch((err) => {
             const errorHTML = `<div class="alert alert-danger">${err.response.data.message}</div>`;
-            questionsFeedback.innerHTML = errorHTML;
+            passResetFeedback.innerHTML = errorHTML;
         });
     }
 }

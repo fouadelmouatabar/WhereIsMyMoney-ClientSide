@@ -106,15 +106,13 @@ function updateProfileInfo() {
         userPhoneNumber.value == "") {
         inputError(userPhone, errorRequiredField);
         formErrors = true;
-    } else {
-        inputValid(userPhone);
-    }
-    if(userPhoneNumber.value == "") {
+    } else if(!validatePhoneNumber(userPhoneNumber.value)) {
         inputError(userPhone, errorRequiredField);
         formErrors = true;
     } else {
         inputValid(userPhone);
     }
+
     if(formErrors == false) {
         const accessToken = localStorage.getItem("accessToken");
         const userId = localStorage.getItem("accountId");
@@ -179,10 +177,14 @@ function deleteAccount() {
             }
         })
         .then((response) => {
-            let alertSuccess = `<div class="alert alert-success">${response.data.message}</div>`;
+            console.log(response);
+            let alertSuccess = `<div class="alert alert-success">Your account was successfully deleted.</div>`;
             deleteAccountFeedback.innerHTML = alertSuccess;
+            setTimeout(() => {
+                logout();
+            }, 10000);
         }).catch((err) => {
-            let alertError = `<div class="alert alert-danger">${err.response.data.message}</div>`;
+            let alertError = `<div class="alert alert-danger">An error occurred while deleting your account.</div>`;
             deleteAccountFeedback.innerHTML = alertError;
         });
     }

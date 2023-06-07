@@ -148,6 +148,9 @@ function registerInfosValidate() {
     if(registerPhoneNumber.value == "") {
         inputError(registerPhone, errorRequiredField);
         formErrors = true;
+    } else if(!validatePhoneNumber(registerPhoneNumber.value)) {
+        inputError(registerPhone, errorValidPhone);
+        formErrors = true;
     } else {
         inputValid(registerPhone);
     }

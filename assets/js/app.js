@@ -12,6 +12,7 @@ const errorRequiredField = "This field is required.";
 const errorValidEmail = "Please enter a valid email address.";
 const errorPassMatch = "Passwords do not match.";
 const errorPassWeak = "Please choose a stronger password.";
+const errorValidPhone = "Please enter a valid phone number.";
 
 document.addEventListener("DOMContentLoaded", clickableRows());
 
@@ -207,6 +208,13 @@ function getPhoneComponents(phone) {
     } else {
         console.log("Invalid phone number format");
     }
+}
+
+function validatePhoneNumber(phone) {
+    if(phone.match(/^(\d+)$/)) {
+        return true;
+    }
+    return false;
 }
 
 function getDateComponents(dateString) {
