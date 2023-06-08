@@ -23,7 +23,7 @@ const confirmDeleteInput = document.querySelector("#confirmDeleteInput");
 
 window.onload = setUserInfo;
 
-function setUserAvatar(e) {
+function updateAvatar(e) {
     let fileInput = e.target;
     if (fileInput.files && fileInput.files[0]) {
         
@@ -54,7 +54,7 @@ function setUserAvatar(e) {
     }
 }
 
-function getUserAvatar() {
+function setProfileAvatar() {
     if(localStorage.getItem("profileImageId") !== null &&
     localStorage.getItem("accountId") !== null ) {
         const accessToken = localStorage.getItem("accessToken");
@@ -83,7 +83,7 @@ function getUserAvatar() {
 }
 
 function setUserInfo() {
-    getUserAvatar();
+    setProfileAvatar();
     if(localStorage.getItem("firstName")  !== null && localStorage.getItem("lastName")  !== null ) {
         userFullName.innerText = `${localStorage.getItem("firstName")} ${localStorage.getItem("lastName")}`;
         userFname.value = localStorage.getItem("firstName");

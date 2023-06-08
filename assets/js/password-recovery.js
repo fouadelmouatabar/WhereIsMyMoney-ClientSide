@@ -20,7 +20,17 @@ function passRecoveryCheck() {
         formErrors = true;
         inputError(recoveryEmail, errorValidEmail);
     } else {
-        inputValid(recoveryEmail);
+        const url = `${baseUrl}/account/emailValidation/${recoveryEmail.value}`;
+        axios.post(url)
+        .then(response => {
+            formErrors = true;
+            inputError(recoveryEmail, "Emai doesn't exist!");
+            console.log(response);
+        })
+        .catch((err) => {
+            console.log(err);
+            inputValid(recoveryEmail);
+        });
     }
     if(recoveryQuestion1.value == "") {
         inputError(recoveryQuestion1, errorRequiredField);

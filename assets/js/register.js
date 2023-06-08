@@ -57,7 +57,17 @@ function registerAuthValidate() {
         formErrors = true;
         inputError(registerEmail, errorValidEmail);
     } else {
-        inputValid(registerEmail);
+        const url = `${baseUrl}/account/emailValidation/${registerEmail.value}`;
+        axios.post(url)
+        .then(response => {
+            console.log(response);
+            inputValid(registerEmail);
+        })
+        .catch((err) => {
+            formErrors = true;
+            inputError(registerEmail, err.response.data.message);
+            console.log(err);
+        });
     }
 
     if(registerPass.value == "") {

@@ -3,9 +3,39 @@ const operType = document.querySelector("#operType");
 const operAmount = document.querySelector("#operAmount");
 const operDesc = document.querySelector("#operDesc");
 const dashNotifs = document.querySelector("#dashNotifs");
+const profileBtn = document.querySelector(".profile-btn");
 
 checkLoggedIn();
+setAvatar();
 window.onload = showNotification(dashNotifs);
+
+function setAvatar() {
+    if(localStorage.getItem("profileImageId") !== null &&
+    localStorage.getItem("accountId") !== null ) {
+        const accessToken = localStorage.getItem("accessToken");
+        const userId = localStorage.getItem("accountId");
+        const imageId = localStorage.getItem("profileImageId");
+        const url = `${baseUrl}/image/`;
+        const bodyParams = {
+            "accountId":userId,
+            "imageId":imageId
+        }
+        axios.post(url, bodyParams, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            },
+            responseType: 'blob'
+        })
+        .then(response => {
+            const url = window.URL.createObjectURL(response.data);
+            profileBtn.innerHTML = `<img src="${url}" />`;
+        })
+        .catch((err) => {
+            console.log(err);
+            return;
+        });
+    }
+}
 
 function showNotification(dashFeedback) {
     if( localStorage.getItem("notifType") !== null &&
@@ -18,7 +48,7 @@ function showNotification(dashFeedback) {
         localStorage.removeItem("notifText");
         setTimeout(function() {
             dashFeedback.innerHTML = "";
-        }, 5000); 
+        }, 3000); 
     }
 }
 

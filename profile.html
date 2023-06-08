@@ -114,9 +114,6 @@
                         <i class="btn-icon fi fi-br-plus"></i>
                         <span>New Transaction</span>
                     </a>
-                    <a href="profile.html" class="profile-btn me-2">
-                        <i class="fi fi-br-bell"></i>
-                    </a>
                     <a href="profile.html" class="profile-btn">
                         <i class="fi fi-br-user"></i>
                     </a>
@@ -138,7 +135,7 @@
                                     <div class="avatar-preview">
                                         <img id="profileAvatar" src="assets/img/avatar.png" class="img-fluid">
                                     </div>
-                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" onchange="setUserAvatar(event)" />
+                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" onchange="updateAvatar(event)" />
                                     <label for="imageUpload">
                                         <i class="fi fi-br-camera"></i>
                                     </label>
