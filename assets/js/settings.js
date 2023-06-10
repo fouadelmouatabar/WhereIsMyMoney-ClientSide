@@ -61,6 +61,50 @@ function setAccountInfo() {
     }
 }
 
+function updateAccountInfo() {
+    let formErrors = false;
+    if(accountEmail.value == "") {
+        inputError(accountEmail, errorRequiredField);
+        formErrors = true;
+    } else {
+        inputValid(accountEmail);
+    }
+    if(accountCurrency.value == "") {
+        inputError(accountCurrency, errorRequiredField);
+        formErrors = true;
+    } else {
+        inputValid(accountCurrency);
+    }
+
+    if(formErrors == false) {
+        const accessToken = localStorage.getItem("accessToken");
+        const userId = localStorage.getItem("accountId");
+        const url = `${baseUrl}/account/update/account-infos/${userId}`;
+        const bodyParams = {
+            "email": accountEmail.value,
+            "currency": accountCurrency.value
+        }
+        axios.put(url, bodyParams, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        })
+        .then((response) => {
+            console.log(response);
+            localStorage.setItem("email", response.data.email);
+            localStorage.setItem("currency", response.data.currency);
+            localStorage.setItem("accessToken", response.data.access_token);
+            profileFeedback.innerHTML = "";
+            userEmail.innerText = response.data.email;
+            let alertSuccess = `<div class="alert alert-success">You have successfully updated your account settings.</div>`;
+            profileFeedback.innerHTML = alertSuccess;
+        }).catch((err) => {
+            let alertError = `<div class="alert alert-danger">${err.response.data.message}</div>`;
+            profileFeedback.innerHTML = alertError;
+        });
+    }
+}
+
 function updateAvatar(e) {
     let fileInput = e.target;
     if (fileInput.files && fileInput.files[0]) {
