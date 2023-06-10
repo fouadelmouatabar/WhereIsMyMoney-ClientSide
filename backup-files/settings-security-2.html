@@ -67,20 +67,11 @@
                     <span class="menu-column-title">Account</span>
                     <ul>
                         <li>
-                            <a href="profile.html" class="menu-link">
+                            <a href="settings.html" class="menu-link">
                                 <span class="menu-icon">
-                                    <i class="fi fi-br-circle-user"></i>
+                                    <i class="fi fi-br-settings"></i>
                                 </span>
-                                <span class="menu-title">Profile</span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="account-security.html" class="menu-link">
-                                <span class="menu-icon">
-                                    <i class="fi fi-br-fingerprint"></i>
-                                </span>
-                                <span class="menu-title">Security</span>
+                                <span class="menu-title">Settings</span>
                                 <span class="menu-arrow"></span>
                             </a>
                         </li>
@@ -89,7 +80,7 @@
                                 <span class="menu-icon">
                                     <i class="fi fi-br-sign-out-alt"></i>
                                 </span>
-                                <span class="menu-title">Log Out</span>
+                                <span class="menu-title">Sign Out</span>
                                 <span class="menu-arrow"></span>
                             </a>
                         </li>
@@ -101,10 +92,52 @@
             <div class="d-flex flex-row justify-content-between align-items-center">
                 <h2>Profile</h2>
                 <div class="d-flex align-items-center">
-                    <a href="#" class="btn btn-sm btn-primary rounded-pill me-2" data-bs-toggle="modal" data-bs-target="#newOperationModal">New Transaction</a>
-                    <a href="profile.html" class="profile-btn">
-                        <i class="fi fi-br-user"></i>
+                    <a href="#" class="btn btn-sm btn-primary rounded-pill me-2" data-bs-toggle="modal" data-bs-target="#newOperationModal">
+                        <i class="btn-icon fi fi-br-plus"></i>
+                        <span>New Transaction</span>
                     </a>
+                    <div class="dropdown">
+                        <div class="dropdown-toggle py-2 d-flex align-items-center" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="profile-btn">
+                                <i class="fi fi-br-user"></i>
+                            </div>
+                        </div>
+                        <ul class="profile-dropdown dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li>
+                            <a class="dropdown-item" href="settings.html">
+                                <span class="dropdown-item-icon">
+                                    <i class="fi fi-br-circle-user"></i>
+                                </span>
+                                <span>My Profile</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="settings-security.html">
+                                <span class="dropdown-item-icon">
+                                    <i class="fi fi-br-fingerprint"></i>
+                                </span>
+                                <span>Change Password</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                <span class="dropdown-item-icon">
+                                    <i class="fi fi-br-settings"></i>
+                                </span>
+                                <span>Account Settings</span>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item" href="#" onclick="logout(event)">
+                                <span class="dropdown-item-icon">
+                                    <i class="fi fi-br-sign-out-alt"></i>
+                                </span>
+                                <span>Sign Out</span>
+                            </a>
+                        </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -278,6 +311,7 @@
             </div>
         </div>
     </div>
+    <script src="assets/vendor/popper/popper.min.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/vendor/axios/axios.min.js"></script>
     <script src="assets/js/app.js"></script>

@@ -7,10 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EveryCoin</title>
     <link rel="icon" type="image/png" sizes="196x196" href="assets/img/favicon.png">
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
+    <!-- CSS Files -->
     <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/uicons-bold/uicons-bold-rounded.css">
     <link rel="stylesheet" href="assets/css/core.css">
@@ -19,6 +21,8 @@
 
 <body class="dashboard-page">
     <div class="page-wrap">
+
+        <!-- Sidebar Menu -->
         <div class="dash-sidebar">
             <div class="logo">
                 <a href="#">
@@ -91,9 +95,11 @@
                 </div>
             </div>
         </div>
+
+        <!-- Top Navigation Bar -->
         <div class="topbar">
             <div class="d-flex flex-row justify-content-between align-items-center">
-                <h2>Transactions</h2>
+                <h2>Settings</h2>
                 <div class="d-flex align-items-center">
                     <a href="#" class="btn btn-sm btn-primary rounded-pill me-2" data-bs-toggle="modal" data-bs-target="#newOperationModal">
                         <i class="btn-icon fi fi-br-plus"></i>
@@ -144,79 +150,127 @@
                 </div>
             </div>
         </div>
+
+        <!-- Page Content -->
         <div class="dashboard-content">
             <div class="row">
                 <div class="col-12 col-lg-8">
-                    <div class="dash-notifs" id="dashNotifs"></div>
+                    <div class="card mb-4">
+                        <div class="card-body pb-0">
+                            <div class="profile-box d-flex align-items-center mb-4">
+                                <!-- <div class="profile-avatar">
+                                    <img src="assets/img/avatar.png" class="img-fluid rounded-pill" width="70">
+                                </div> -->
+                                <div class="profile-avatar">
+                                    <div class="avatar-preview">
+                                        <img id="profileAvatar" src="assets/img/avatar.png" class="img-fluid">
+                                    </div>
+                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" onchange="updateAvatar(event)" />
+                                    <label for="imageUpload">
+                                        <i class="fi fi-br-camera"></i>
+                                    </label>
+                                </div>
+                                <div class="profile-infos w-100">
+                                    <h4 class="profile-name" id="profileName">John J. Morgan</h4>
+                                    <div class="profile-email" id="profileEmail">f.elmouatabar@gmail.com</div>
+                                    <div class="profile-date" id="profileDate">Account Created :</div>
+                                </div>
+                            </div>
+                            <div class="profile-nav">
+                                <ul>
+                                    <li class="tablink">
+                                        <a href="settings.html">Profile Info</a>
+                                    </li>
+                                    <li class="tablink">
+                                        <a href="account-settings.html">Account Settings</a>
+                                    </li>
+                                    <li class="tablink">
+                                        <a href="change-password.html">Change Password</a>
+                                    </li>
+                                    <li class="tablink active">
+                                        <a href="security-questions.html">Security Questions</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card">
-                        <div class="card-body" id="transactionsList">
-                            <!-- <div class="table-responsive">
-                                <table class="table align-middle">
-                                    <thead>
-                                        <tr class='clickable-row' data-href='#'>
-                                            <th>Operation Label</th>
-                                            <th>Operation Type</th>
-                                            <th>Date</th>
-                                            <th class="text-end">Amount</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class='clickable-row' data-href='#'>
-                                            <td>Solde My Car</td>
-                                            <td>
-                                                <span class="badge badge-light-success">Income</span>
-                                            </td>
-                                            <td>02 Apr, 2023</td>
-                                            <td class="text-end">4,500 MAD</td>
-                                            <td><i class="fi fi-br-menu-dots"></i></td>
-                                        </tr>
-                                        <tr class='clickable-row' data-href='#'>
-                                            <td>Solde Macbook Air M1</td>
-                                            <td>
-                                                <span class="badge badge-light-success">Income</span>
-                                            </td>
-                                            <td>02 Apr, 2023</td>
-                                            <td class="text-end">1,230 MAD</td>
-                                        </tr>
-                                        <tr class='clickable-row' data-href='#'>
-                                            <td>Google Pixel 6 Pro</td>
-                                            <td>
-                                                <span class="badge badge-light-danger">Expense</span>
-                                            </td>
-                                            <td>02 Apr, 2023</td>
-                                            <td class="text-end">1,060 MAD</td>
-                                        </tr>
-                                        <tr class='clickable-row' data-href='#'>
-                                            <td>Logitech MX 250</td>
-                                            <td>
-                                                <span class="badge badge-light-danger">Expense</span>
-                                            </td>
-                                            <td>02 Apr, 2023</td>
-                                            <td class="text-end">64 MAD</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div> -->
+                        <div class="card-body">
+                            <div class="card-heading">
+                                <h3 class="card-title">Update Your Security Questions</h3>
+                            </div>
+                            <div class="card-content">
+                                <div id="securityQuestions">
+                                    <div class="questions-feedback" id="questionsFeedback"></div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="mb-2">
+                                                <label for="email" class="form-label">Security Question 1 <span class="form-label-required">*</span></label>
+                                                <select class="form-select" id="securityQuestion1" onchange="updateQuestions('securityQuestions', 1)"></select>
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <input type="text" class="form-control" id="securityAnswer1" placeholder="Your Answer">
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-2">
+                                                <label for="email" class="form-label">Security Question 2 <span class="form-label-required">*</span></label>
+                                                <select class="form-select" id="securityQuestion2" onchange="updateQuestions('securityQuestions', 2)"></select>
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <input type="text" class="form-control" id="securityAnswer2" placeholder="Your Answer">
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-2">
+                                                <label for="email" class="form-label">Security Question 3 <span class="form-label-required">*</span></label>
+                                                <select class="form-select" id="securityQuestion3" onchange="updateQuestions('securityQuestions', 3)"></select>
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                            <div class="mb-4">
+                                                <input type="text" class="form-control" id="securityAnswer3" placeholder="Your Answer">
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="d-flex justify-content-end">
+                                                <button class="btn btn-primary" type="button" onclick="updateAnswers()">Update Questions</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-lg-4">
-                    <div class="card sidebar-card mobileapp-card">
+                    <div class="card sidebar-card mb-4">
                         <div class="card-body">
-                            <div class="card-content text-center">
-                                <h2 class="text-gray-800 text-center">
-                                    <span>Have your tried</span>
-                                    <br>
-                                    <span>new</span>
-                                    <span class="fw-bold">Mobile Application ?</span>
-                                </h2>
-                                <div class="pt-3 pb-5">
-                                    <img src="assets/img/app.svg" alt="">
-                                </div>
-                                <div>
-                                    <a class="btn btn-sm btn-primary me-2" href="#">Try Now</a>
-                                    <a class="btn btn-sm btn-light" href="#">Learn More</a>
-                                </div>
+                            <div class="card-heading">
+                                <h3 class="card-title">Update Your Password</h3>
+                                <p class="card-text">changing the password frequently prevents unauthorized users modifying configurations.</p>
+                                <p class="card-text">Click the link below to change the password and the
+                                    security questions.</p>
+                            </div>
+                            <div class="card-content">
+                                <a href="change-password.html" class="btn btn-sm btn-light-primary">Change Password</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card sidebar-card">
+                        <div class="card-body">
+                            <div class="card-heading">
+                                <h3 class="card-title">Danger Zone</h3>
+                                <p class="card-text">If you delete your account you will no longer be able to sign in, and all of your data will be deleted. Deleting your account is a permanent and non recoverable action</p>
+                                <!-- <h6 class="card-subtitle">If you want to permanetly delete this account and all of
+                                    its data, you can do so below</h6> -->
+                            </div>
+                            <div class="card-content">
+                                <button class="btn btn-sm btn-light-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">Delete Account</button>
                             </div>
                         </div>
                     </div>
@@ -274,54 +328,33 @@
                 </div>
             </div>
         </div>
-
-        <!-- Edit Operation Modal -->
-        <div class="modal fade new-operation-modal" id="editOperationModal" tabindex="-1" aria-hidden="true">
+        
+        <!-- Delete Account Modal -->
+        <div class="modal fade delete-account-modal" id="deleteAccountModal" tabindex="-1"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3 class="modal-title mb-2">Edit Operation</h1>
+                        <div class="d-flex align-items-center">
+                            <span class="delete-icon">
+                                <i class="fi fi-br-trash"></i>
+                            </span>
+                            <h3 class="modal-title m-0">Confirm Account Deletion</h1>
+                        </div>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="sign-form">
-                            <div class="operation-feedback" id="operFeedback"></div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="mb-3">
-                                        <label class="form-label">Operation Type <span class="form-label-required">*</span></label>
-                                        <div class="radio-btns" id="editOperType">
-                                            <label>
-                                                <input type="radio" name="operType" value="INCOME">
-                                                <span>Income</span>
-                                            </label>
-                                            <label>
-                                                <input type="radio" name="operType" value="EXPENSE">
-                                                <span>Expense</span>
-                                            </label>
-                                        </div>
-                                        <div class="invalid-feedback"></div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Amount <span class="form-label-required">*</span></label>
-                                        <input type="text" class="form-control" id="editOperAmount">
-                                        <div class="invalid-feedback"></div>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="mb-3">
-                                        <label for="" class="form-label">Motif / Description <span class="form-label-required">*</span></label>
-                                        <input type="text" class="form-control" id="editOperDesc">
-                                        <div class="invalid-feedback"></div>
-                                    </div>
-                                </div>
+                        <div id="deleteAccountFeedback"></div>
+                        <p class="mb-4">Deleting your account will remove all of your information from our database. This cannot be undone.</p>
+                        <div class="delete-help">
+                            <span id="deleteHelper">To confirm this, type "DELETE"</span>
+                        </div>
+                        <div class="row g-2">
+                            <div class="col-auto">
+                                <input type="text" class="form-control" placeholder="DELETE" id="confirmDeleteInput">
                             </div>
-                            <div class="d-flex justify-content-between align-items-center mt-2" id="modalFooter">
-                                <input type="hidden" id="editOperId">
-                                <button id="editOperDelete" class="btn btn-light-danger" type="button">Delete</button>
-                                <button id="editOperUpdate" class="btn btn-primary" type="button">Update</button>
+                            <div class="col-auto">
+                                <button type="button" class="btn btn-danger" onclick="deleteAccount()">Delete Account</button>
                             </div>
                         </div>
                     </div>
@@ -330,12 +363,13 @@
         </div>
 
     </div>
+
+    <!-- Javascript Libraries -->
     <script src="assets/vendor/popper/popper.min.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/vendor/axios/axios.min.js"></script>
     <script src="assets/js/app.js"></script>
     <script src="assets/js/dashboard.js"></script>
-    <script src="assets/js/transactions.js"></script>
+    <script src="assets/js/settings.js"></script>
 </body>
-
 </html>

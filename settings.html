@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EveryCoin</title>
+    <link rel="icon" type="image/png" sizes="196x196" href="assets/img/favicon.png">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/uicons-bold/uicons-bold-rounded.css">
+    <link rel="stylesheet" href="assets/css/core.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="dashboard-page">
+    <div class="page-wrap">
+
+        <!-- Sidebar Menu -->
+        <div class="dash-sidebar">
+            <div class="logo">
+                <a href="#">
+                    <img src="assets/img/logo-light.png" alt="">
+                </a>
+            </div>
+            <div class="dash-menu">
+                <div class="menu-column">
+                    <ul>
+                        <li>
+                            <a href="index.html" class="menu-link active">
+                                <span class="menu-icon">
+                                    <i class="fi fi-br-home"></i>
+                                </span>
+                                <span class="menu-title">Dashboards</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="transactions.html" class="menu-link">
+                                <span class="menu-icon">
+                                    <i class="fi fi-br-time-forward"></i>
+                                </span>
+                                <span class="menu-title">Transactions</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="incomes.html" class="menu-link">
+                                <span class="menu-icon">
+                                    <i class="fi fi-br-wallet"></i>
+                                </span>
+                                <span class="menu-title">Incomes</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="expenses.html" class="menu-link">
+                                <span class="menu-icon">
+                                    <i class="fi fi-br-cart-shopping-fast"></i>
+                                </span>
+                                <span class="menu-title">Expenses</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="menu-column">
+                    <span class="menu-column-title">Account</span>
+                    <ul>
+                        <li>
+                            <a href="settings.html" class="menu-link">
+                                <span class="menu-icon">
+                                    <i class="fi fi-br-settings"></i>
+                                </span>
+                                <span class="menu-title">Settings</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="menu-link" onclick="logout(event)">
+                                <span class="menu-icon">
+                                    <i class="fi fi-br-sign-out-alt"></i>
+                                </span>
+                                <span class="menu-title">Sign Out</span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Navigation Bar -->
+        <div class="topbar">
+            <div class="d-flex flex-row justify-content-between align-items-center">
+                <h2>Settings</h2>
+                <div class="d-flex align-items-center">
+                    <a href="#" class="btn btn-sm btn-primary rounded-pill me-2" data-bs-toggle="modal" data-bs-target="#newOperationModal">
+                        <i class="btn-icon fi fi-br-plus"></i>
+                        <span>New Transaction</span>
+                    </a>
+                    <div class="dropdown">
+                        <div class="dropdown-toggle py-2 d-flex align-items-center" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="profile-btn">
+                                <i class="fi fi-br-user"></i>
+                            </div>
+                        </div>
+                        <ul class="profile-dropdown dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li>
+                            <a class="dropdown-item" href="settings.html">
+                                <span class="dropdown-item-icon">
+                                    <i class="fi fi-br-circle-user"></i>
+                                </span>
+                                <span>My Profile</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="settings-security.html">
+                                <span class="dropdown-item-icon">
+                                    <i class="fi fi-br-fingerprint"></i>
+                                </span>
+                                <span>Change Password</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                <span class="dropdown-item-icon">
+                                    <i class="fi fi-br-settings"></i>
+                                </span>
+                                <span>Account Settings</span>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item" href="#" onclick="logout(event)">
+                                <span class="dropdown-item-icon">
+                                    <i class="fi fi-br-sign-out-alt"></i>
+                                </span>
+                                <span>Sign Out</span>
+                            </a>
+                        </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Content -->
+        <div class="dashboard-content">
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-body pb-0">
+                            <div class="profile-box d-flex align-items-center mb-4">
+                                <!-- <div class="profile-avatar">
+                                    <img src="assets/img/avatar.png" class="img-fluid rounded-pill" width="70">
+                                </div> -->
+                                <div class="profile-avatar">
+                                    <div class="avatar-preview">
+                                        <img id="profileAvatar" src="assets/img/avatar.png" class="img-fluid">
+                                    </div>
+                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" onchange="updateAvatar(event)" />
+                                    <label for="imageUpload">
+                                        <i class="fi fi-br-camera"></i>
+                                    </label>
+                                </div>
+                                <div class="profile-infos w-100">
+                                    <h4 class="profile-name" id="profileName">John J. Morgan</h4>
+                                    <div class="profile-email" id="profileEmail">f.elmouatabar@gmail.com</div>
+                                    <div class="profile-date" id="profileDate">Account Created :</div>
+                                </div>
+                            </div>
+                            <div class="profile-nav">
+                                <ul>
+                                    <li class="tablink active">
+                                        <a href="settings.html">Profile Info</a>
+                                    </li>
+                                    <li class="tablink">
+                                        <a href="account-settings.html">Account Settings</a>
+                                    </li>
+                                    <li class="tablink">
+                                        <a href="change-password.html">Change Password</a>
+                                    </li>
+                                    <li class="tablink">
+                                        <a href="security-questions.html">Security Questions</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-content">
+                                <h2 class="card-title mb-4">Profile info</h2>
+                                <div class="sign-form">
+                                    <div class="profile-feedback" id="profileFeedback"></div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">First Name <span class="form-label-required">*</span></label>
+                                                <input type="text" class="form-control" id="userFname" placeholder="John" value="John">
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Last Name <span class="form-label-required">*</span></label>
+                                                <input type="text" class="form-control" id="userLname" placeholder="Doe" value="Morgan">
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label class="form-label">Gender <span class="form-label-required">*</span></label>
+                                                <div class="radio-btns" id="userGender">
+                                                    <label>
+                                                        <input type="radio" name="gender" value="MALE">
+                                                        <span>Male</span>
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="gender" value="FEMALE">
+                                                        <span>Female</span>
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="gender" value="UNDEFINED">
+                                                        <span>Undefined</span>
+                                                    </label>
+                                                </div>
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                        </div>
+                                        <div class="w-100"></div>
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Birthday <span class="form-label-required">*</span></label>
+                                                <div class="row" id="userBirthDate">
+                                                    <div class="col-auto">
+                                                        <select class="form-select" id="userBirthDay"></select>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <select class="form-select" id="userBirthMonth"></select>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <select class="form-select" id="userBirthYear"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Address <span class="form-label-required">*</span></label>
+                                                <input type="text" class="form-control" id="userAddress" placeholder="" value="3951 rue Levy, Montreal, QC H3C 5K4">
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">City <span class="form-label-required">*</span></label>
+                                                <input type="text" class="form-control" id="userCity" placeholder="" value="Montreal">
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Country <span lass="form-label-required">*</span></label>
+                                                <select class="form-select" id="userCountry">
+                                                    <option value="" selected>Select Country</option>
+                                                </select>
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                        </div>                                            
+                                        <div class="col-6">
+                                            <div class="mb-3">
+                                                <label for="email" class="form-label">Phone Number <span class="form-label-required">*</span></label>
+                                                <div class="row" id="userPhone">
+                                                    <div class="col-auto phone-negatif">
+                                                        <select class="form-select" id="userPhoneCode"></select>
+                                                    </div>
+                                                    <div class="col">
+                                                        <input type="tel" class="form-control" id="userPhoneNumber" placeholder="e.g. 999-999-9999" value="514-701-0534">
+                                                    </div>
+                                                </div>
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 d-flex justify-content-end">
+                                        <button class="btn btn-primary" type="button" onclick="updateProfileInfo()">Save Changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-4">
+                    <div class="card sidebar-card mb-4">
+                        <div class="card-body">
+                            <div class="card-heading">
+                                <h3 class="card-title">Update Your Password</h3>
+                                <p class="card-text">changing the password frequently prevents unauthorized users modifying configurations.</p>
+                                <p class="card-text">Click the link below to change the password and the
+                                    security questions.</p>
+                            </div>
+                            <div class="card-content">
+                                <a href="change-password.html" class="btn btn-sm btn-light-primary">Change Password</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card sidebar-card">
+                        <div class="card-body">
+                            <div class="card-heading">
+                                <h3 class="card-title">Danger Zone</h3>
+                                <p class="card-text">If you delete your account you will no longer be able to sign in, and all of your data will be deleted. Deleting your account is a permanent and non recoverable action</p>
+                                <!-- <h6 class="card-subtitle">If you want to permanetly delete this account and all of
+                                    its data, you can do so below</h6> -->
+                            </div>
+                            <div class="card-content">
+                                <button class="btn btn-sm btn-light-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">Delete Account</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- New Operation Modal -->
+        <div class="modal fade new-operation-modal" id="newOperationModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title mb-2">Add New Operation</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="sign-form">
+                            <div class="operation-feedback" id="operFeedback"></div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">Operation Type <span class="form-label-required">*</span></label>
+                                        <div class="radio-btns" id="operType">
+                                            <label>
+                                                <input type="radio" name="operType" value="INCOME">
+                                                <span>Income</span>
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="operType" value="EXPENSE">
+                                                <span>Expense</span>
+                                            </label>
+                                        </div>
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Amount <span class="form-label-required">*</span></label>
+                                        <input type="text" class="form-control" id="operAmount" placeholder="">
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Motif / Description <span class="form-label-required">*</span></label>
+                                        <input type="text" class="form-control" id="operDesc" placeholder="">
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-grid">
+                                <button class="btn btn-primary" type="button" onclick="addTransaction()">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Delete Account Modal -->
+        <div class="modal fade delete-account-modal" id="deleteAccountModal" tabindex="-1"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="d-flex align-items-center">
+                            <span class="delete-icon">
+                                <i class="fi fi-br-trash"></i>
+                            </span>
+                            <h3 class="modal-title m-0">Confirm Account Deletion</h1>
+                        </div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="deleteAccountFeedback"></div>
+                        <p class="mb-4">Deleting your account will remove all of your information from our database. This cannot be undone.</p>
+                        <div class="delete-help">
+                            <span id="deleteHelper">To confirm this, type "DELETE"</span>
+                        </div>
+                        <div class="row g-2">
+                            <div class="col-auto">
+                                <input type="text" class="form-control" placeholder="DELETE" id="confirmDeleteInput">
+                            </div>
+                            <div class="col-auto">
+                                <button type="button" class="btn btn-danger" onclick="deleteAccount()">Delete Account</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Javascript Libraries -->
+    <script src="assets/vendor/popper/popper.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/vendor/axios/axios.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/settings.js"></script>
+</body>
+</html>

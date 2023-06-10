@@ -13,7 +13,12 @@ const currentPass = document.querySelector("#currentPass");
 const newPass = document.querySelector("#newPass");
 const confirmPass = document.querySelector("#confirmPass");
 
-window.onload = setAnswers(sQuestionsForm);
+window.onload = function() {
+    var currentPage = window.location.href;
+    if (currentPage.indexOf('security-questions.html') !== -1) {
+        setAnswers(sQuestionsForm);
+    }
+};
 
 function setAnswers(form) {
     if(localStorage.getItem("securityAnswers") !== null) {

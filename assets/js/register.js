@@ -257,7 +257,7 @@ function registerFinalStep() {
             localStorage.setItem("currency", response.data.currency);
             localStorage.setItem("creationDate", response.data.creationDate);
             localStorage.setItem("securityAnswers", JSON.stringify(response.data.securityAnswers));
-            window.location = `profile.html`;
+            window.location = `settings.html`;
         }).catch((err) => {
             pageTab(1);
             const errorHTML = `<div id="formFeedback" class="login-feedback alert alert-danger" role="alert">${err.response.data.message}</div>`;

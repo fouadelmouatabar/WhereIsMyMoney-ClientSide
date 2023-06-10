@@ -788,3 +788,55 @@ a:hover, a:focus, .link-primary:hover, .link-primary:focus {
 select option[disabled] {
     display: none;
 }
+.dropdown .dropdown-toggle {
+    cursor: pointer;
+}
+.dropdown .dropdown-toggle::after {
+    display: none;
+}
+.dropdown .dropdown-menu {
+    padding: 4px 0;
+    border: 0;
+    box-shadow: 0 24px 54px rgba(0,0,0,.15), 0 4.5px 13.5px rgba(0,0,0,.08);
+}
+.dropdown .dropdown-divider {
+    margin: 0;
+    border-top: 1px solid rgb(0 0 0 / 8%);
+}
+.dropdown li {
+    margin: 6px 10px;
+}
+.dropdown .dropdown-item {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 13px;
+    padding: 6px 15px;
+    transition: all 0.2s ease-in-out;
+    border-radius: 4px;
+}
+.dropdown .dropdown-item:hover {
+    background-color: #f5f5f5;
+}
+.dropdown .dropdown-item-icon {
+    line-height: 0;
+    font-size: 110%;
+    margin-right: 0.8rem;
+    color: #72808f;
+}
+
+.alert {
+    border: 0;
+    font-size: 13px;
+    font-weight: 500;
+}
+.alert-secondary {
+    background-color: #e5ecf7;
+    color: #606770;
+}
+.alert p {
+    margin-bottom: 0.8rem;
+}
+.alert *:last-child {
+    margin-bottom: 0.2rem;
+}

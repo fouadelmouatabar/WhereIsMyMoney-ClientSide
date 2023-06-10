@@ -103,7 +103,7 @@ function addTransaction() {
             window.location = "transactions.html";
         }).catch((err) => {
             let alertError = `<div class="alert alert-danger">${err.response.data.message}</div>`;
-            deleteAccountFeedback.innerHTML = alertError;
+            operFeedback.innerHTML = alertError;
         });
     }
 }

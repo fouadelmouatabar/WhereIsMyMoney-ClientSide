@@ -90,14 +90,14 @@
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="mb-3">
-                                                    <label for="" class="form-label">First Name <span class="form-label-required">*</span></label>
+                                                    <label class="form-label">First Name <span class="form-label-required">*</span></label>
                                                     <input type="text" class="form-control" id="registerFname" placeholder="John">
                                                     <div class="invalid-feedback"></div>
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="mb-3">
-                                                    <label for="" class="form-label">Last Name <span class="form-label-required">*</span></label>
+                                                    <label class="form-label">Last Name <span class="form-label-required">*</span></label>
                                                     <input type="text" class="form-control" id="registerLname" placeholder="Doe">
                                                     <div class="invalid-feedback"></div>
                                                 </div>
@@ -124,21 +124,21 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="mb-3">
-                                                    <label for="" class="form-label">Address <span class="form-label-required">*</span></label>
+                                                    <label class="form-label">Address <span class="form-label-required">*</span></label>
                                                     <input type="text" class="form-control" id="registerAddress" placeholder="">
                                                     <div class="invalid-feedback"></div>
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="mb-3">
-                                                    <label for="" class="form-label">City <span class="form-label-required">*</span></label>
+                                                    <label class="form-label">City <span class="form-label-required">*</span></label>
                                                     <input type="text" class="form-control" id="registerCity" placeholder="">
                                                     <div class="invalid-feedback"></div>
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="mb-3">
-                                                    <label for="" class="form-label">Country <span class="form-label-required">*</span></label>
+                                                    <label class="form-label">Country <span class="form-label-required">*</span></label>
                                                     <select class="form-select" id="registerCountry">
                                                         <option value="" selected>Select Country</option>
                                                     </select>
@@ -164,7 +164,7 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="mb-3">
-                                                    <label for="email" class="form-label">Phone Number <span class="form-label-required">*</span></label>
+                                                    <label class="form-label">Phone Number <span class="form-label-required">*</span></label>
                                                     <div class="row" id="registerPhone">
                                                         <div class="col-auto phone-negatif">
                                                             <select class="form-select" id="registerPhoneCode"></select>
@@ -178,7 +178,7 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="mb-3">
-                                                    <label for="email" class="form-label">Currency <span class="form-label-required">*</span></label>
+                                                    <label class="form-label">Currency <span class="form-label-required">*</span></label>
                                                     <select class="form-select" id="registerCurrency"></select>
                                                     <div class="invalid-feedback"></div>
                                                 </div>
@@ -194,7 +194,7 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="mb-2">
-                                                        <label for="email" class="form-label">Security Question 1 <span class="form-label-required">*</span></label>
+                                                        <label class="form-label">Security Question 1 <span class="form-label-required">*</span></label>
                                                         <select class="form-select" id="registerQuestionOne" onchange="updateQuestions('securityQuestions', 1)"></select>
                                                         <div class="invalid-feedback"></div>
                                                     </div>
@@ -205,7 +205,7 @@
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="mb-2">
-                                                        <label for="email" class="form-label">Security Question 2 <span class="form-label-required">*</span></label>
+                                                        <label class="form-label">Security Question 2 <span class="form-label-required">*</span></label>
                                                         <select class="form-select" id="registerQuestionTwo" onchange="updateQuestions('securityQuestions', 2)"></select>
                                                         <div class="invalid-feedback"></div>
                                                     </div>
@@ -216,7 +216,7 @@
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="mb-2">
-                                                        <label for="email" class="form-label">Security Question 3 <span class="form-label-required">*</span></label>
+                                                        <label class="form-label">Security Question 3 <span class="form-label-required">*</span></label>
                                                         <select class="form-select" id="registerQuestionThree" onchange="updateQuestions('securityQuestions', 3)"></select>
                                                         <div class="invalid-feedback"></div>
                                                     </div>
@@ -257,6 +257,7 @@
             </div>
         </div>
     </div>
+    <script src="assets/vendor/popper/popper.min.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/vendor/axios/axios.min.js"></script>
     <script src="assets/js/app.js"></script>

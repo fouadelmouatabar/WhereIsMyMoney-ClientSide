@@ -70,20 +70,11 @@
                     <span class="menu-column-title">Account</span>
                     <ul>
                         <li>
-                            <a href="profile.html" class="menu-link">
+                            <a href="settings.html" class="menu-link">
                                 <span class="menu-icon">
-                                    <i class="fi fi-br-circle-user"></i>
+                                    <i class="fi fi-br-settings"></i>
                                 </span>
-                                <span class="menu-title">Profile</span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="account-security.html" class="menu-link">
-                                <span class="menu-icon">
-                                    <i class="fi fi-br-fingerprint"></i>
-                                </span>
-                                <span class="menu-title">Security</span>
+                                <span class="menu-title">Settings</span>
                                 <span class="menu-arrow"></span>
                             </a>
                         </li>
@@ -92,7 +83,7 @@
                                 <span class="menu-icon">
                                     <i class="fi fi-br-sign-out-alt"></i>
                                 </span>
-                                <span class="menu-title">Log Out</span>
+                                <span class="menu-title">Sign Out</span>
                                 <span class="menu-arrow"></span>
                             </a>
                         </li>
@@ -104,19 +95,62 @@
             <div class="d-flex flex-row justify-content-between align-items-center">
                 <h2>Expenses</h2>
                 <div class="d-flex align-items-center">
-                    <a href="#" class="btn btn-sm btn-primary rounded-pill me-2" data-bs-toggle="modal" data-bs-target="#newOperationModal">New Transaction</a>
-                    <a href="profile.html" class="profile-btn">
-                        <i class="fi fi-br-user"></i>
+                    <a href="#" class="btn btn-sm btn-primary rounded-pill me-2" data-bs-toggle="modal" data-bs-target="#newOperationModal">
+                        <i class="btn-icon fi fi-br-plus"></i>
+                        <span>New Transaction</span>
                     </a>
+                    <div class="dropdown">
+                        <div class="dropdown-toggle py-2 d-flex align-items-center" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="profile-btn">
+                                <i class="fi fi-br-user"></i>
+                            </div>
+                        </div>
+                        <ul class="profile-dropdown dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li>
+                            <a class="dropdown-item" href="settings.html">
+                                <span class="dropdown-item-icon">
+                                    <i class="fi fi-br-circle-user"></i>
+                                </span>
+                                <span>My Profile</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="settings-security.html">
+                                <span class="dropdown-item-icon">
+                                    <i class="fi fi-br-fingerprint"></i>
+                                </span>
+                                <span>Change Password</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                <span class="dropdown-item-icon">
+                                    <i class="fi fi-br-settings"></i>
+                                </span>
+                                <span>Account Settings</span>
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item" href="#" onclick="logout(event)">
+                                <span class="dropdown-item-icon">
+                                    <i class="fi fi-br-sign-out-alt"></i>
+                                </span>
+                                <span>Sign Out</span>
+                            </a>
+                        </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="dashboard-content">
             <div class="row">
                 <div class="col-12 col-lg-8">
+                    <div class="dash-notifs" id="dashNotifs"></div>
                     <div class="card">
-                        <div class="card-body">
-                            <div class="table-responsive">
+                        <div class="card-body" id="transactionsList">
+                            <!-- <div class="table-responsive">
                                 <table class="table align-middle">
                                     <thead>
                                         <tr class='clickable-row' data-href='#'>
@@ -127,6 +161,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <tr class='clickable-row' data-href='#'>
+                                            <td>Solde My Car</td>
+                                            <td>
+                                                <span class="badge badge-light-success">Income</span>
+                                            </td>
+                                            <td>02 Apr, 2023</td>
+                                            <td class="text-end">4,500 MAD</td>
+                                            <td><i class="fi fi-br-menu-dots"></i></td>
+                                        </tr>
+                                        <tr class='clickable-row' data-href='#'>
+                                            <td>Solde Macbook Air M1</td>
+                                            <td>
+                                                <span class="badge badge-light-success">Income</span>
+                                            </td>
+                                            <td>02 Apr, 2023</td>
+                                            <td class="text-end">1,230 MAD</td>
+                                        </tr>
                                         <tr class='clickable-row' data-href='#'>
                                             <td>Google Pixel 6 Pro</td>
                                             <td>
@@ -145,7 +196,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -172,6 +223,7 @@
                 </div>
             </div>
         </div>
+        
         <!-- New Operation Modal -->
         <div class="modal fade new-operation-modal" id="newOperationModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -223,10 +275,68 @@
                 </div>
             </div>
         </div>
+
+        <!-- Edit Operation Modal -->
+        <div class="modal fade new-operation-modal" id="editOperationModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title mb-2">Edit Operation</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="sign-form">
+                            <div class="operation-feedback" id="operFeedback"></div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <label class="form-label">Operation Type <span class="form-label-required">*</span></label>
+                                        <div class="radio-btns" id="editOperType">
+                                            <label>
+                                                <input type="radio" name="operType" value="INCOME">
+                                                <span>Income</span>
+                                            </label>
+                                            <label>
+                                                <input type="radio" name="operType" value="EXPENSE">
+                                                <span>Expense</span>
+                                            </label>
+                                        </div>
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Amount <span class="form-label-required">*</span></label>
+                                        <input type="text" class="form-control" id="editOperAmount">
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <label for="" class="form-label">Motif / Description <span class="form-label-required">*</span></label>
+                                        <input type="text" class="form-control" id="editOperDesc">
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-2" id="modalFooter">
+                                <input type="hidden" id="editOperId">
+                                <button id="editOperDelete" class="btn btn-light-danger" type="button">Delete</button>
+                                <button id="editOperUpdate" class="btn btn-primary" type="button">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
+    <script src="assets/vendor/popper/popper.min.js"></script>
     <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/vendor/axios/axios.min.js"></script>
     <script src="assets/js/app.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/transactions.js"></script>
 </body>
 
 </html>

@@ -307,3 +307,27 @@ function pageTab(index) {
         }
     }
 }
+
+function formatDate(dateNum) {
+    const date = new Date(dateNum);
+    const dateDay = date.getDate();
+    const dateMonth = date.getMonth();
+    const dateYear = date.getFullYear();
+    const FormattedDate = `${dateDay} ${monthNames[dateMonth]} ${dateYear}`;
+    return FormattedDate;
+}
+
+function openTab(e, tabId) {
+    e.preventDefault();
+    let tabcontent = document.getElementsByClassName("tabcontent");
+    let tablinks = document.getElementsByClassName("tablink");
+    let activeTab = document.getElementById(tabId);
+    for (let i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].classList.add("d-none");
+    }
+    for (let i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+    }
+    activeTab.classList.remove("d-none");
+    e.target.parentElement.classList.add("active");
+}
