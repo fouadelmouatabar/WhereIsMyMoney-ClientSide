@@ -22,26 +22,25 @@
 <body class="dashboard-page">
     <div class="page-wrap">
 
-        <!-- Sidebar Menu -->
-        <div class="dash-sidebar">
+        <div class="side-navbar desktop-navbar d-desktop">
             <div class="logo">
-                <a href="#">
+                <a href="dashboard.html">
                     <img src="assets/img/logo-light.png" alt="">
                 </a>
             </div>
-            <div class="dash-menu">
+            <div class="main-menu">
                 <div class="menu-column">
                     <ul>
                         <li>
-                            <a href="index.html" class="menu-link active">
+                            <a href="dashboard.html" class="menu-link">
                                 <span class="menu-icon">
                                     <i class="fi fi-br-home"></i>
                                 </span>
-                                <span class="menu-title">Dashboards</span>
+                                <span class="menu-title">Dashboard</span>
                                 <span class="menu-arrow"></span>
                             </a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="transactions.html" class="menu-link">
                                 <span class="menu-icon">
                                     <i class="fi fi-br-time-forward"></i>
@@ -49,7 +48,7 @@
                                 <span class="menu-title">Transactions</span>
                                 <span class="menu-arrow"></span>
                             </a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="incomes.html" class="menu-link">
                                 <span class="menu-icon">
@@ -74,7 +73,7 @@
                     <span class="menu-column-title">Account</span>
                     <ul>
                         <li>
-                            <a href="settings.html" class="menu-link">
+                            <a href="settings.html" class="menu-link active">
                                 <span class="menu-icon">
                                     <i class="fi fi-br-settings"></i>
                                 </span>
@@ -95,17 +94,95 @@
                 </div>
             </div>
         </div>
-
-        <!-- Top Navigation Bar -->
+        <div class="side-navbar mobile-navbar offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <div class="logo">
+                    <a href="#">
+                        <img src="assets/img/logo-light.png" alt="">
+                    </a>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="offcanvas-body">
+                <div class="main-menu">
+                    <div class="menu-column">
+                        <ul>
+                            <li>
+                                <a href="dashboard.html" class="menu-link">
+                                    <span class="menu-icon">
+                                        <i class="fi fi-br-home"></i>
+                                    </span>
+                                    <span class="menu-title">Dashboard</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="transactions.html" class="menu-link">
+                                    <span class="menu-icon">
+                                        <i class="fi fi-br-time-forward"></i>
+                                    </span>
+                                    <span class="menu-title">Transactions</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="incomes.html" class="menu-link">
+                                    <span class="menu-icon">
+                                        <i class="fi fi-br-wallet"></i>
+                                    </span>
+                                    <span class="menu-title">Incomes</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="expenses.html" class="menu-link">
+                                    <span class="menu-icon">
+                                        <i class="fi fi-br-cart-shopping-fast"></i>
+                                    </span>
+                                    <span class="menu-title">Expenses</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="menu-column">
+                        <span class="menu-column-title">Account</span>
+                        <ul>
+                            <li>
+                                <a href="settings.html" class="menu-link active">
+                                    <span class="menu-icon">
+                                        <i class="fi fi-br-settings"></i>
+                                    </span>
+                                    <span class="menu-title">Settings</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="menu-link" onclick="logout(event)">
+                                    <span class="menu-icon">
+                                        <i class="fi fi-br-sign-out-alt"></i>
+                                    </span>
+                                    <span class="menu-title">Sign Out</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="topbar">
             <div class="d-flex flex-row justify-content-between align-items-center">
-                <h2>Settings</h2>
+                <div class="hamburger-menu d-mobile" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                    <span></span>
+                </div>
+                <h2 class="page-title d-desktop">Security Questions</h2>
                 <div class="d-flex align-items-center">
                     <a href="#" class="btn btn-sm btn-primary rounded-pill me-2" data-bs-toggle="modal" data-bs-target="#newOperationModal">
                         <i class="btn-icon fi fi-br-plus"></i>
                         <span>New Transaction</span>
                     </a>
-                    <div class="dropdown">
+                    <div class="dropdown d-desktop">
                         <div class="dropdown-toggle py-2 d-flex align-items-center" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             <div class="profile-btn">
                                 <i class="fi fi-br-user"></i>
@@ -121,7 +198,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="settings-security.html">
+                            <a class="dropdown-item" href="change-password.html">
                                 <span class="dropdown-item-icon">
                                     <i class="fi fi-br-fingerprint"></i>
                                 </span>
@@ -129,7 +206,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="account-settings.html">
                                 <span class="dropdown-item-icon">
                                     <i class="fi fi-br-settings"></i>
                                 </span>
@@ -150,10 +227,9 @@
                 </div>
             </div>
         </div>
-
-        <!-- Page Content -->
         <div class="dashboard-content">
-            <div class="row">
+            <h3 class="d-mobile page-title mb-3">Security Questions</h3>
+            <div class="row g-4">
                 <div class="col-12 col-lg-8">
                     <div class="card mb-4">
                         <div class="card-body pb-0">
@@ -202,38 +278,38 @@
                             <div class="card-content">
                                 <div id="securityQuestions">
                                     <div class="questions-feedback" id="questionsFeedback"></div>
-                                    <div class="row">
+                                    <div class="row gx-3">
                                         <div class="col-12">
-                                            <div class="mb-2">
+                                            <div class="form-input mb-2">
                                                 <label for="email" class="form-label">Security Question 1 <span class="form-label-required">*</span></label>
                                                 <select class="form-select" id="securityQuestion1" onchange="updateQuestions('securityQuestions', 1)"></select>
-                                                <div class="invalid-feedback"></div>
+                                                <div class="input-feedback"></div>
                                             </div>
-                                            <div class="mb-3">
+                                            <div class="form-input mb-3">
                                                 <input type="text" class="form-control" id="securityAnswer1" placeholder="Your Answer">
-                                                <div class="invalid-feedback"></div>
+                                                <div class="input-feedback"></div>
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <div class="mb-2">
+                                            <div class="form-input mb-2">
                                                 <label for="email" class="form-label">Security Question 2 <span class="form-label-required">*</span></label>
                                                 <select class="form-select" id="securityQuestion2" onchange="updateQuestions('securityQuestions', 2)"></select>
-                                                <div class="invalid-feedback"></div>
+                                                <div class="input-feedback"></div>
                                             </div>
-                                            <div class="mb-3">
+                                            <div class="form-input mb-3">
                                                 <input type="text" class="form-control" id="securityAnswer2" placeholder="Your Answer">
-                                                <div class="invalid-feedback"></div>
+                                                <div class="input-feedback"></div>
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <div class="mb-2">
+                                            <div class="form-input mb-2">
                                                 <label for="email" class="form-label">Security Question 3 <span class="form-label-required">*</span></label>
                                                 <select class="form-select" id="securityQuestion3" onchange="updateQuestions('securityQuestions', 3)"></select>
-                                                <div class="invalid-feedback"></div>
+                                                <div class="input-feedback"></div>
                                             </div>
-                                            <div class="mb-4">
+                                            <div class="form-input mb-4">
                                                 <input type="text" class="form-control" id="securityAnswer3" placeholder="Your Answer">
-                                                <div class="invalid-feedback"></div>
+                                                <div class="input-feedback"></div>
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -288,11 +364,11 @@
                     <div class="modal-body">
                         <div class="sign-form">
                             <div class="operation-feedback" id="operFeedback"></div>
-                            <div class="row">
+                            <div class="row g-4">
                                 <div class="col-12">
-                                    <div class="mb-3">
+                                    <div class="form-input mb-3">
                                         <label class="form-label">Operation Type <span class="form-label-required">*</span></label>
-                                        <div class="radio-btns" id="operType">
+                                        <div class="form-group input-radios" id="operType">
                                             <label>
                                                 <input type="radio" name="operType" value="INCOME">
                                                 <span>Income</span>
@@ -302,21 +378,21 @@
                                                 <span>Expense</span>
                                             </label>
                                         </div>
-                                        <div class="invalid-feedback"></div>
+                                        <div class="input-feedback"></div>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <div class="mb-3">
+                                    <div class="form-input mb-3">
                                         <label for="" class="form-label">Amount <span class="form-label-required">*</span></label>
                                         <input type="text" class="form-control" id="operAmount" placeholder="">
-                                        <div class="invalid-feedback"></div>
+                                        <div class="input-feedback"></div>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <div class="mb-3">
+                                    <div class="form-input mb-3">
                                         <label for="" class="form-label">Motif / Description <span class="form-label-required">*</span></label>
                                         <input type="text" class="form-control" id="operDesc" placeholder="">
-                                        <div class="invalid-feedback"></div>
+                                        <div class="input-feedback"></div>
                                     </div>
                                 </div>
                             </div>

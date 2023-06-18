@@ -18,7 +18,7 @@
     <div class="page-wrap">
         <div class="dash-sidebar">
             <div class="logo">
-                <a href="#">
+                <a href="dashboard.html">
                     <img src="assets/img/logo-light.png" alt="">
                 </a>
             </div>
@@ -26,15 +26,15 @@
                 <div class="menu-column">
                     <ul>
                         <li>
-                            <a href="index.html" class="menu-link active">
+                            <a href="dashboard.html" class="menu-link active">
                                 <span class="menu-icon">
                                     <i class="fi fi-br-home"></i>
                                 </span>
-                                <span class="menu-title">Dashboards</span>
+                                <span class="menu-title">Dashboard</span>
                                 <span class="menu-arrow"></span>
                             </a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="transactions.html" class="menu-link">
                                 <span class="menu-icon">
                                     <i class="fi fi-br-time-forward"></i>
@@ -42,7 +42,7 @@
                                 <span class="menu-title">Transactions</span>
                                 <span class="menu-arrow"></span>
                             </a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="incomes.html" class="menu-link">
                                 <span class="menu-icon">
@@ -112,7 +112,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="settings-security.html">
+                            <a class="dropdown-item" href="change-password.html">
                                 <span class="dropdown-item-icon">
                                     <i class="fi fi-br-fingerprint"></i>
                                 </span>
@@ -120,7 +120,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="account-settings.html">
                                 <span class="dropdown-item-icon">
                                     <i class="fi fi-br-settings"></i>
                                 </span>
@@ -142,7 +142,7 @@
             </div>
         </div>
         <div class="dashboard-content">
-            <div class="row">
+            <div class="row g-4">
                 <div class="col-12 col-lg-6">
                     <div class="card">
                         <div class="card-body">
@@ -152,19 +152,19 @@
                             </div>
                             <div class="card-content">
                                 <div class="pass-feedback" id="passResetFeedback"></div>
-                                <div class="row">
+                                <div class="row g-4">
                                     <div class="col-12">
                                         <div class="mb-4">
                                             <label for="" class="form-label">Current Password <span class="form-label-required">*</span></label>
                                             <input type="password" class="form-control" id="currentPass" placeholder="Your current password">
-                                            <div class="invalid-feedback"></div>
+                                            <div class="input-feedback"></div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="mb-3">
                                             <label for="" class="form-label">New Password <span class="form-label-required">*</span></label>
                                             <input type="password" class="form-control" id="newPass" placeholder="At leat 8 characters" onkeyup="checkPassStrength(event)">
-                                            <div class="invalid-feedback"></div>
+                                            <div class="input-feedback"></div>
                                             <div class="password-strength">
                                                 <div class="row gx-3">
                                                     <div class="col">
@@ -193,7 +193,7 @@
                                         <div class="mb-4">
                                             <label for="" class="form-label">Confirm Password <span class="form-label-required">*</span></label>
                                             <input type="password" class="form-control" id="confirmPass" placeholder="Confirm your password">
-                                            <div class="invalid-feedback"></div>
+                                            <div class="input-feedback"></div>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -214,38 +214,38 @@
                             <div class="card-content">
                                 <div id="securityQuestions">
                                     <div class="questions-feedback" id="questionsFeedback"></div>
-                                    <div class="row">
+                                    <div class="row g-4">
                                         <div class="col-12">
                                             <div class="mb-2">
                                                 <label for="email" class="form-label">Security Question 1 <span class="form-label-required">*</span></label>
                                                 <select class="form-select" id="securityQuestion1" onchange="updateQuestions('securityQuestions', 1)"></select>
-                                                <div class="invalid-feedback"></div>
+                                                <div class="input-feedback"></div>
                                             </div>
                                             <div class="mb-3">
                                                 <input type="text" class="form-control" id="securityAnswer1" placeholder="Your Answer">
-                                                <div class="invalid-feedback"></div>
+                                                <div class="input-feedback"></div>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="mb-2">
                                                 <label for="email" class="form-label">Security Question 2 <span class="form-label-required">*</span></label>
                                                 <select class="form-select" id="securityQuestion2" onchange="updateQuestions('securityQuestions', 2)"></select>
-                                                <div class="invalid-feedback"></div>
+                                                <div class="input-feedback"></div>
                                             </div>
                                             <div class="mb-3">
                                                 <input type="text" class="form-control" id="securityAnswer2" placeholder="Your Answer">
-                                                <div class="invalid-feedback"></div>
+                                                <div class="input-feedback"></div>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="mb-2">
                                                 <label for="email" class="form-label">Security Question 3 <span class="form-label-required">*</span></label>
                                                 <select class="form-select" id="securityQuestion3" onchange="updateQuestions('securityQuestions', 3)"></select>
-                                                <div class="invalid-feedback"></div>
+                                                <div class="input-feedback"></div>
                                             </div>
                                             <div class="mb-4">
                                                 <input type="text" class="form-control" id="securityAnswer3" placeholder="Your Answer">
-                                                <div class="invalid-feedback"></div>
+                                                <div class="input-feedback"></div>
                                             </div>
                                         </div>
                                         <div class="col-12">
@@ -270,11 +270,11 @@
                     <div class="modal-body">
                         <div class="sign-form">
                             <div class="operation-feedback" id="operFeedback"></div>
-                            <div class="row">
+                            <div class="row g-4">
                                 <div class="col-12">
-                                    <div class="mb-3">
+                                    <div class="form-input mb-3">
                                         <label class="form-label">Operation Type <span class="form-label-required">*</span></label>
-                                        <div class="radio-btns" id="operType">
+                                        <div class="form-group input-radios" id="operType">
                                             <label>
                                                 <input type="radio" name="operType" value="INCOME">
                                                 <span>Income</span>
@@ -284,21 +284,21 @@
                                                 <span>Expense</span>
                                             </label>
                                         </div>
-                                        <div class="invalid-feedback"></div>
+                                        <div class="input-feedback"></div>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <div class="mb-3">
+                                    <div class="form-input mb-3">
                                         <label for="" class="form-label">Amount <span class="form-label-required">*</span></label>
                                         <input type="text" class="form-control" id="operAmount" placeholder="">
-                                        <div class="invalid-feedback"></div>
+                                        <div class="input-feedback"></div>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <div class="mb-3">
+                                    <div class="form-input mb-3">
                                         <label for="" class="form-label">Motif / Description <span class="form-label-required">*</span></label>
                                         <input type="text" class="form-control" id="operDesc" placeholder="">
-                                        <div class="invalid-feedback"></div>
+                                        <div class="input-feedback"></div>
                                     </div>
                                 </div>
                             </div>

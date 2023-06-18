@@ -1,5 +1,4 @@
 const baseUrl = "https://wmm.up.railway.app/api/v1";
-// const baseUrl =  "http://localhost:8080/wmm/api/v1"
 const countriesJSON = "assets/js/JSON/countries.json";
 const phoneCodesJSON = "assets/js/JSON/phoneCodes.json";
 const currenciesJSON = "assets/js/JSON/currencies.json";
@@ -7,14 +6,31 @@ const currentDate = new Date();
 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const currentYear = currentDate.getFullYear();
 const currentMonth = currentDate.getMonth() + 1;
-// const currentMonthName = monthNames[currentDate.getMonth()];
+const currentDay = currentDate.getDate();
 const errorRequiredField = "This field is required.";
 const errorValidEmail = "Please enter a valid email address.";
 const errorPassMatch = "Passwords do not match.";
 const errorPassWeak = "Please choose a stronger password.";
 const errorValidPhone = "Please enter a valid phone number.";
 
-document.addEventListener("DOMContentLoaded", clickableRows());
+document.onload = clickableRows();
+document.onload = hideInputFeedback();
+
+function checkLoggedIn() {
+    const userId = localStorage.getItem("accessToken");
+    const token = localStorage.getItem("accountId");
+    if(token != null && userId != null) {
+        window.location = `dashboard.html`;
+    }
+}
+
+function checkLoggedOut() {
+    const userId = localStorage.getItem("accessToken");
+    const token = localStorage.getItem("accountId");
+    if(token == null || userId == null) {
+        window.location = `index.html`;
+    }
+}
 
 function clickableRows() {
     const rows = document.querySelectorAll(".clickable-row");
@@ -74,22 +90,27 @@ function checkPassStrength(e) {
 }
 
 function inputError(input, message) {
-    input.classList.add("input-invalid");
-    if (message !== undefined) {
-        if (input.nextElementSibling.classList.contains("invalid-feedback")) {
-            input.nextElementSibling.classList.add("d-block");
-            input.nextElementSibling.innerText = message;
-        }
+    let formInput = input.closest('.form-input');
+    let inputFeedback = formInput.querySelector('.input-feedback');
+    formInput.classList.add("input-invalid");
+    if (message !== undefined && inputFeedback !== undefined) {
+        formInput.classList.add("input-invalid");
+        inputFeedback.innerText = message;
+
+        // if (input.nextElementSibling.classList.contains("input-feedback")) {
+        //     input.nextElementSibling.classList.add("d-block");
+        //     input.nextElementSibling.innerText = message;
+        // }
     }
 }
 
 function inputValid(input) {
-    input.classList.remove("input-invalid");
-    if (input.nextElementSibling !== null) {
-        if (input.nextElementSibling.classList.contains("invalid-feedback")) {
-            input.nextElementSibling.classList.remove("d-block");
-            input.nextElementSibling.innerText = "";
-        }
+    let formInput = input.closest('.form-input');
+    let inputFeedback = formInput.querySelector('.input-feedback');
+    formInput.classList.remove("input-invalid");
+    if (inputFeedback !== undefined) {
+        formInput.classList.remove("input-invalid");
+        inputFeedback.innerText = "";
     }
 }
 
@@ -148,7 +169,6 @@ function setRadiosVal(inputRadio, btnName, selectedVal) {
 }
 
 function birthDateSelect(form, selectedYear, selectedMonth, selectedDay) {
-    const currentDay = currentDate.getDate();
     let selectElems = form.querySelectorAll("select");
     let year = currentYear;
     for (let i = 1; i <= 31; i++) {
@@ -224,15 +244,6 @@ function getDateComponents(dateString) {
     const day = date.getDate();
     return [year, month, day];
 }
-
-function checkLoggedIn() {
-    const userId = localStorage.getItem("accessToken");
-    const token = localStorage.getItem("accountId");
-    if(token == null || userId == null) {
-        window.location = `index.html`;
-    }
-}
-
 
 function updateQuestions(formId, select) {
     let selectParent = document.getElementById(formId);
@@ -317,17 +328,11 @@ function formatDate(dateNum) {
     return FormattedDate;
 }
 
-function openTab(e, tabId) {
-    e.preventDefault();
-    let tabcontent = document.getElementsByClassName("tabcontent");
-    let tablinks = document.getElementsByClassName("tablink");
-    let activeTab = document.getElementById(tabId);
-    for (let i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].classList.add("d-none");
+function hideInputFeedback() {
+    const formInputs = document.querySelectorAll('input, select');
+    for (let formInput of formInputs) {
+        formInput.addEventListener('change', function() {
+            inputValid(formInput);
+        });
     }
-    for (let i = 0; i < tablinks.length; i++) {
-        tablinks[i].classList.remove("active");
-    }
-    activeTab.classList.remove("d-none");
-    e.target.parentElement.classList.add("active");
 }

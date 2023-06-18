@@ -2767,7 +2767,7 @@ textarea.form-control-lg {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+.input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.input-feedback) {
   margin-left: calc(var(--bs-border-width) * -1);
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -2868,7 +2868,7 @@ textarea.form-control-lg {
   z-index: 3;
 }
 
-.invalid-feedback {
+.input-feedback {
   display: none;
   width: 100%;
   margin-top: 0.25rem;
@@ -2890,9 +2890,9 @@ textarea.form-control-lg {
   border-radius: var(--bs-border-radius);
 }
 
-.was-validated :invalid ~ .invalid-feedback,
+.was-validated :invalid ~ .input-feedback,
 .was-validated :invalid ~ .invalid-tooltip,
-.is-invalid ~ .invalid-feedback,
+.is-invalid ~ .input-feedback,
 .is-invalid ~ .invalid-tooltip {
   display: block;
 }
@@ -2946,7 +2946,7 @@ textarea.form-control-lg {
   color: var(--bs-form-invalid-color);
 }
 
-.form-check-inline .form-check-input ~ .invalid-feedback {
+.form-check-inline .form-check-input ~ .input-feedback {
   margin-left: 0.5em;
 }
 

@@ -19,26 +19,26 @@
 
 <body class="dashboard-page">
     <div class="page-wrap">
-        <div class="dash-sidebar">
+        <div class="side-navbar desktop-navbar d-desktop">
             <div class="logo">
-                <a href="#">
+                <a href="dashboard.html">
                     <img src="assets/img/logo-light.png" alt="">
                 </a>
             </div>
-            <div class="dash-menu">
+            <div class="main-menu">
                 <div class="menu-column">
                     <ul>
                         <li>
-                            <a href="index.html" class="menu-link active">
+                            <a href="dashboard.html" class="menu-link">
                                 <span class="menu-icon">
                                     <i class="fi fi-br-home"></i>
                                 </span>
-                                <span class="menu-title">Dashboards</span>
+                                <span class="menu-title">Dashboard</span>
                                 <span class="menu-arrow"></span>
                             </a>
                         </li>
                         <li>
-                            <a href="transactions.html" class="menu-link">
+                            <a href="transactions.html" class="menu-link active">
                                 <span class="menu-icon">
                                     <i class="fi fi-br-time-forward"></i>
                                 </span>
@@ -91,15 +91,95 @@
                 </div>
             </div>
         </div>
+        <div class="side-navbar mobile-navbar offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <div class="logo">
+                    <a href="#">
+                        <img src="assets/img/logo-light.png" alt="">
+                    </a>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+            </div>
+            <div class="offcanvas-body">
+                <div class="main-menu">
+                    <div class="menu-column">
+                        <ul>
+                            <li>
+                                <a href="dashboard.html" class="menu-link">
+                                    <span class="menu-icon">
+                                        <i class="fi fi-br-home"></i>
+                                    </span>
+                                    <span class="menu-title">Dashboard</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="transactions.html" class="menu-link active">
+                                    <span class="menu-icon">
+                                        <i class="fi fi-br-time-forward"></i>
+                                    </span>
+                                    <span class="menu-title">Transactions</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="incomes.html" class="menu-link">
+                                    <span class="menu-icon">
+                                        <i class="fi fi-br-wallet"></i>
+                                    </span>
+                                    <span class="menu-title">Incomes</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="expenses.html" class="menu-link">
+                                    <span class="menu-icon">
+                                        <i class="fi fi-br-cart-shopping-fast"></i>
+                                    </span>
+                                    <span class="menu-title">Expenses</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="menu-column">
+                        <span class="menu-column-title">Account</span>
+                        <ul>
+                            <li>
+                                <a href="settings.html" class="menu-link">
+                                    <span class="menu-icon">
+                                        <i class="fi fi-br-settings"></i>
+                                    </span>
+                                    <span class="menu-title">Settings</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="menu-link" onclick="logout(event)">
+                                    <span class="menu-icon">
+                                        <i class="fi fi-br-sign-out-alt"></i>
+                                    </span>
+                                    <span class="menu-title">Sign Out</span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="topbar">
             <div class="d-flex flex-row justify-content-between align-items-center">
-                <h2>Transactions</h2>
+                <div class="hamburger-menu d-mobile" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                    <span></span>
+                </div>
+                <h2 class="page-title d-desktop">Transaction</h2>
                 <div class="d-flex align-items-center">
                     <a href="#" class="btn btn-sm btn-primary rounded-pill me-2" data-bs-toggle="modal" data-bs-target="#newOperationModal">
                         <i class="btn-icon fi fi-br-plus"></i>
                         <span>New Transaction</span>
                     </a>
-                    <div class="dropdown">
+                    <div class="dropdown d-desktop">
                         <div class="dropdown-toggle py-2 d-flex align-items-center" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             <div class="profile-btn">
                                 <i class="fi fi-br-user"></i>
@@ -115,7 +195,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="settings-security.html">
+                            <a class="dropdown-item" href="change-password.html">
                                 <span class="dropdown-item-icon">
                                     <i class="fi fi-br-fingerprint"></i>
                                 </span>
@@ -123,7 +203,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="account-settings.html">
                                 <span class="dropdown-item-icon">
                                     <i class="fi fi-br-settings"></i>
                                 </span>
@@ -145,11 +225,22 @@
             </div>
         </div>
         <div class="dashboard-content">
-            <div class="row">
+            <h3 class="d-mobile page-title mb-3">Transaction</h3>
+            <div class="row g-4 align-items-stretch">
                 <div class="col-12 col-lg-8">
                     <div class="dash-notifs" id="dashNotifs"></div>
                     <div class="card">
-                        <div class="card-body" id="transactionsList">
+                        <div class="card-body" id="incomesList">
+                            <!-- <div class="no-records-card text-center">
+                                <div class="mb-5">
+                                <img src="assets/img/no-entries.svg" class="img-fluid" width="300" alt="">
+                                </div>
+                                <h2 class="fw-semibold mb-2">There is no transactions</h2>
+                                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                <a href="#" class="link link-primary" data-bs-toggle="modal" data-bs-target="#newOperationModal">
+                                    <span class="fw-bold">Add transaction</span>
+                                </a>
+                            </div> -->
                             <!-- <div class="table-responsive">
                                 <table class="table align-middle">
                                     <thead>
@@ -204,20 +295,79 @@
                     <div class="card sidebar-card mobileapp-card">
                         <div class="card-body">
                             <div class="card-content text-center">
-                                <h2 class="text-gray-800 text-center">
-                                    <span>Have your tried</span>
-                                    <br>
-                                    <span>new</span>
-                                    <span class="fw-bold">Mobile Application ?</span>
-                                </h2>
-                                <div class="pt-3 pb-5">
-                                    <img src="assets/img/app.svg" alt="">
-                                </div>
-                                <div>
-                                    <a class="btn btn-sm btn-primary me-2" href="#">Try Now</a>
-                                    <a class="btn btn-sm btn-light" href="#">Learn More</a>
-                                </div>
+                                <canvas id="myChart"></canvas>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="dash-notifs" id="dashNotifs"></div>
+                    <div class="card">
+                        <div class="card-body" id="expensesList">
+                            <!-- <div class="no-records-card text-center">
+                                <div class="mb-5">
+                                <img src="assets/img/no-entries.svg" class="img-fluid" width="300" alt="">
+                                </div>
+                                <h2 class="fw-semibold mb-2">There is no transactions</h2>
+                                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                <a href="#" class="link link-primary" data-bs-toggle="modal" data-bs-target="#newOperationModal">
+                                    <span class="fw-bold">Add transaction</span>
+                                </a>
+                            </div> -->
+                            <!-- <div class="table-responsive">
+                                <table class="table align-middle">
+                                    <thead>
+                                        <tr class='clickable-row' data-href='#'>
+                                            <th>Operation Label</th>
+                                            <th>Operation Type</th>
+                                            <th>Date</th>
+                                            <th class="text-end">Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class='clickable-row' data-href='#'>
+                                            <td>Solde My Car</td>
+                                            <td>
+                                                <span class="badge badge-light-success">Income</span>
+                                            </td>
+                                            <td>02 Apr, 2023</td>
+                                            <td class="text-end">4,500 MAD</td>
+                                            <td><i class="fi fi-br-menu-dots"></i></td>
+                                        </tr>
+                                        <tr class='clickable-row' data-href='#'>
+                                            <td>Solde Macbook Air M1</td>
+                                            <td>
+                                                <span class="badge badge-light-success">Income</span>
+                                            </td>
+                                            <td>02 Apr, 2023</td>
+                                            <td class="text-end">1,230 MAD</td>
+                                        </tr>
+                                        <tr class='clickable-row' data-href='#'>
+                                            <td>Google Pixel 6 Pro</td>
+                                            <td>
+                                                <span class="badge badge-light-danger">Expense</span>
+                                            </td>
+                                            <td>02 Apr, 2023</td>
+                                            <td class="text-end">1,060 MAD</td>
+                                        </tr>
+                                        <tr class='clickable-row' data-href='#'>
+                                            <td>Logitech MX 250</td>
+                                            <td>
+                                                <span class="badge badge-light-danger">Expense</span>
+                                            </td>
+                                            <td>02 Apr, 2023</td>
+                                            <td class="text-end">64 MAD</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="card sidebar-card mobileapp-card">
+                        <div class="card-body">
+                            <canvas id="myChart2"></canvas>
                         </div>
                     </div>
                 </div>
@@ -234,11 +384,11 @@
                     <div class="modal-body">
                         <div class="sign-form">
                             <div class="operation-feedback" id="operFeedback"></div>
-                            <div class="row">
+                            <div class="row g-4">
                                 <div class="col-12">
-                                    <div class="mb-3">
+                                    <div class="form-input mb-3">
                                         <label class="form-label">Operation Type <span class="form-label-required">*</span></label>
-                                        <div class="radio-btns" id="operType">
+                                        <div class="form-group input-radios" id="operType">
                                             <label>
                                                 <input type="radio" name="operType" value="INCOME">
                                                 <span>Income</span>
@@ -248,21 +398,21 @@
                                                 <span>Expense</span>
                                             </label>
                                         </div>
-                                        <div class="invalid-feedback"></div>
+                                        <div class="input-feedback"></div>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <div class="mb-3">
+                                    <div class="form-input mb-3">
                                         <label for="" class="form-label">Amount <span class="form-label-required">*</span></label>
                                         <input type="text" class="form-control" id="operAmount" placeholder="">
-                                        <div class="invalid-feedback"></div>
+                                        <div class="input-feedback"></div>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <div class="mb-3">
+                                    <div class="form-input mb-3">
                                         <label for="" class="form-label">Motif / Description <span class="form-label-required">*</span></label>
                                         <input type="text" class="form-control" id="operDesc" placeholder="">
-                                        <div class="invalid-feedback"></div>
+                                        <div class="input-feedback"></div>
                                     </div>
                                 </div>
                             </div>
@@ -286,11 +436,11 @@
                     <div class="modal-body">
                         <div class="sign-form">
                             <div class="operation-feedback" id="operFeedback"></div>
-                            <div class="row">
+                            <div class="row g-4">
                                 <div class="col-12">
-                                    <div class="mb-3">
+                                    <div class="form-input mb-3">
                                         <label class="form-label">Operation Type <span class="form-label-required">*</span></label>
-                                        <div class="radio-btns" id="editOperType">
+                                        <div class="form-group input-radios" id="editOperType">
                                             <label>
                                                 <input type="radio" name="operType" value="INCOME">
                                                 <span>Income</span>
@@ -300,21 +450,21 @@
                                                 <span>Expense</span>
                                             </label>
                                         </div>
-                                        <div class="invalid-feedback"></div>
+                                        <div class="input-feedback"></div>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <div class="mb-3">
+                                    <div class="form-input mb-3">
                                         <label for="" class="form-label">Amount <span class="form-label-required">*</span></label>
                                         <input type="text" class="form-control" id="editOperAmount">
-                                        <div class="invalid-feedback"></div>
+                                        <div class="input-feedback"></div>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <div class="mb-3">
+                                    <div class="form-input mb-3">
                                         <label for="" class="form-label">Motif / Description <span class="form-label-required">*</span></label>
                                         <input type="text" class="form-control" id="editOperDesc">
-                                        <div class="invalid-feedback"></div>
+                                        <div class="input-feedback"></div>
                                     </div>
                                 </div>
                             </div>

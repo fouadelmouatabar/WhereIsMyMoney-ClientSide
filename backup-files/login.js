@@ -1,4 +1,4 @@
-function loginValidate() {
+function login() {
     const loginEmail = document.querySelector("#loginEmail");
     const loginPass = document.querySelector("#loginPass");
     const loginFeedback = document.querySelector("#loginFeedback");

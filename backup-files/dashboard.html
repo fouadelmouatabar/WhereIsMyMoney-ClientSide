@@ -90,7 +90,7 @@
         </div>
         <div class="topbar">
             <div class="d-flex flex-row justify-content-between align-items-center">
-                <h2>Profile</h2>
+                <h2>Dashboard</h2>
                 <div class="d-flex align-items-center">
                     <a href="#" class="btn btn-sm btn-primary rounded-pill me-2" data-bs-toggle="modal" data-bs-target="#newOperationModal">
                         <i class="btn-icon fi fi-br-plus"></i>
@@ -142,122 +142,7 @@
             </div>
         </div>
         <div class="dashboard-content">
-            <div class="row g-4">
-                <div class="col-12 col-lg-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-heading">
-                                <h3 class="card-title">Change Password</h3>
-                                <h6 class="card-subtitle">Stay safe, stay secure.</h6>
-                            </div>
-                            <div class="card-content">
-                                <div class="pass-feedback" id="passResetFeedback"></div>
-                                <div class="row g-4">
-                                    <div class="col-12">
-                                        <div class="mb-4">
-                                            <label for="" class="form-label">Current Password <span class="form-label-required">*</span></label>
-                                            <input type="password" class="form-control" id="currentPass" placeholder="Your current password">
-                                            <div class="input-feedback"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="mb-3">
-                                            <label for="" class="form-label">New Password <span class="form-label-required">*</span></label>
-                                            <input type="password" class="form-control" id="newPass" placeholder="At leat 8 characters" onkeyup="checkPassStrength(event)">
-                                            <div class="input-feedback"></div>
-                                            <div class="password-strength">
-                                                <div class="row gx-3">
-                                                    <div class="col">
-                                                        <div class="strength-bar"></div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="strength-bar"></div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="strength-bar"></div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="strength-bar"></div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="strength-bar"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-helper">
-                                                <span>Utilisez au moins huit caractères avec des lettres, des chiffres et des symboles</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="mb-4">
-                                            <label for="" class="form-label">Confirm Password <span class="form-label-required">*</span></label>
-                                            <input type="password" class="form-control" id="confirmPass" placeholder="Confirm your password">
-                                            <div class="input-feedback"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <button class="btn btn-primary" type="button" onclick="updatePassword()">Update Password</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-heading">
-                                <h3 class="card-title">Update Your Security Questions</h3>
-                                <h6 class="card-subtitle">Stay safe, stay secure.</h6>
-                            </div>
-                            <div class="card-content">
-                                <div id="securityQuestions">
-                                    <div class="questions-feedback" id="questionsFeedback"></div>
-                                    <div class="row g-4">
-                                        <div class="col-12">
-                                            <div class="mb-2">
-                                                <label for="email" class="form-label">Security Question 1 <span class="form-label-required">*</span></label>
-                                                <select class="form-select" id="securityQuestion1" onchange="updateQuestions('securityQuestions', 1)"></select>
-                                                <div class="input-feedback"></div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <input type="text" class="form-control" id="securityAnswer1" placeholder="Your Answer">
-                                                <div class="input-feedback"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="mb-2">
-                                                <label for="email" class="form-label">Security Question 2 <span class="form-label-required">*</span></label>
-                                                <select class="form-select" id="securityQuestion2" onchange="updateQuestions('securityQuestions', 2)"></select>
-                                                <div class="input-feedback"></div>
-                                            </div>
-                                            <div class="mb-3">
-                                                <input type="text" class="form-control" id="securityAnswer2" placeholder="Your Answer">
-                                                <div class="input-feedback"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="mb-2">
-                                                <label for="email" class="form-label">Security Question 3 <span class="form-label-required">*</span></label>
-                                                <select class="form-select" id="securityQuestion3" onchange="updateQuestions('securityQuestions', 3)"></select>
-                                                <div class="input-feedback"></div>
-                                            </div>
-                                            <div class="mb-4">
-                                                <input type="text" class="form-control" id="securityAnswer3" placeholder="Your Answer">
-                                                <div class="input-feedback"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <button class="btn btn-primary" type="button" onclick="updateAnswers()">Update Questions</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
         <!-- New Operation Modal -->
         <div class="modal fade new-operation-modal" id="newOperationModal" tabindex="-1" aria-hidden="true">
@@ -316,6 +201,5 @@
     <script src="assets/vendor/axios/axios.min.js"></script>
     <script src="assets/js/app.js"></script>
     <script src="assets/js/dashboard.js"></script>
-    <script src="assets/js/security.js"></script>
 </body>
 </html>

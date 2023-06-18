@@ -1,5 +1,7 @@
 
 const transactionsList = document.querySelector("#transactionsList");
+const incomesList = document.querySelector("#incomesList");
+const expensesList = document.querySelector("#expensesList");
 const editModal = document.getElementById('editOperationModal');
 const bsEditModal = new bootstrap.Modal(editModal);
 const modalBody = editModal.querySelector('.modal-body');
@@ -13,16 +15,20 @@ const editOperUpdate = document.querySelector("#editOperUpdate");
 
 window.onload = function() {
     var currentPage = window.location.href;
-    if (currentPage.indexOf('transactions.html') !== -1) {
-        setTransactions();
-    } else if (currentPage.indexOf('incomes.html') !== -1) {
-        setTransactions("INCOME");
-    } else if (currentPage.indexOf('expenses.html') !== -1) {
-        setTransactions("EXPENSE");
+    if (currentPage.includes('dashboard.html')) {
+        setTransactions(incomesList, "INCOME");
+        setTransactions(expensesList, "EXPENSE");
+    } else if (currentPage.includes('transactions.html')) {
+        setTransactions(transactionsList);
+    } else if (currentPage.includes('incomes.html')) {
+        setTransactions(incomesList, "INCOME");
+    } else if (currentPage.includes('expenses.html')) {
+        setTransactions(expensesList, "EXPENSE");
     }
 };
 
-function setTransactions(operType) {
+function setTransactions(parent, operType, maxResults) {
+    console.log("ok");
     const accessToken = localStorage.getItem("accessToken");
     const userId = localStorage.getItem("accountId");
     const url = `${baseUrl}/operation/all/${userId}`;
@@ -37,45 +43,70 @@ function setTransactions(operType) {
         return response.data;
     })
     .then((transactions) => {
-        let transTable = `
-        <div class="table-responsive">
-            <table class="table align-middle">
-                <thead>
-                    <tr>
-                        <th>Operation Label</th>
-                        <th>Operation Type</th>
-                        <th>Date</th>
-                        <th class="text-end">Amount</th>
-                    </tr>
-                </thead>
-                <tbody>`;
-        for (let i = 0; i < transactions.length; i++) {
-            const operationId = transactions[i].operationId;
-            const operationType = transactions[i].operationType;
-            const operationDate = transactions[i].operationDate;
-            const operationDesc = transactions[i].description;
-            const operationAmount = transactions[i].amount;
-            
-            let badgeClass = "warning";
-            if(operationType === "INCOME") {
-                badgeClass = "success";
-            } else if(operationType === "EXPENSE") {
-                badgeClass = "danger";
+        let incomes = 0;
+        let expenses = 0;
+        for(let transaction of transactions) {
+            if (transaction.operationType == "INCOME") {
+                incomes++;
+            } else if(transaction.operationType == "EXPENSE") {
+                expenses++;
             }
-            if((operType === "INCOME" && operationType === "INCOME") || (operType === "EXPENSE" && operationType === "EXPENSE") || operType === undefined) {
-                transTable += `
-                <tr class='clickable-row' data-id='${operationId}'>
-                    <td>${operationDesc}</td>
-                    <td>
-                        <span class="badge badge-light-${badgeClass}">${operationType}</span>
-                    </td>
-                    <td>${formatDate(operationDate)}</td>
-                    <td class="text-end">${operationAmount} ${currency}</td>
-                </tr>`;
-            }
-        }  
-        transTable += `</tbody></table></div>`;
-        transactionsList.innerHTML = transTable;
+        }
+        if((operType === "INCOME" && incomes <= 0) ||
+            (operType === "EXPENSE" && expenses <= 0) ||
+            (operType === undefined && transactions.length <= 0)) {
+            let noEntries = `<div class="no-records-card text-center">
+                <div class="mb-5 pt-1">
+                    <img src="assets/img/no-entries.svg" class="img-fluid" width="300" alt="">
+                </div>
+                <h3 class="fw-semibold mb-2">There is no transactions</h3>
+                <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <a href="#" class="link link-primary" data-bs-toggle="modal" data-bs-target="#newOperationModal">
+                    <span class="fw-bold">Add transaction</span>
+                </a>
+            </div>`;
+            parent.innerHTML = noEntries;
+        } else {
+            let transTable = `
+            <div class="table-responsive">
+                <table class="table align-middle">
+                    <thead>
+                        <tr>
+                            <th>Operation Label</th>
+                            <th>Operation Type</th>
+                            <th>Date</th>
+                            <th class="text-end">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>`;
+            for (let i = 0; i < transactions.length; i++) {
+                const operationId = transactions[i].operationId;
+                const operationType = transactions[i].operationType;
+                const operationDate = transactions[i].operationDate;
+                const operationDesc = transactions[i].description;
+                const operationAmount = transactions[i].amount;
+                
+                let badgeClass = "warning";
+                if(operationType === "INCOME") {
+                    badgeClass = "success";
+                } else if(operationType === "EXPENSE") {
+                    badgeClass = "danger";
+                }
+                if((operType === "INCOME" && operationType === "INCOME") || (operType === "EXPENSE" && operationType === "EXPENSE") || operType === undefined) {
+                    transTable += `
+                    <tr class='clickable-row' data-id='${operationId}'>
+                        <td>${operationDesc}</td>
+                        <td>
+                            <span class="badge badge-light-${badgeClass}">${operationType}</span>
+                        </td>
+                        <td>${formatDate(operationDate)}</td>
+                        <td class="text-end">${operationAmount} ${currency}</td>
+                    </tr>`;
+                }
+            }  
+            transTable += `</tbody></table></div>`;
+            parent.innerHTML = transTable;
+        }
         return transactions;
     })
     .then((transactions) => {

@@ -5,7 +5,7 @@ const operDesc = document.querySelector("#operDesc");
 const dashNotifs = document.querySelector("#dashNotifs");
 const profileBtn = document.querySelector(".profile-btn");
 
-checkLoggedIn();
+// checkLoggedOut();
 setAvatar();
 window.onload = showNotification(dashNotifs);
 
@@ -100,10 +100,100 @@ function addTransaction() {
             console.log(response);
             localStorage.setItem("notifType", "success");
             localStorage.setItem("notifText", "New operation added successfully!");
-            window.location = "transactions.html";
+            location.reload();
         }).catch((err) => {
             let alertError = `<div class="alert alert-danger">${err.response.data.message}</div>`;
             operFeedback.innerHTML = alertError;
         });
     }
 }
+
+function newOperation(type) {
+    let formErrors = false;
+    if(operAmount.value == "") {
+        inputError(operAmount, errorRequiredField);
+        formErrors = true;
+    } else {
+        inputValid(operAmount);
+    }
+    if(operDesc.value == "") {
+        inputError(operDesc, errorRequiredField);
+        formErrors = true;
+    } else {
+        inputValid(operDesc);
+    }
+
+    if(formErrors === false) {
+        const accessToken = localStorage.getItem("accessToken");
+        const userId = localStorage.getItem("accountId");
+        const url = `${baseUrl}/operation/add`;
+        const bodyParams = {
+            "amount": operAmount.value,
+            "operationType": type,
+            "description": operDesc.value,
+            "accountId": userId
+        }
+        axios.post(url, bodyParams, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            }
+        })
+        .then((response) => {
+            operFeedback.innerHTML = "";
+            location.reload();
+        }).catch((err) => {
+            let alertError = `<div class="alert alert-danger">${err.response.data.message}</div>`;
+            operFeedback.innerHTML = alertError;
+        });
+    }
+}
+
+const data1 = {
+    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    datasets: [{
+        label: 'Weekly Sales',
+        data: [38, 12, 6, 9, 12, 3, 9],
+        backgroundColor: 'rgba(54, 162, 235)',
+        borderWidth: 0,
+        borderRadius: 4,
+        borderSkipped: false
+    }]
+};
+
+const config1 = {
+    type: 'bar',
+    data: data1,
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+};
+
+let ctx1 = document.getElementById('myChart');
+let chart1 = new Chart(ctx1, config1);
+
+
+const data2 = {
+    datasets: [{
+      label: 'My First Dataset',
+      data: [300, 100],
+      backgroundColor: [
+        'rgb(255, 99, 132)',
+        'rgb(54, 162, 235)'
+      ],
+      hoverOffset: 4
+    }]
+};
+
+const config2 = {
+    type: 'doughnut',
+    data: data2,
+};
+
+let ctx2 = document.getElementById('piechart');
+let chart = new Chart(ctx2, config2);
+// const ctx2 = document.getElementById('myChart2');
+// const chart2 = new Chart(ctx2, config);

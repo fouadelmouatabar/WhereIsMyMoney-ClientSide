@@ -47,7 +47,7 @@ birthDateSelect(registerBirthDate);
 formSetQuestions(registerQuestionsForm);
 
 
-function registerAuthValidate() {
+function registerAuth() {
     let formErrors = false;
 
     if(registerEmail.value == "") {
@@ -94,7 +94,7 @@ function registerAuthValidate() {
     }
 }
 
-function registerInfosValidate() {
+function registerInfos() {
     let formErrors = false;
 
     if(registerFname.value == "") {
@@ -171,7 +171,7 @@ function registerInfosValidate() {
     }
 }
 
-function registerFinalStep() {
+function signup() {
     let formErrors = false;
 
     if(registerQuestionOne.value == "") {

@@ -20,44 +20,42 @@
         <div class="row row-cols-1 row-cols-lg-2">
             <div class="col left-section">
                 <div class="d-flex align-items-center justify-content-center">
-                    <div class="sign-section w-100">
+                    <div class="left-content w-100">
                         <div class="logo logo-login">
                             <img src="assets/img/logo.png" alt="logo">
                         </div>
                         <div class="sign-heading">
-                            <h2 class="page-title">Sign In</h2>
+                            <h2 class="page-title">Let's sign you in.</h2>
                             <h6 class="page-subtitle">Nice to see you again</h6>
                         </div>
                         <div class="login-form" id="loginForm">
-                            <form>
-                                <div class="login-feedback" id="loginFeedback"></div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="mb-3">
-                                            <label for="loginEmail" class="form-label">Email address <span class="form-label-required">*</span></label>
-                                            <input type="email" class="form-control" id="loginEmail" placeholder="johndoe@email.com">
-                                            <div class="invalid-feedback"></div>
-                                        </div>
+                            <div class="login-feedback" id="loginFeedback"></div>
+                            <div class="row gx-3">
+                                <div class="col-12">
+                                    <div class="form-input mb-3">
+                                        <label for="loginEmail" class="form-label">Email address <span class="form-label-required">*</span></label>
+                                        <input type="email" class="form-control" id="loginEmail" placeholder="johndoe@email.com">
+                                        <div class="input-feedback"></div>
                                     </div>
-                                    <div class="col-12">
-                                        <div class="mb-3">
-                                            <label for="loginPass" class="form-label">Password <span class="form-label-required">*</span></label>
-                                            <input type="password" class="form-control" id="loginPass" placeholder="At leat 8 characters">
-                                            <div class="invalid-feedback"></div>
-                                            <div class="form-link text-end">
-                                                <a href="forgot-password.html">Forgot Password?</a>
-                                            </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-input mb-3">
+                                        <label for="loginPass" class="form-label">Password <span class="form-label-required">*</span></label>
+                                        <input type="password" class="form-control" id="loginPass" placeholder="At leat 8 characters">
+                                        <div class="input-feedback"></div>
+                                        <div class="form-link text-end">
+                                            <a class="fw-semibold" href="forgot-password.html">Forgot Password?</a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="d-grid mb-4">
-                                    <button class="btn btn-primary" type="button" id="loginBtn" onclick="loginValidate()">Connexion</button>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="signup-helper text-helper text-center">
-                            <span>Don't have an account?</span>
-                            <a href="signup.html">Sign Up</a>
+                            </div>
+                            <div class="d-grid mb-4">
+                                <button class="btn btn-primary" type="button" id="loginBtn" onclick="login()">Connexion</button>
+                            </div>
+                            <div class="signup-helper text-helper text-center">
+                                <span>Don't have an account ?</span>
+                                <a class="fw-semibold" href="signup.html">Sign Up</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -82,7 +80,6 @@
     <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/vendor/axios/axios.min.js"></script>
     <script src="assets/js/app.js"></script>
-    <script src="assets/js/authenticate.js"></script>
-    <script src="assets/js/login.js"></script>
+    <script src="assets/js/auth.js"></script>
 </body>
 </html>
