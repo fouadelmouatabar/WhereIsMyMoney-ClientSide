@@ -1,4 +1,5 @@
-const baseUrl = "https://wmm.up.railway.app/api/v1";
+// const baseUrl = "https://wmm.up.railway.app/api/v1";
+const baseUrl = "http://localhost:8080/wmm/api/v1";
 const countriesJSON = "assets/js/JSON/countries.json";
 const phoneCodesJSON = "assets/js/JSON/phoneCodes.json";
 const currenciesJSON = "assets/js/JSON/currencies.json";
@@ -108,7 +109,7 @@ function inputValid(input) {
     let formInput = input.closest('.form-input');
     let inputFeedback = formInput.querySelector('.input-feedback');
     formInput.classList.remove("input-invalid");
-    if (inputFeedback !== undefined) {
+    if (typeof(inputFeedback) != 'undefined' && inputFeedback != null) {
         formInput.classList.remove("input-invalid");
         inputFeedback.innerText = "";
     }
@@ -335,4 +336,28 @@ function hideInputFeedback() {
             inputValid(formInput);
         });
     }
+}
+
+
+function chartDate(dateString) {
+    var date = new Date(dateString);
+    var day = date.getDate();
+    var month = date.getMonth();
+    if (day < 10) {
+      day = '0' + day;
+    }
+    if (month < 10) {
+      month = monthNames[month];
+    }
+    return `${day} ${month}`;
+}
+
+function lastSevenDays() {
+    let today = new Date();
+    let startDate = new Date(today);
+    startDate.setDate(startDate.getDate() - 7);
+    let year = startDate.getFullYear();
+    let month = (startDate.getMonth() + 1).toString().padStart(2, '0');
+    let day = startDate.getDate().toString().padStart(2, '0');
+    return year + '-' + month + '-' + day;
 }

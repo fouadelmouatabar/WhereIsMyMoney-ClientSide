@@ -120,9 +120,10 @@ function registerForm() {
         selectOptions(registerCurrency, currenciesJSON, "MAD");
     }
     birthDateSelect(registerBirthDate);
-    formSetQuestions(registerQuestionOne);
-    formSetQuestions(registerQuestionTwo);
-    formSetQuestions(registerQuestionThree);
+    formSetQuestions(registerQuestionsForm);
+    // formSetQuestions(registerQuestionOne);
+    // formSetQuestions(registerQuestionTwo);
+    // formSetQuestions(registerQuestionThree);
 }
 
 function registerAuth() {

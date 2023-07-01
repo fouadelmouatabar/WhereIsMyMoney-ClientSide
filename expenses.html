@@ -226,19 +226,22 @@
         </div>
         <div class="dashboard-content">
             <h3 class="d-mobile page-title mb-3">Expenses</h3>
-            <div class="row g-4 align-items-stretch">
+            <div class="row g-4 mb-4 align-items-stretch">
                 <div class="col-12 col-lg-6">
                     <div class="card today-incomes-card">
                         <div class="card-header">
                             <div class="card-title">
-                                <span class="mb-2">Today Incomes</span>           
-                                <h3 class="big-title">4,500 MAD</h3>
+                                <span class="card-subtitle mb-2">Today Expenses</span>           
+                                <h3 class="big-title">
+                                    <span id="dayExpenses">00,00</span>
+                                    <span class="currency"></span>
+                                </h3>
                             </div>
                         </div>
-                        <div class="card-body pt-2" id="expensesList">
+                        <div class="card-body pt-2">
                             <div class="row align-items-center mb-3">
                                 <div class="col">
-                                    <h5 class="mb-4">Today Stats</h5>
+                                    <span class="card-subtitle mb-3">Today Stats</span>
                                     <div class="chart-label">
                                         <span class="label-color label-incomes"></span>
                                         <span class="label-label">Today Incomes</span>
@@ -249,23 +252,32 @@
                                     </div>
                                 </div>
                                 <div class="col-auto" style="width: 140px">
-                                    <canvas id="piechart"></canvas>
+                                    <canvas id="pieChart"></canvas>
                                 </div>
                             </div>
                             <div class="table-responsive">
                                 <table class="table align-middle">
                                     <tbody>
-                                        <tr class='clickable-row' data-href='#'>
-                                            <td>This week</td>
-                                            <td class="text-end">4,500 MAD</td>
+                                        <tr>
+                                            <td>This Week</td>
+                                            <td class="text-end">
+                                                <span id="weekExpenses">00,00</span>
+                                                <span class="currency"></span>
+                                            </td>
                                         </tr>
-                                        <tr class='clickable-row' data-href='#'>
+                                        <tr>
                                             <td>This Month</td>
-                                            <td class="text-end">1,230 MAD</td>
+                                            <td class="text-end">
+                                                <span  id="monthExpenses">00,00</span>
+                                                <span class="currency"></span>
+                                            </td>
                                         </tr>
-                                        <tr class='clickable-row' data-href='#'>
+                                        <tr>
                                             <td>This Year</td>
-                                            <td class="text-end">1,060 MAD</td>
+                                            <td class="text-end">
+                                                <span id="yearExpenses">00,00</span>
+                                                <span class="currency"></span>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -273,103 +285,62 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="col-12 col-lg-4">
+                <div class="col-12 col-lg-6">
                     <div class="card sidebar-card mobileapp-card">
                         <div class="card-header">
                             <div class="card-title">            
                                 <h3>Incomes Stats</h3>
-                                <span>Users from all channels</span>
+                                <!-- <span class="card-subtitle">Lorem ipsum dolor sit amet</span> -->
                             </div>
                         </div>
-                        <div class="card-body">
-                            <div class="card-content text-center">
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-                
-                <div class="col-12 col-lg-6">
-                    <div class="card sidebar-card mobileapp-card">
                         <div class="card-body d-flex align-items-end">
-                            <canvas id="myChart"></canvas>
+                            <canvas id="expensesBarChart"></canvas>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="row g-4 align-items-start">
                 <div class="col-12 col-lg-8">
                     <div class="dash-notifs" id="dashNotifs"></div>
                     <div class="card">
                         <div class="card-header">
                             <div class="card-title">            
-                                <h3>Incomes Overview</h3>
-                                <span>Users from all channels</span>
+                                <h3>Incomes History</h3>
+                                <!-- <span class="card-subtitle">Lorem ipsum dolor sit amet</span> -->
                             </div>
                         </div>
-                        <div class="card-body" id="incomesList">
-                            <div class="table-responsive">
-                                <table class="table align-middle">
-                                    <thead>
-                                        <tr class='clickable-row' data-href='#'>
-                                            <th>Operation Label</th>
-                                            <th>Date</th>
-                                            <th class="text-end">Amount</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class='clickable-row' data-href='#'>
-                                            <td>Solde My Car</td>
-                                            <td>02 Apr, 2023</td>
-                                            <td class="text-end">4,500 MAD</td>
-                                        </tr>
-                                        <tr class='clickable-row' data-href='#'>
-                                            <td>Solde Macbook Air M1</td>
-                                            <td>02 Apr, 2023</td>
-                                            <td class="text-end">1,230 MAD</td>
-                                        </tr>
-                                        <tr class='clickable-row' data-href='#'>
-                                            <td>Google Pixel 6 Pro</td>
-                                            <td>02 Apr, 2023</td>
-                                            <td class="text-end">1,060 MAD</td>
-                                        </tr>
-                                        <tr class='clickable-row' data-href='#'>
-                                            <td>Logitech MX 250</td>
-                                            <td>02 Apr, 2023</td>
-                                            <td class="text-end">64 MAD</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                        <div class="card-body" id="expensesList"></div>
                     </div>
                 </div>
-                <div class="col-12 col-lg-4">
+                <div class="d-desktop col-12 col-lg-4">
                     <div class="card dashboard-card mobileapp-card">
                         <div class="card-header">
                             <div class="card-title">            
-                                <h3>Add New Expense</h3>
-                                <span>Users from all channels</span>
+                                <h3>Add Income</h3>
+                                <!-- <span class="card-subtitle">Lorem ipsum dolor sit amet</span> -->
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="sign-form">
-                                <div class="operation-feedback" id="operFeedback"></div>
+                            <div class="sign-form" id="newIncomeForm">
+                                <div class="operation-feedback"></div>
                                 <div class="row gx-3">
                                     <div class="col-12">
                                         <div class="form-input mb-3">
                                             <label for="" class="form-label">Amount <span class="form-label-required">*</span></label>
-                                            <input type="text" class="form-control" id="operAmount" placeholder="">
+                                            <input type="text" class="form-control operation-amount" placeholder="">
                                             <div class="input-feedback"></div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-input mb-3">
                                             <label for="" class="form-label">Motif / Description <span class="form-label-required">*</span></label>
-                                            <input type="text" class="form-control" id="operDesc" placeholder="">
+                                            <input type="text" class="form-control operation-desc" placeholder="">
                                             <div class="input-feedback"></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="d-grid">
-                                    <button class="btn btn-primary" type="button" onclick="newOperation('EXPENSE')">Submit</button>
+                                    <button class="btn btn-primary" type="button" onclick="newOperation('newIncomeForm', 'INCOME')">Submit</button>
                                 </div>
                             </div>
                         </div>
@@ -377,7 +348,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- New Operation Modal -->
         <div class="modal fade new-operation-modal" id="newOperationModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -388,12 +359,12 @@
                     </div>
                     <div class="modal-body">
                         <div class="sign-form">
-                            <div class="operation-feedback" id="operFeedback"></div>
-                            <div class="row g-4">
+                            <div class="operation-feedback"></div>
+                            <div class="row gx-3">
                                 <div class="col-12">
                                     <div class="form-input mb-3">
                                         <label class="form-label">Operation Type <span class="form-label-required">*</span></label>
-                                        <div class="form-group input-radios" id="operType">
+                                        <div class="form-group input-radios operation-type">
                                             <label>
                                                 <input type="radio" name="operType" value="INCOME">
                                                 <span>Income</span>
@@ -409,20 +380,20 @@
                                 <div class="col-12">
                                     <div class="form-input mb-3">
                                         <label for="" class="form-label">Amount <span class="form-label-required">*</span></label>
-                                        <input type="text" class="form-control" id="operAmount" placeholder="">
+                                        <input type="text" class="form-control operation-amount" placeholder="">
                                         <div class="input-feedback"></div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-input mb-3">
                                         <label for="" class="form-label">Motif / Description <span class="form-label-required">*</span></label>
-                                        <input type="text" class="form-control" id="operDesc" placeholder="">
+                                        <input type="text" class="form-control operation-desc" placeholder="">
                                         <div class="input-feedback"></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="d-grid">
-                                <button class="btn btn-primary" type="button" onclick="addTransaction()">Submit</button>
+                                <button class="btn btn-primary" type="button" onclick="addTransaction('newOperationModal')">Submit</button>
                             </div>
                         </div>
                     </div>

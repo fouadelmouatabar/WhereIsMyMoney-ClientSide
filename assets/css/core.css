@@ -714,7 +714,7 @@ a:hover, a:focus, .link-primary:hover, .link-primary:focus {
     justify-content: space-between;
     align-items: stretch;
     flex-wrap: wrap;
-    min-height: 70px;
+    /* min-height: 70px; */
     padding: 1.5rem 1.5rem 0;
     background-color: transparent;
     border-bottom: 0;
@@ -729,10 +729,10 @@ a:hover, a:focus, .link-primary:hover, .link-primary:focus {
     font-weight: 700;
 }
 .card .card-title .big-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 700;
 }
-.card .card-title span {
+.card .card-title .card-subtitle {
     font-size: 0.82rem;
     font-weight: 600;
     color: #b5b5c3;

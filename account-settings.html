@@ -327,12 +327,12 @@
                     </div>
                     <div class="modal-body">
                         <div class="sign-form">
-                            <div class="operation-feedback" id="operFeedback"></div>
-                            <div class="row g-4">
+                            <div class="operation-feedback"></div>
+                            <div class="row gx-3">
                                 <div class="col-12">
                                     <div class="form-input mb-3">
                                         <label class="form-label">Operation Type <span class="form-label-required">*</span></label>
-                                        <div class="form-group input-radios" id="operType">
+                                        <div class="form-group input-radios operation-type">
                                             <label>
                                                 <input type="radio" name="operType" value="INCOME">
                                                 <span>Income</span>
@@ -348,20 +348,20 @@
                                 <div class="col-12">
                                     <div class="form-input mb-3">
                                         <label for="" class="form-label">Amount <span class="form-label-required">*</span></label>
-                                        <input type="text" class="form-control" id="operAmount" placeholder="">
+                                        <input type="text" class="form-control operation-amount" placeholder="">
                                         <div class="input-feedback"></div>
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-input mb-3">
                                         <label for="" class="form-label">Motif / Description <span class="form-label-required">*</span></label>
-                                        <input type="text" class="form-control" id="operDesc" placeholder="">
+                                        <input type="text" class="form-control operation-desc" placeholder="">
                                         <div class="input-feedback"></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="d-grid">
-                                <button class="btn btn-primary" type="button" onclick="addTransaction()">Submit</button>
+                                <button class="btn btn-primary" type="button" onclick="addTransaction('newOperationModal')">Submit</button>
                             </div>
                         </div>
                     </div>

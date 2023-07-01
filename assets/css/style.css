@@ -383,10 +383,16 @@
     margin-bottom: 0;
     color: #323338;
 }
+.orange-card {
+    /* background: linear-gradient(112.14deg, #FF8A00 0%, #E96922 100%); */
+    background: linear-gradient(112.14deg, #00D2FF 0%, #3A7BD5 100%);
+    color: #fff;
+}
 
 .dashboard-page .card-text,
 .dashboard-page .card-subtitle {
-    font-weight: 500;
+    display: block;
+    font-weight: 600;
     font-size: 0.8125rem;
     color: #979BAD;
 }
@@ -498,7 +504,7 @@
 
 .sidebar-card .card-title {
     font-size: 0.9375rem;
-    margin-bottom: 1.2rem;
+    /* margin-bottom: 1.2rem; */
 }
 
 .sidebar-card .link {

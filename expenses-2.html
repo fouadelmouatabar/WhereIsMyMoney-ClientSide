@@ -47,7 +47,7 @@
                             </a>
                         </li> -->
                         <li>
-                            <a href="incomes.html" class="menu-link active">
+                            <a href="incomes.html" class="menu-link">
                                 <span class="menu-icon">
                                     <i class="fi fi-br-wallet"></i>
                                 </span>
@@ -56,7 +56,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="expenses.html" class="menu-link">
+                            <a href="expenses.html" class="menu-link active">
                                 <span class="menu-icon">
                                     <i class="fi fi-br-cart-shopping-fast"></i>
                                 </span>
@@ -123,7 +123,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="incomes.html" class="menu-link active">
+                                <a href="incomes.html" class="menu-link">
                                     <span class="menu-icon">
                                         <i class="fi fi-br-wallet"></i>
                                     </span>
@@ -132,7 +132,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="expenses.html" class="menu-link">
+                                <a href="expenses.html" class="menu-link active">
                                     <span class="menu-icon">
                                         <i class="fi fi-br-cart-shopping-fast"></i>
                                     </span>
@@ -173,7 +173,7 @@
                 <div class="hamburger-menu d-mobile" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
                     <span></span>
                 </div>
-                <h2 class="page-title d-desktop">Incomes</h2>
+                <h2 class="page-title d-desktop">Expenses</h2>
                 <div class="d-flex align-items-center">
                     <a href="#" class="btn btn-sm btn-primary rounded-pill me-2" data-bs-toggle="modal" data-bs-target="#newOperationModal">
                         <i class="btn-icon fi fi-br-plus"></i>
@@ -225,20 +225,20 @@
             </div>
         </div>
         <div class="dashboard-content">
-            <h3 class="d-mobile page-title mb-3">Incomes</h3>
+            <h3 class="d-mobile page-title mb-3">Expenses</h3>
             <div class="row g-4 mb-4 align-items-stretch">
                 <div class="col-12 col-lg-6">
                     <div class="card today-incomes-card">
                         <div class="card-header">
                             <div class="card-title">
-                                <span class="card-subtitle mb-2">Today Incomes</span>           
+                                <span class="card-subtitle mb-2">Today Expenses</span>           
                                 <h3 class="big-title">
-                                    <span id="dayIncomes">00,00</span>
+                                    <span id="dayExpenses">00,00</span>
                                     <span class="currency"></span>
                                 </h3>
                             </div>
                         </div>
-                        <div class="card-body pt-2">
+                        <div class="card-body pt-2" id="expensesList">
                             <div class="row align-items-center mb-3">
                                 <div class="col">
                                     <span class="card-subtitle mb-3">Today Stats</span>
@@ -252,30 +252,30 @@
                                     </div>
                                 </div>
                                 <div class="col-auto" style="width: 140px">
-                                    <canvas id="pieChart"></canvas>
+                                    <canvas id="piechart"></canvas>
                                 </div>
                             </div>
                             <div class="table-responsive">
                                 <table class="table align-middle">
                                     <tbody>
-                                        <tr>
-                                            <td>This Week</td>
+                                        <tr class='clickable-row' data-href='#'>
+                                            <td>Weekly Expenses</td>
                                             <td class="text-end">
-                                                <span id="weekIncomes">00,00</span>
+                                                <span id="weekExpenses">00,00</span>
                                                 <span class="currency"></span>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>This Month</td>
+                                        <tr class='clickable-row' data-href='#'>
+                                            <td>Monthly Expenses</td>
                                             <td class="text-end">
-                                                <span  id="monthIncomes">00,00</span>
+                                                <span id="monthExpenses">00,00</span>
                                                 <span class="currency"></span>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>This Year</td>
+                                        <tr class='clickable-row' data-href='#'>
+                                            <td>Yearly Expenses</td>
                                             <td class="text-end">
-                                                <span id="yearIncomes">00,00</span>
+                                                <span id="yearExpenses">00,00</span>
                                                 <span class="currency"></span>
                                             </td>
                                         </tr>
@@ -289,12 +289,12 @@
                     <div class="card sidebar-card mobileapp-card">
                         <div class="card-header">
                             <div class="card-title">            
-                                <h3>Incomes Stats</h3>
-                                <!-- <span class="card-subtitle">Lorem ipsum dolor sit amet</span> -->
+                                <h3>Expenses Stats</h3>
+                                <span>Lorem ipsum dolor sit amet</span>
                             </div>
                         </div>
                         <div class="card-body d-flex align-items-end">
-                            <canvas id="incomesBarChart"></canvas>
+                            <canvas id="expensesBarChart"></canvas>
                         </div>
                     </div>
                 </div>
@@ -305,23 +305,57 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="card-title">            
-                                <h3>Incomes History</h3>
-                                <!-- <span class="card-subtitle">Lorem ipsum dolor sit amet</span> -->
+                                <h3>Expenses History</h3>
+                                <span>Lorem ipsum dolor sit amet</span>
                             </div>
                         </div>
-                        <div class="card-body" id="incomesList"></div>
+                        <div class="card-body" id="incomesList">
+                            <div class="table-responsive">
+                                <table class="table align-middle">
+                                    <thead>
+                                        <tr class='clickable-row' data-href='#'>
+                                            <th>Operation Label</th>
+                                            <th>Date</th>
+                                            <th class="text-end">Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class='clickable-row' data-href='#'>
+                                            <td>Solde My Car</td>
+                                            <td>02 Apr, 2023</td>
+                                            <td class="text-end">4,500 MAD</td>
+                                        </tr>
+                                        <tr class='clickable-row' data-href='#'>
+                                            <td>Solde Macbook Air M1</td>
+                                            <td>02 Apr, 2023</td>
+                                            <td class="text-end">1,230 MAD</td>
+                                        </tr>
+                                        <tr class='clickable-row' data-href='#'>
+                                            <td>Google Pixel 6 Pro</td>
+                                            <td>02 Apr, 2023</td>
+                                            <td class="text-end">1,060 MAD</td>
+                                        </tr>
+                                        <tr class='clickable-row' data-href='#'>
+                                            <td>Logitech MX 250</td>
+                                            <td>02 Apr, 2023</td>
+                                            <td class="text-end">64 MAD</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="d-desktop col-12 col-lg-4">
                     <div class="card dashboard-card mobileapp-card">
                         <div class="card-header">
                             <div class="card-title">            
-                                <h3>Add Income</h3>
-                                <!-- <span class="card-subtitle">Lorem ipsum dolor sit amet</span> -->
+                                <h3>Add Expense</h3>
+                                <span>Lorem ipsum dolor sit amet</span>
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="sign-form" id="newIncomeForm">
+                            <div class="sign-form" id="newExpenseForm">
                                 <div class="operation-feedback"></div>
                                 <div class="row gx-3">
                                     <div class="col-12">
@@ -340,7 +374,7 @@
                                     </div>
                                 </div>
                                 <div class="d-grid">
-                                    <button class="btn btn-primary" type="button" onclick="newOperation('newIncomeForm', 'INCOME')">Submit</button>
+                                    <button class="btn btn-primary" type="button" onclick="newOperation('newExpenseForm', 'EXPENSE')">Submit</button>
                                 </div>
                             </div>
                         </div>
@@ -348,7 +382,7 @@
                 </div>
             </div>
         </div>
-
+        
         <!-- New Operation Modal -->
         <div class="modal fade new-operation-modal" id="newOperationModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">

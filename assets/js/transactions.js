@@ -13,22 +13,19 @@ const editOperId = document.querySelector("#editOperId");
 const editOperDelete = document.querySelector("#editOperDelete");
 const editOperUpdate = document.querySelector("#editOperUpdate");
 
-window.onload = function() {
+window.addEventListener('load', function() {
     var currentPage = window.location.href;
     if (currentPage.includes('dashboard.html')) {
         setTransactions(incomesList, "INCOME");
         setTransactions(expensesList, "EXPENSE");
-    } else if (currentPage.includes('transactions.html')) {
-        setTransactions(transactionsList);
     } else if (currentPage.includes('incomes.html')) {
         setTransactions(incomesList, "INCOME");
     } else if (currentPage.includes('expenses.html')) {
         setTransactions(expensesList, "EXPENSE");
     }
-};
+});
 
-function setTransactions(parent, operType, maxResults) {
-    console.log("ok");
+function setTransactions(parent, operType) {
     const accessToken = localStorage.getItem("accessToken");
     const userId = localStorage.getItem("accountId");
     const url = `${baseUrl}/operation/all/${userId}`;
@@ -110,7 +107,7 @@ function setTransactions(parent, operType, maxResults) {
         return transactions;
     })
     .then((transactions) => {
-        const transactionsTr = transactionsList.querySelectorAll("tbody tr");
+        const transactionsTr = parent.querySelectorAll("tbody tr");
         for (var i = 0; i < transactionsTr.length; i++) {
             transactionsTr[i].addEventListener('click', function(event) {
                 let transactionId = this.getAttribute('data-id');
@@ -200,16 +197,15 @@ function editTransaction(operationId) {
             }
         })
         .then((response) => {
-            console.log(response);
-            setTransactions();
-            bsEditModal.hide();
+            // bsEditModal.hide();
+            window.location.reload();
         }).catch((err) => {
             console.log(err);
         });
     }
 }
 
-function deleteTransaction(operationId) {
+function deleteTransaction(operationId, elem, operType) {
     const accessToken = localStorage.getItem("accessToken");
     const url = `${baseUrl}/operation/delete/${operationId}`;
     axios.delete(url, {
@@ -218,8 +214,8 @@ function deleteTransaction(operationId) {
         }
     })
     .then((response) => {
-        setTransactions();
-        bsEditModal.hide();
+        // bsEditModal.hide();
+        window.location.reload();
     }).catch((err) => {
         console.log(err);
     });
